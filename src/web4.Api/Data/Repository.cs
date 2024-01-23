@@ -15,7 +15,6 @@ namespace web4.Api.Data
 
             personne.Id = _ID_SEQUENCE_PRODUCT++;
             Personnes.Add(personne);
-            Personnes.Add(personne);
 
             return personne;
         }
@@ -24,7 +23,6 @@ namespace web4.Api.Data
 
             evenement.Id = _ID_SEQUENCE_PRODUCT++;
             Evenements.Add(evenement);
-            Evenements.Add(evenement);
 
             return evenement;
         }
@@ -32,7 +30,6 @@ namespace web4.Api.Data
         {
 
             ville.Id = _ID_SEQUENCE_PRODUCT++;
-            Villes.Add(ville);
             Villes.Add(ville);
 
             return ville;
