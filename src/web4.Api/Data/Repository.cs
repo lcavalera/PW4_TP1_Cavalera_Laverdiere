@@ -4,7 +4,10 @@ namespace web4.Api.Data
 {
     public static class Repository
     {
-        private static int _ID_SEQUENCE_PRODUCT { get; set; } = 1;
+        private static int IdSequencePersonne = 1;
+        private static int IdSequenceEvenement = 1;
+        private static int IdSequenceVille = 1;
+        private static int IdSequenceParticipation = 1;
         public static ISet<Personne> Personnes { get; set; } = new HashSet<Personne>();
         public static ISet<Evenement> Evenements { get; set; } = new HashSet<Evenement>();
         public static ISet<Ville> Villes { get; set; } = new HashSet<Ville>();
@@ -14,7 +17,7 @@ namespace web4.Api.Data
         public static Personne AddPersonne(Personne personne)
         {
 
-            personne.Id = _ID_SEQUENCE_PRODUCT++;
+            personne.Id = IdSequencePersonne++;
             Personnes.Add(personne);
 
             return personne;
@@ -22,7 +25,7 @@ namespace web4.Api.Data
         public static Evenement AddEvenement(Evenement evenement)
         {
 
-            evenement.Id = _ID_SEQUENCE_PRODUCT++;
+            evenement.Id = IdSequenceEvenement++;
             Evenements.Add(evenement);
 
             return evenement;
@@ -30,7 +33,7 @@ namespace web4.Api.Data
         public static Ville AddVille(Ville ville)
         {
 
-            ville.Id = _ID_SEQUENCE_PRODUCT++;
+            ville.Id = IdSequenceVille++;
             Villes.Add(ville);
 
             return ville;
@@ -38,7 +41,7 @@ namespace web4.Api.Data
         public static Participation AddParticipation(Participation participation)
         {
 
-            participation.Id = _ID_SEQUENCE_PRODUCT++;
+            participation.Id = IdSequenceParticipation++;
             Participations.Add(participation);
 
             return participation;
