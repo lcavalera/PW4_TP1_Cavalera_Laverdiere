@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("web4.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddbae2cac26d047ecd459a50aca0968298d0c67b")]
 [assembly: System.Reflection.AssemblyProductAttribute("web4.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("web4.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
