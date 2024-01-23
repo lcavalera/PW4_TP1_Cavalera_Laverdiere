@@ -8,6 +8,7 @@ namespace web4.Api.Data
         public static ISet<Personne> Personnes { get; set; } = new HashSet<Personne>();
         public static ISet<Evenement> Evenements { get; set; } = new HashSet<Evenement>();
         public static ISet<Ville> Villes { get; set; } = new HashSet<Ville>();
+        public static ISet<Participation> Participations { get; set; } = new HashSet<Participation>();
 
 
         public static Personne AddPersonne(Personne personne)
@@ -33,6 +34,14 @@ namespace web4.Api.Data
             Villes.Add(ville);
 
             return ville;
+        }
+        public static Participation AddParticipation(Participation participation)
+        {
+
+            participation.Id = _ID_SEQUENCE_PRODUCT++;
+            Participations.Add(participation);
+
+            return participation;
         }
     }
 }
