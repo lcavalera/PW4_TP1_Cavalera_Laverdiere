@@ -1,6 +1,5 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "seYO21CqHcV2oEn4meTx8WowrlIZIievZbQ0Jw0+sXi8omHYsPU837qlcVUs0yMNY4WdkjancLxYPpnKhA5zFg==",
   "success": true,
   "projectFilePath": "D:\\Luca-Cégep Limoilou\\OneDrive - Cégep Limoilou\\Documents\\_Programmation Web 4\\TP1_Cavalera\\PW4_TP1_Cavalera_Laverdiere\\src\\web4.Api\\Events.Api.csproj",
@@ -12,11 +11,12 @@
     "C:\\Users\\Luca\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
   ],
-=======
-  "dgSpecHash": "UFbmgFQ7vcox3xsc97Oeu79zcHLa/lQA0k3bfjdBDO5sKAsYUcdOD4/SuGMrtPYCP/6eg/jUiOqYte8N4A6hJQ==",
-  "success": true,
-  "projectFilePath": "D:\\H24\\ProgWeb4\\TP\\TP1\\TP1\\src\\web4.Api\\web4.Api.csproj",
-  "expectedPackageFiles": [],
->>>>>>> 7de805c23e8e97a7c8a70fa535a5ae67ffa4bdc4
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\Luca-Cégep Limoilou\\OneDrive - Cégep Limoilou\\Documents\\_Programmation Web 4\\TP1_Cavalera\\PW4_TP1_Cavalera_Laverdiere\\src\\web4.Api\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

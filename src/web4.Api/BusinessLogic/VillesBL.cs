@@ -1,4 +1,4 @@
-﻿using Events.Api;
+﻿using Events.Api.Data;
 using Events.Api.Entites;
 using Events.Api.Exceptions;
 

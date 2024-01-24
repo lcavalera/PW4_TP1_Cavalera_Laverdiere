@@ -1,4 +1,5 @@
-﻿using Events.Api.Entites;
+﻿using Events.Api.Data;
+using Events.Api.Entites;
 using Events.Api.Exceptions;
 
 namespace Events.Api.BusinessLogic
@@ -35,6 +36,12 @@ namespace Events.Api.BusinessLogic
             {
                 //BadRequest
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
+            }
+
+            if (evenement.DateDebut > evenement.DateDeFin)
+            {
+                //BadRequest
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "La date de fin doit être supérieur à la date de debut" } };
             }
 
             var evenementAModifier = Repository.Evenements.FirstOrDefault(e => e.Id == id);
