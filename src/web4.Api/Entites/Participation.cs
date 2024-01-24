@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace web4.Api.Entites
+namespace Events.Api.Entites
 {
     public class Participation
     {
@@ -10,9 +10,9 @@ namespace web4.Api.Entites
         [EmailAddress, Required]
         public string Courriel { get; set; }
         [Required]
-        public string Nom {  get; set; }
+        public string Nom { get; set; }
         [Required]
-        public string Prenom {  get; set; }
+        public string Prenom { get; set; }
 
         //À valider à la place de "Nom", "Prenom" et "Courriel":
 

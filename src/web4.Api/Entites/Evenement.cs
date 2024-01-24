@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace web4.Api.Entites
+namespace Events.Api.Entites
 {
     public class Evenement
     {
@@ -21,15 +21,7 @@ namespace web4.Api.Entites
         public string NomOrganisateur { get; set; }
         [Required]
         public Ville Ville { get; set; }
-
-        //À valider à la place de "NomOrganisateur" et "Ville":
-
-        //[Required]
-        //public int OrganisateurId { get; set; }
-        //[Required]
-        //public int VilleId { get; set; }
-
-        public int Prix {  get; set; }
+        public int Prix { get; set; }
 
     }
 }

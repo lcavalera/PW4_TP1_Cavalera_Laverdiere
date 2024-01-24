@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace web4.Api.Entites
+namespace Events.Api.Entites
 {
     public enum Categorie
     {
