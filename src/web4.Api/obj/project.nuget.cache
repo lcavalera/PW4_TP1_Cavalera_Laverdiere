@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "UHCTak/ZZx0zutARuoAU9wsa/MxAyfqNNtvzNmQfEMmw1qLnSNpyTSY2rz2TNWm1CEegbeJog5DyjlMC1/X+jw==",
+  "dgSpecHash": "seYO21CqHcV2oEn4meTx8WowrlIZIievZbQ0Jw0+sXi8omHYsPU837qlcVUs0yMNY4WdkjancLxYPpnKhA5zFg==",
   "success": true,
-  "projectFilePath": "D:\\Luca-Cégep Limoilou\\OneDrive - Cégep Limoilou\\Documents\\_Programmation Web 4\\TP1_Cavalera\\PW4_TP1_Cavalera_Laverdiere\\src\\web4.Api\\web4.Api.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Luca-Cégep Limoilou\\OneDrive - Cégep Limoilou\\Documents\\_Programmation Web 4\\TP1_Cavalera\\PW4_TP1_Cavalera_Laverdiere\\src\\web4.Api\\Events.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Luca\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Luca\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Luca\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\Luca\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Luca\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Luca\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

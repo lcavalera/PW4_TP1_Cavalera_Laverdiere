@@ -1,11 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace web4.Api.Entites
+namespace Events.Api.Entites
 {
-    public class Usager: Personne
+    public class Usager
     {
+        public int Id { get; set; }
+        [Required]
+        public string Nom { get; set; }
         [Required]
         public string Prenom { get; set; }
+        public string? Telephone { get; set; }
         public DateTime? DateNaissance { get; set; }
         [EmailAddress, Required]
         public string Courriel { get; set; }
