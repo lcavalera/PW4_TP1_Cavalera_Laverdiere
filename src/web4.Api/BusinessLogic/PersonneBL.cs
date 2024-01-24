@@ -1,62 +1,62 @@
 ﻿using Events.Api.Entites;
+using Events.Api.Data;
 using Events.Api.Exceptions;
 
 namespace Events.Api.BusinessLogic
 {
-    public class UsagersBL: IUsagersBL
+    public class PersonneBL: IPersonneBL
     {
-        public IEnumerable<Usager> ObtenirTout()
+        public IEnumerable<Personne> ObtenirTout()
         {
-            return Repository.Usagers.ToList();
+            return Repository.Personnes.ToList();
         }
-        public Usager? ObtenirSelonId(int id)
+        public Personne? ObtenirSelonId(int id)
         {
-            return Repository.Usagers.FirstOrDefault(u => u.Id == id);
+            return Repository.Personnes.FirstOrDefault(p => p.Id == id);
         }
-        public Usager Ajouter(Usager usager)
+        public Personne Ajouter(Personne personne)
         {
-            if (usager == null)
+            if (personne == null)
             {
                 //BadRequest
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
 
-            return Repository.AddUsager(usager);
+            return Repository.AddPersonne(personne);
         }
-        public void Modifier(int id, Usager usager)
+        public void Modifier(int id, Personne personne)
         {
-            if (usager == null)
+            if (personne == null)
             {
                 //BadRequest
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
 
-            var usagerAModifier = Repository.Usagers.FirstOrDefault(u => u.Id == id);
+            var personneAModifier = Repository.Personnes.FirstOrDefault(p => p.Id == id);
 
-            if (usagerAModifier == null)
+            if (personneAModifier == null)
             {
                 //NotFound
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
             }
 
-            usagerAModifier.Nom = usager.Nom;
-            usagerAModifier.Prenom = usager.Prenom;
-            usagerAModifier.Telephone = usager.Telephone;
-            usagerAModifier.DateNaissance = usager.DateNaissance;
-            usagerAModifier.Courriel = usager.Courriel;
+            personneAModifier.Nom = personne.Nom;
+            personneAModifier.Telephone = personne.Telephone;
+            personneAModifier.DateNaissance = personne.DateNaissance;
+            personneAModifier.Courriel = personne.Courriel;
         }
         public void Supprimer(int id)
         {
-            var usager = Repository.Usagers.FirstOrDefault(u => u.Id == id);
+            var personne = Repository.Personnes.FirstOrDefault(p => p.Id == id);
 
-            if (usager == null)
+            if (personne == null)
             {
                 //NotFound
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
             }
             else
             {
-                Repository.Usagers.Remove(usager);
+                Repository.Personnes.Remove(personne);
             }
         }
     }

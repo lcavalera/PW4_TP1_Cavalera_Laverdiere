@@ -10,13 +10,13 @@ namespace Events.Api.Controllers
     [ApiController]
     [Produces("application/json")]
 
-    public class UsagersController : ControllerBase
+    public class PersonneController : ControllerBase
     {
-        private readonly IUsagersBL _usagersBL;
+        private readonly IPersonneBL _personneBL;
 
-        public UsagersController(IUsagersBL usagerBL)
+        public PersonneController(IPersonneBL personneBL)
         {
-            _usagersBL = usagerBL;
+            _personneBL = personneBL;
         }
 
         /// <summary>
@@ -33,12 +33,12 @@ namespace Events.Api.Controllers
         /// <returns></returns>
         // GET: api/<UsagersController>
         [HttpGet]
-        [ProducesResponseType(typeof(List<Usager>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<Personne>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<Usager>> Get()
+        public ActionResult<IEnumerable<Personne>> Get()
         {
-            return Ok(_usagersBL.ObtenirTout());
+            return Ok(_personneBL.ObtenirTout());
         }
 
         /// <summary>
@@ -55,12 +55,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // GET api/<UsagersController>/5
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Usager), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Personne), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<Usager> GetById(int id)
+        public ActionResult<Personne> GetById(int id)
         {
-            var usager = _usagersBL.ObtenirSelonId(id);
+            var usager = _personneBL.ObtenirSelonId(id);
             return usager == null ? NotFound(new { Erreur = $"Usager introuvable (id = {id}" }) : Ok(usager);
         }
 
@@ -91,13 +91,13 @@ namespace Events.Api.Controllers
         // POST api/<UsagersController>
         [HttpPost]
         [Consumes("application/json")]
-        [ProducesResponseType(typeof(Usager), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(Usager), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Usager), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Personne), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Personne), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Personne), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Post([FromBody] Usager usager)
+        public IActionResult Post([FromBody] Personne usager)
         {
-            usager = _usagersBL.Ajouter(usager);
+            usager = _personneBL.Ajouter(usager);
             return CreatedAtAction(nameof(GetById), new { id = usager.Id }, null);
         }
 
@@ -113,13 +113,13 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<UsagersController>/5
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(Usager), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Usager), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Personne), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Personne), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Put(int id, [FromBody] Usager usager)
+        public IActionResult Put(int id, [FromBody] Personne usager)
         {
-            _usagersBL.Modifier(id, usager);
+            _personneBL.Modifier(id, usager);
             return NoContent();
         }
 
@@ -132,12 +132,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<UsagersController>/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Usager), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Personne), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Delete(int id)
         {
-            _usagersBL.Supprimer(id);
+            _personneBL.Supprimer(id);
             return NoContent();
         }
     }

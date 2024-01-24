@@ -2,7 +2,7 @@
 
 namespace Events.Api.Entites
 {
-    public class Usager
+    public class Personne
     {
         public int Id { get; set; }
         [Required]

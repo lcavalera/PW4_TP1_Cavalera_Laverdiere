@@ -1,6 +1,6 @@
-﻿using web4.Api.Entites;
+﻿using Events.Api.Entites;
 
-namespace web4.Api.Data
+namespace Events.Api.Data
 {
     public static class Repository
     {
