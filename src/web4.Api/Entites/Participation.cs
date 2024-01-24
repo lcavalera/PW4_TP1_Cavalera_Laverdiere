@@ -13,9 +13,5 @@ namespace Events.Api.Entites
         public string Nom { get; set; }
         [Required]
         public string Prenom { get; set; }
-
-        //À valider à la place de "Nom", "Prenom" et "Courriel":
-
-        //public int UsagerId { get; set; }
     }
 }
