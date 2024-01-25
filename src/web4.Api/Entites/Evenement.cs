@@ -21,7 +21,7 @@ namespace Events.Api.Entites
         public string NomOrganisateur { get; set; }
         [Required]
         public Ville Ville { get; set; }
-        public int Prix { get; set; }
+        public int? Prix { get; set; } //optionnel
 
     }
 }
