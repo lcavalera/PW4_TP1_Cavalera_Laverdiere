@@ -27,13 +27,11 @@ namespace Events.Api.Controllers
         ///
         /// </remarks>
         /// <response code="200">villes trouvés et retournés</response>
-        /// <response code="404">villes introuvables</response>
         /// <response code="500">service indisponible pour le moment</response>
         /// <returns></returns>
         // GET: api/<VillesController>
         [HttpGet]
         [ProducesResponseType(typeof(List<Ville>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<IEnumerable<Ville>> Get()
         {
@@ -106,12 +104,14 @@ namespace Events.Api.Controllers
         /// <returns>La ville a été modifié</returns>
         /// <response code="200">traitement executé avec succès, contenu retourné</response>
         /// <response code="204">ville modifié avec succès, aucune contenu retourné</response>
+        /// <response code="400">model Invalide, mauvaise requête</response>
         /// <response code="404">ville introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<VillesController>/5
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(Ville), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Ville), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Ville), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Put(int id, [FromBody] Ville ville)

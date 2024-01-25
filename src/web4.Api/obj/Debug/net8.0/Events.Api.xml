@@ -14,7 +14,6 @@
             
              </remarks>
              <response code="200">evenements trouvés et retournés</response>
-             <response code="404">evenements introuvables</response>
              <response code="500">service indisponible pour le moment</response>
              <returns></returns>
         </member>
@@ -43,7 +42,6 @@
             
              </remarks>
              <response code="200">evenements trouvés et retournés</response>
-             <response code="404">evenements introuvables pour l'id de la ville spécifiée</response>
              <response code="500">service indisponible pour le moment</response>
         </member>
         <member name="M:Events.Api.Controllers.EvenementsController.Post(Events.Api.Entites.Evenement)">
@@ -86,6 +84,7 @@
             <returns>La evenement a été modifié</returns>
             <response code="200">traitement executé avec succès, contenu retourné</response>
             <response code="204">evenement modifié avec succès, aucune contenu retourné</response>
+            <response code="400">model Invalide, mauvaise requête</response>
             <response code="404">evenement introuvable pour l'id spécifié</response>
             <response code="500">service indisponible pour le moment</response>
         </member>
@@ -108,7 +107,6 @@
             
              </remarks>
              <response code="200">villes trouvés et retournés</response>
-             <response code="404">villes introuvables</response>
              <response code="500">service indisponible pour le moment</response>
              <returns></returns>
         </member>
@@ -158,6 +156,7 @@
             <returns>La ville a été modifié</returns>
             <response code="200">traitement executé avec succès, contenu retourné</response>
             <response code="204">ville modifié avec succès, aucune contenu retourné</response>
+            <response code="400">model Invalide, mauvaise requête</response>
             <response code="404">ville introuvable pour l'id spécifié</response>
             <response code="500">service indisponible pour le moment</response>
         </member>

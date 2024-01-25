@@ -27,13 +27,11 @@ namespace Events.Api.Controllers
         ///
         /// </remarks>
         /// <response code="200">evenements trouvés et retournés</response>
-        /// <response code="404">evenements introuvables</response>
         /// <response code="500">service indisponible pour le moment</response>
         /// <returns></returns>
         // GET: api/<EvenementsController>
         [HttpGet]
         [ProducesResponseType(typeof(List<Evenement>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<IEnumerable<Evenement>> Get()
         {
@@ -73,16 +71,13 @@ namespace Events.Api.Controllers
         ///
         /// </remarks>
         /// <response code="200">evenements trouvés et retournés</response>
-        /// <response code="404">evenements introuvables pour l'id de la ville spécifiée</response>
         /// <response code="500">service indisponible pour le moment</response>
         [HttpGet("{villeId}/ville")]
         [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<IEnumerable<Evenement>> GetByIdVille(int villeId)
         {
-            var evenement = _evenementsBL.ObtenirSelonIdVille(villeId);
-            return evenement == null ? NotFound(new { Erreur = $"Evenement introuvable pour la ville spécifiée (id ville = {villeId})" }) : Ok(evenement);
+            return Ok(_evenementsBL.ObtenirSelonIdVille(villeId));
         }
 
         /// <summary>
@@ -137,12 +132,14 @@ namespace Events.Api.Controllers
         /// <returns>La evenement a été modifié</returns>
         /// <response code="200">traitement executé avec succès, contenu retourné</response>
         /// <response code="204">evenement modifié avec succès, aucune contenu retourné</response>
+        /// <response code="400">model Invalide, mauvaise requête</response>
         /// <response code="404">evenement introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<EvenementsController>/5
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Evenement), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Evenement), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Put(int id, [FromBody] Evenement evenement)

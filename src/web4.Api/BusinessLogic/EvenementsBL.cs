@@ -60,6 +60,12 @@ namespace Events.Api.BusinessLogic
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "La date de fin doit être supérieur à la date de debut" } };
             }
 
+            if (!Repository.Villes.Any(v => v.Id == evenement.VilleId))
+            {
+                //NotFound
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleId})" } };
+            }
+
             var evenementAModifier = Repository.Evenements.FirstOrDefault(e => e.Id == id);
 
             if (evenementAModifier == null)

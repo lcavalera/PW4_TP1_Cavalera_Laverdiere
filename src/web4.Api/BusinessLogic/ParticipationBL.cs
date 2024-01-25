@@ -55,10 +55,10 @@ namespace Events.Api.BusinessLogic
 
         public void Modifier(int id, Participation participation)
         {
-            if ()
-            {
+            //if ()
+            //{
 
-            }
+            //}
         }
 
         public Participation? ObtenirSelonId(int id)
