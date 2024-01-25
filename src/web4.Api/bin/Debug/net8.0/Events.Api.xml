@@ -32,6 +32,20 @@
              <response code="404">evenement introuvable pour l'id spécifié</response>
              <response code="500">service indisponible pour le moment</response>
         </member>
+        <member name="M:Events.Api.Controllers.EvenementsController.GetByIdVille(System.Int32)">
+             <summary>
+             Retourne une liste des evenements à partir de l'id de la ville spécifiée
+             </summary>
+             <param name="villeId">id de la ville de les evenements à retourner</param>
+             <remarks>
+             
+                 GET /Evenement/1/Ville
+            
+             </remarks>
+             <response code="200">evenements trouvés et retournés</response>
+             <response code="404">evenements introuvables pour l'id de la ville spécifiée</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
         <member name="M:Events.Api.Controllers.EvenementsController.Post(Events.Api.Entites.Evenement)">
              <summary>
              Ajoute un'evenement à la base de donnée
@@ -59,7 +73,8 @@
              <response code="201">evenement ajouté avec succès</response>
              <response code="200">traitement executé avec succès, contenu retourné</response>
              <response code="204">traitement executé avec succès, aucune contenu retourné</response>
-             <response code="400">Model Invalide, mauvaise requête</response>
+             <response code="400">model Invalide, mauvaise requête</response>
+             <response code="404">ville introuvable pour l'id spécifié</response>
              <response code="500">service indisponible pour le moment</response>
         </member>
         <member name="M:Events.Api.Controllers.EvenementsController.Put(System.Int32,Events.Api.Entites.Evenement)">
@@ -81,81 +96,6 @@
             <param name="id">id de la ville à supprimer</param>
             <response code="204">ville supprimé avec succès, aucune contenu retourné</response>
             <response code="404">ville introuvable pour l'id spécifié</response>
-            <response code="500">service indisponible pour le moment</response>
-        </member>
-        <member name="M:Events.Api.Controllers.PersonneController.Get">
-             <summary>
-             Retourne une liste des usagers 
-             </summary>
-             <remarks>
-             
-                 GET api/usagers
-            
-             </remarks>
-             <response code="200">usagers trouvés et retournés</response>
-             <response code="404">usagers introuvables</response>
-             <response code="500">service indisponible pour le moment</response>
-             <returns></returns>
-        </member>
-        <member name="M:Events.Api.Controllers.PersonneController.GetById(System.Int32)">
-             <summary>
-             Retourne un usager spécifique à partir de son id
-             </summary>
-             <param name="id">id du usager à retourner</param>
-             <remarks>
-             
-                 GET /Usager/1
-            
-             </remarks>
-             <response code="200">usager trouvé et retourné</response>
-             <response code="404">usager introuvable pour l'id spécifié</response>
-             <response code="500">service indisponible pour le moment</response>
-        </member>
-        <member name="M:Events.Api.Controllers.PersonneController.Post(Events.Api.Entites.Personne)">
-             <summary>
-             Ajoute un usager à la base de donnée
-             </summary>
-             <param name="usager">usager à ajouter</param>
-             <returns>Un neuveau usager a été créé</returns>
-             <remarks>
-             Sample request:
-            
-                 POST /Usager
-                 {
-                    "id": 1,
-                    "nom": "nom de l'usager",
-                    "prenom": "prenom de l'usager",
-                    "telephone": "telephone de l'usager",
-                    "dateNaissance": "date de naissance de l'usager",
-                    "courriel": "courriel de l'usager"
-                 }
-            
-             </remarks>
-             <response code="201">usager ajouté avec succès</response>
-             <response code="200">traitement executé avec succès, contenu retourné</response>
-             <response code="204">traitement executé avec succès, aucune contenu retourné</response>
-             <response code="400">Model Invalide, mauvaise requête</response>
-             <response code="500">service indisponible pour le moment</response>
-        </member>
-        <member name="M:Events.Api.Controllers.PersonneController.Put(System.Int32,Events.Api.Entites.Personne)">
-            <summary>
-            Modification d'un usager
-            </summary>
-            <param name="id">id de l'usager à modifier</param>
-            <param name="usager"></param>
-            <returns>L'usager a été modifié</returns>
-            <response code="200">traitement executé avec succès, contenu retourné</response>
-            <response code="204">usager modifié avec succès, aucune contenu retourné</response>
-            <response code="404">usager introuvable pour l'id spécifié</response>
-            <response code="500">service indisponible pour le moment</response>
-        </member>
-        <member name="M:Events.Api.Controllers.PersonneController.Delete(System.Int32)">
-            <summary>
-            Supprime un usager
-            </summary>
-            <param name="id">id de l'usager à supprimer</param>
-            <response code="204">usager supprimé avec succès, aucune contenu retourné</response>
-            <response code="404">usager introuvable pour l'id spécifié</response>
             <response code="500">service indisponible pour le moment</response>
         </member>
         <member name="M:Events.Api.Controllers.VillesController.Get">
@@ -206,7 +146,7 @@
              <response code="201">ville ajouté avec succès</response>
              <response code="200">traitement executé avec succès, contenu retourné</response>
              <response code="204">traitement executé avec succès, aucune contenu retourné</response>
-             <response code="400">Model Invalide, mauvaise requête</response>
+             <response code="400">model Invalide, mauvaise requête</response>
              <response code="500">service indisponible pour le moment</response>
         </member>
         <member name="M:Events.Api.Controllers.VillesController.Put(System.Int32,Events.Api.Entites.Ville)">

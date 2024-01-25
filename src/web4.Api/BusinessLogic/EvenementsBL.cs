@@ -14,6 +14,10 @@ namespace Events.Api.BusinessLogic
         {
             return Repository.Evenements.FirstOrDefault(e => e.Id == id);
         }
+        public List<Evenement>? ObtenirSelonIdVille(int villeId)
+        {
+            return Repository.Evenements.Where(e => e.VilleId == villeId).ToList();
+        }
         public Evenement Ajouter(Evenement evenement)
         {
             if (evenement == null)
@@ -22,10 +26,22 @@ namespace Events.Api.BusinessLogic
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
 
-            if(evenement.DateDebut > evenement.DateDeFin)
+            if (evenement.Categories.Count == 0)
+            {
+                //BadRequest
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
+            }
+
+            if (evenement.DateDebut > evenement.DateDeFin)
             {
                 //BadRequest
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "La date de fin doit être supérieur à la date de debut" } };
+            }
+
+            if (!Repository.Villes.Any(v => v.Id == evenement.VilleId))
+            {
+                //NotFound
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleId})" } };
             }
 
             return Repository.AddEvenement(evenement);
@@ -59,7 +75,7 @@ namespace Events.Api.BusinessLogic
             evenementAModifier.Categories = evenement.Categories;
             evenementAModifier.Adresse = evenement.Adresse;
             evenementAModifier.NomOrganisateur = evenement.NomOrganisateur;
-            evenementAModifier.Ville = evenement.Ville;
+            evenementAModifier.VilleId = evenement.VilleId;
             evenementAModifier.Prix = evenement.Prix;
 
         }

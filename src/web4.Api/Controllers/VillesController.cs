@@ -60,7 +60,7 @@ namespace Events.Api.Controllers
         public ActionResult<Ville> GetById(int id)
         {
             var ville = _villesBL.ObtenirSelonId(id);
-            return ville == null ? NotFound(new { Erreur = $"Ville introuvable (id = {id}" }) : Ok(ville);
+            return ville == null ? NotFound(new { Erreur = $"Ville introuvable (id = {id})" }) : Ok(ville);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Events.Api.Controllers
         /// <response code="201">ville ajouté avec succès</response>
         /// <response code="200">traitement executé avec succès, contenu retourné</response>
         /// <response code="204">traitement executé avec succès, aucune contenu retourné</response>
-        /// <response code="400">Model Invalide, mauvaise requête</response>
+        /// <response code="400">model Invalide, mauvaise requête</response>
         /// <response code="500">service indisponible pour le moment</response>
         // POST api/<VillesController>
         [HttpPost]
@@ -90,6 +90,7 @@ namespace Events.Api.Controllers
         [ProducesResponseType(typeof(Ville), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Ville), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Ville), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Ville), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] Ville ville)
         {

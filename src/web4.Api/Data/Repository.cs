@@ -4,9 +4,9 @@ namespace Events.Api.Data
 {
     public static class Repository
     {
-        private static int IdSequenceEvenement = 1;
-        private static int IdSequenceVille = 1;
-        private static int IdSequenceParticipation = 1;
+        private static int _idSequenceEvenement = 1;
+        private static int _idSequenceVille = 1;
+        private static int _idSequenceParticipation = 1;
         public static ISet<Evenement> Evenements { get; set; } = new HashSet<Evenement>();
         public static ISet<Ville> Villes { get; set; } = new HashSet<Ville>();
         public static ISet<Participation> Participations { get; set; } = new HashSet<Participation>();
@@ -15,7 +15,7 @@ namespace Events.Api.Data
         public static Evenement AddEvenement(Evenement evenement)
         {
 
-            evenement.Id = IdSequenceEvenement++;
+            evenement.Id = _idSequenceEvenement++;
             Evenements.Add(evenement);
 
             return evenement;
@@ -23,7 +23,7 @@ namespace Events.Api.Data
         public static Ville AddVille(Ville ville)
         {
 
-            ville.Id = IdSequenceVille++;
+            ville.Id = _idSequenceVille++;
             Villes.Add(ville);
 
             return ville;
@@ -31,7 +31,7 @@ namespace Events.Api.Data
         public static Participation AddParticipation(Participation participation)
         {
 
-            participation.Id = IdSequenceParticipation++;
+            participation.Id = _idSequenceParticipation++;
             Participations.Add(participation);
 
             return participation;

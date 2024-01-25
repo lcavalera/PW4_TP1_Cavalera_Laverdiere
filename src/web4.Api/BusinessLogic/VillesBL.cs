@@ -54,7 +54,7 @@ namespace Events.Api.BusinessLogic
             }
             else
             {
-                if (Repository.Evenements.Any(e => e.Ville.Id == ville.Id))
+                if (Repository.Evenements.Any(e => e.VilleId == ville.Id))
                 {
                     throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
                 }
