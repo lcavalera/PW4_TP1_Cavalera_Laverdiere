@@ -17,5 +17,6 @@ namespace Events.Api.Entites
         public int EvenementID { get; set; }
         //À valider à la place de "Nom", "Prenom" et "Courriel":
         //public int UsagerId { get; set; }
+        public bool EstValide { get; set; } = false;
     }
 }

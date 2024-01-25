@@ -47,6 +47,14 @@ namespace Events.Api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = participation.Id }, null);
         }
 
+        // PUT api/<ParticipationController>/5
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Participation participation)
+        {
+            _participationBL.Modifier(id, participation);
+            return NoContent();
+        }
+
         // DELETE api/<ParticipationController>/5
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(Participation), StatusCodes.Status204NoContent)]
@@ -56,6 +64,20 @@ namespace Events.Api.Controllers
         {
             _participationBL.Supprimer(id);
             return NoContent();
+        }
+        [HttpGet("{id}/status")]
+        [ProducesResponseType(StatusCodes.Status303SeeOther)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult Status(int id)
+        {
+            bool estValide = _participationBL.VerifierStatus(id);
+            if (estValide)
+            {
+                Response.Headers.Add("Location", Url.Action(nameof(GetById), new { id }));
+                return new StatusCodeResult(StatusCodes.Status303SeeOther);
+            }
+            return Ok(new { status = "demande en attente" });
         }
     }
 }

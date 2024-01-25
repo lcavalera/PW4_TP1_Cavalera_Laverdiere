@@ -53,6 +53,14 @@ namespace Events.Api.BusinessLogic
             return Repository.AddParticipation(participation);
         }
 
+        public void Modifier(int id, Participation participation)
+        {
+            if ()
+            {
+
+            }
+        }
+
         public Participation? ObtenirSelonId(int id)
         {
             return Repository.Participations.FirstOrDefault(x => x.Id == id);
@@ -74,6 +82,20 @@ namespace Events.Api.BusinessLogic
             {
                 Repository.Participations.Remove(participation);
             }
+        }
+        public bool VerifierStatus(int id)
+        {
+            Participation? participation = ObtenirSelonId(id);
+            if (participation == null)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Participation introuvable (id={id})" } };
+            }
+            SimulerVerifierStatus(participation);
+            return participation.EstValide;
+        }
+        private void SimulerVerifierStatus(Participation participation)
+        {
+
         }
     }
 }
