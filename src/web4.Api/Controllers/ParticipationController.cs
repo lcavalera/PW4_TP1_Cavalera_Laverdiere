@@ -1,5 +1,6 @@
 ﻿using Events.Api.BusinessLogic;
 using Events.Api.Entites;
+using Events.Api.Entites.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,7 +27,7 @@ namespace Events.Api.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Participation), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<Participation> Get(int id)
+        public ActionResult<Participation> GetById(int id)
         {
             Participation? participation = _participationBL.ObtenirSelonId(id);
             return participation == null ? NotFound() : Ok(participation);
@@ -34,20 +35,35 @@ namespace Events.Api.Controllers
 
         // POST api/<ParticipationController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Consumes("application/json")]
+        [ProducesResponseType(typeof(Participation), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(typeof(Participation), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Participation), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Participation), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<Participation> Post([FromBody] DemandeParticipation demandeParticipation)
         {
+            Participation? participation = _participationBL.Ajouter(demandeParticipation);
+            return CreatedAtAction(nameof(GetById), new { id = participation.Id }, null);
         }
 
         // PUT api/<ParticipationController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Participation participation)
         {
+            _participationBL.Modifier(id, participation);
+            return NoContent();
         }
 
         // DELETE api/<ParticipationController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [ProducesResponseType(typeof(Participation), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult Delete(int id)
         {
+            _participationBL.Supprimer(id);
+            return NoContent();
         }
     }
 }
