@@ -54,13 +54,35 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // GET api/<EvenementsController>/5
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<Evenement> GetById(int id)
         {
             var evenement = _evenementsBL.ObtenirSelonId(id);
-            return evenement == null ? NotFound(new { Erreur = $"Evenement introuvable (id = {id}" }) : Ok(evenement);
+            return evenement == null ? NotFound(new { Erreur = $"Evenement introuvable (id = {id})" }) : Ok(evenement);
+        }
+
+        /// <summary>
+        /// Retourne une liste des evenements à partir de l'id de la ville spécifiée
+        /// </summary>
+        /// <param name="villeId">id de la ville de les evenements à retourner</param>
+        /// <remarks>
+        /// 
+        ///     GET /Evenement/1/Ville
+        ///
+        /// </remarks>
+        /// <response code="200">evenements trouvés et retournés</response>
+        /// <response code="404">evenements introuvables pour l'id de la ville spécifiée</response>
+        /// <response code="500">service indisponible pour le moment</response>
+        [HttpGet("{villeId}/ville")]
+        [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<IEnumerable<Evenement>> GetByIdVille(int villeId)
+        {
+            var evenement = _evenementsBL.ObtenirSelonIdVille(villeId);
+            return evenement == null ? NotFound(new { Erreur = $"Evenement introuvable pour la ville spécifiée (id ville = {villeId})" }) : Ok(evenement);
         }
 
         /// <summary>
@@ -89,7 +111,8 @@ namespace Events.Api.Controllers
         /// <response code="201">evenement ajouté avec succès</response>
         /// <response code="200">traitement executé avec succès, contenu retourné</response>
         /// <response code="204">traitement executé avec succès, aucune contenu retourné</response>
-        /// <response code="400">Model Invalide, mauvaise requête</response>
+        /// <response code="400">model Invalide, mauvaise requête</response>
+        /// <response code="404">ville introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // POST api/<EvenementsController>
         [HttpPost]
@@ -97,6 +120,8 @@ namespace Events.Api.Controllers
         [ProducesResponseType(typeof(Evenement), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Evenement), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Evenement), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Ville), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] Evenement evenement)
         {
