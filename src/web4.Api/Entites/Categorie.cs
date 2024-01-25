@@ -2,7 +2,15 @@
 
 namespace Events.Api.Entites
 {
-    public enum Categorie
+    public class Categorie
+    {
+        public int Id { get; set; }
+        [Required]
+        public NomCategorie Nom { get; set; }
+
+    }
+
+    public enum NomCategorie
     {
         Spectacle,
         Theatre,
