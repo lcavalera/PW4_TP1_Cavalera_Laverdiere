@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Events.Api.Entites
+namespace Events.Api.Entites.DTO
 {
-    public class Participation
+    public class DemandeParticipation
     {
-        public int Id { get; set; }
         [Required]
         public int NombrePlaces { get; set; }
         [EmailAddress, Required]
@@ -15,7 +14,5 @@ namespace Events.Api.Entites
         public string Prenom { get; set; }
         [Required]
         public int EvenementID { get; set; }
-        //À valider à la place de "Nom", "Prenom" et "Courriel":
-        //public int UsagerId { get; set; }
     }
 }

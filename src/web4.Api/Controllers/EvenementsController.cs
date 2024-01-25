@@ -160,7 +160,7 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<EvenementsController>/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Evenement), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Delete(int id)
