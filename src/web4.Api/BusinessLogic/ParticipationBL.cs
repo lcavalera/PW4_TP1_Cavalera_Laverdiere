@@ -87,7 +87,11 @@ namespace Events.Api.BusinessLogic
         }
         private void SimulerVerifierStatus(Participation participation)
         {
-
+            if (!participation.EstValide)
+            {
+                bool EstValide = new Random().Next(1, 10) > 5 ? true : false;
+                participation.EstValide = EstValide;
+            }
         }
     }
 }
