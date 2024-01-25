@@ -47,14 +47,6 @@ namespace Events.Api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = participation.Id }, null);
         }
 
-        // PUT api/<ParticipationController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Participation participation)
-        {
-            _participationBL.Modifier(id, participation);
-            return NoContent();
-        }
-
         // DELETE api/<ParticipationController>/5
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(Participation), StatusCodes.Status204NoContent)]

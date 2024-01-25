@@ -53,14 +53,6 @@ namespace Events.Api.BusinessLogic
             return Repository.AddParticipation(participation);
         }
 
-        public void Modifier(int id, Participation participation)
-        {
-            if ()
-            {
-
-            }
-        }
-
         public Participation? ObtenirSelonId(int id)
         {
             return Repository.Participations.FirstOrDefault(x => x.Id == id);
