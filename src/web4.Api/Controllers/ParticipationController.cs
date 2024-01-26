@@ -90,7 +90,7 @@ namespace Events.Api.Controllers
         public ActionResult<Participation> Post([FromBody] DemandeParticipation demandeParticipation)
         {
             Participation? participation = _participationBL.Ajouter(demandeParticipation);
-            return CreatedAtAction(nameof(GetById), new { id = participation.Id }, null);
+            return new AcceptedResult { Location = Url.Action(nameof(Status), new { id = participation.Id }) };
         }
         /// <summary>
         /// Supprime une participation
