@@ -5,8 +5,10 @@ using Events.Api.Exceptions;
 
 namespace Events.Api.BusinessLogic
 {
-    public class ParticipationBL : IParticipationBL
+    public class ParticipationBL(IEvenementsBL evenementBL) : IParticipationBL
     {
+        private readonly IEvenementsBL _evenementBL = evenementBL;
+
         public Participation Ajouter(DemandeParticipation demandeParticipation)
         {
             if (demandeParticipation == null)
@@ -28,6 +30,11 @@ namespace Events.Api.BusinessLogic
             if (demandeParticipation.Courriel == null)
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du courriel est obligatoire pour participer à un évènement" } };
+            }
+            Evenement? evenement = _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
+            if (evenement == null)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Évènement introuvable" } };
             }
             bool participeDeja = Repository.Participations.Any(p => p.Courriel == demandeParticipation.Courriel && p.EvenementID == demandeParticipation.EvenementID);
             if (participeDeja)
