@@ -1,6 +1,7 @@
 ﻿using Events.Api.Data;
 using Events.Api.Entites;
 using Events.Api.Exceptions;
+using System.Linq;
 
 namespace Events.Api.BusinessLogic
 {
@@ -45,7 +46,19 @@ namespace Events.Api.BusinessLogic
                 //BadRequest
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "La date de fin doit être supérieur à la date de debut" } };
             }
-
+            bool possedeCategorie = false;
+            foreach (int Id in evenement.Categories.Select(c => c.Id))
+            {
+                
+                if (Repository.Categories.Any(c => c.Id == Id))
+                {
+                    possedeCategorie = true;
+                }
+            }
+            if (!possedeCategorie)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Aucune categorie correspondante (categories de l'évenement ={evenement.Categories.ToList()})" } };
+            }
             if (!Repository.Villes.Any(v => v.Id == evenement.VilleId))
             {
                 //NotFound
