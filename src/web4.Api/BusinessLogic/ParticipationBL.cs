@@ -32,10 +32,6 @@ namespace Events.Api.BusinessLogic
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du courriel est obligatoire pour participer à un évènement" } };
             }
             Evenement? evenement = _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
-            if (evenement == null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Évènement introuvable" } };
-            }
             bool participeDeja = Repository.Participations.Any(p => p.Courriel == demandeParticipation.Courriel && p.EvenementID == demandeParticipation.EvenementID);
             if (participeDeja)
             {
