@@ -73,7 +73,7 @@ namespace Events.Api.Controllers
         /// <response code="200">evenements trouvés et retournés</response>
         /// <response code="500">service indisponible pour le moment</response>
         [HttpGet("{villeId}/ville")]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<Evenement>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<IEnumerable<Evenement>> GetByIdVille(int villeId)
         {

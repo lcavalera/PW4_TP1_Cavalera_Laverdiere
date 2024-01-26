@@ -10,5 +10,6 @@ namespace Events.Api.BusinessLogic
         public Participation Ajouter(DemandeParticipation demandeParticipation);
         public void Supprimer(int id);
         public bool VerifierStatus(int id);
+        public List<Participation> ObtenirSelonEvenementId(int evenementId);
     }
 }

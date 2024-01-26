@@ -49,6 +49,11 @@ namespace Events.Api.BusinessLogic
             return Repository.AddParticipation(participation);
         }
 
+        public List<Participation> ObtenirSelonEvenementId(int evenementId)
+        {
+            return Repository.Participations.Where(e => e.EvenementID == evenementId).ToList();
+        }
+
         public Participation? ObtenirSelonId(int id)
         {
             Participation? participation = Repository.Participations.First(x => x.Id == id);
