@@ -12,7 +12,15 @@ namespace Events.Api.BusinessLogic
         }
         public Ville? ObtenirSelonId(int id)
         {
-            return Repository.Villes.FirstOrDefault(v => v.Id == id);
+            var ville = Repository.Villes.FirstOrDefault(v => v.Id == id);
+
+            if (ville == null)
+            {
+                //NotFound
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
+            }
+
+            return ville;
         }
         public Ville Ajouter(Ville ville)
         {

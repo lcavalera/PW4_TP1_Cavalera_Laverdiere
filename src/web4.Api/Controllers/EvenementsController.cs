@@ -58,7 +58,7 @@ namespace Events.Api.Controllers
         public ActionResult<Evenement> GetById(int id)
         {
             var evenement = _evenementsBL.ObtenirSelonId(id);
-            return evenement == null ? NotFound(new { Erreur = $"Evenement introuvable (id = {id})" }) : Ok(evenement);
+            return evenement == null ? NotFound() : Ok(evenement);
         }
 
         /// <summary>

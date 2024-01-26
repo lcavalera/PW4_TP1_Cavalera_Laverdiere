@@ -97,6 +97,76 @@
             <response code="404">ville introuvable pour l'id spécifié</response>
             <response code="500">service indisponible pour le moment</response>
         </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.Get">
+             <summary>
+             Retourne une liste des participations 
+             </summary>
+             <remarks>
+             
+                 GET api/participations
+            
+             </remarks>
+             <response code="200">participations trouvés et retournés</response>
+             <response code="500">service indisponible pour le moment</response>
+             <returns></returns>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.GetById(System.Int32)">
+             <summary>
+             Retourne une participation spécifique à partir de son id
+             </summary>
+             <param name="id">id de la participation à retourner</param>
+             <remarks>
+             
+                 GET /Participation/1
+            
+             </remarks>
+             <response code="200">participation trouvé et retourné</response>
+             <response code="404">participation introuvable pour l'id spécifié</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.Post(Events.Api.Entites.DTO.DemandeParticipation)">
+             <summary>
+             Ajoute une participation à la base de donnée
+             </summary>
+             <param name="demandeParticipation">demande de participation à ajouter</param>
+             <returns>Une nouvelle participation a été accepté</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /demandeParticipation
+                 {
+                    "NombrePlaces": Nombre de participant
+                    "Courriel": Courriel de la personne applicante
+                    "Nom": Nom de la personne applicante
+                    "Prenom" Prenom de la personne applicante
+                    "EvenementID": ID de l'evenement de la demande de participation
+                 }
+            
+             </remarks>
+             <response code="202">participation accepté avec succès</response>
+             <response code="204">traitement executé avec succès, aucune contenu retourné</response>
+             <response code="400">model Invalide, mauvaise requête</response>
+             <response code="404">participation introuvable pour l'id spécifié</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.Delete(System.Int32)">
+            <summary>
+            Supprime une participation
+            </summary>
+            <param name="id">id de la participation à supprimer</param>
+            <response code="204">participation supprimé avec succès, aucune contenu retourné</response>
+            <response code="404">participation introuvable pour l'id spécifié</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.Status(System.Int32)">
+            <summary>
+            verification du status dune participation
+            </summary>
+            <param name="id">id de la participation à verifier</param>
+            <response code="303">participation accepté, redirection à la participation</response>
+            <response code="200">participation en attente d'un service externe</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
         <member name="M:Events.Api.Controllers.VillesController.Get">
              <summary>
              Retourne une liste des villes 
