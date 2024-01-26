@@ -12,9 +12,17 @@ namespace Events.Api.BusinessLogic
         }
         public Evenement? ObtenirSelonId(int id)
         {
-            return Repository.Evenements.FirstOrDefault(e => e.Id == id);
+            var evenement = Repository.Evenements.FirstOrDefault(e => e.Id == id);
+            
+            if (evenement == null)
+            {
+                //NotFound
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
+            }
+
+            return evenement;
         }
-        public List<Evenement>? ObtenirSelonIdVille(int villeId)
+        public IEnumerable<Evenement> ObtenirSelonIdVille(int villeId)
         {
             return Repository.Evenements.Where(e => e.VilleId == villeId).ToList();
         }
