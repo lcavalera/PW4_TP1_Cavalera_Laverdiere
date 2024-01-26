@@ -34,7 +34,9 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlPath);
 });
 builder.Services.AddScoped<IVillesBL, VillesBL>();
+builder.Services.AddScoped<ICategorieBL, CategorieBL>();
 builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
+builder.Services.AddScoped<IParticipationBL, ParticipationBL>();
 
 builder.Services.AddControllers(options =>
 {

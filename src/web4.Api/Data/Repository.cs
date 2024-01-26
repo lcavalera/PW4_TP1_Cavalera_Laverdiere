@@ -7,9 +7,11 @@ namespace Events.Api.Data
         private static int _idSequenceEvenement = 1;
         private static int _idSequenceVille = 1;
         private static int _idSequenceParticipation = 1;
+        private static int _idSequenceCategorie = 1;
         public static ISet<Evenement> Evenements { get; set; } = new HashSet<Evenement>();
         public static ISet<Ville> Villes { get; set; } = new HashSet<Ville>();
         public static ISet<Participation> Participations { get; set; } = new HashSet<Participation>();
+        public static ISet<Categorie> Categories { get; set; } = new HashSet<Categorie>();
 
 
         public static Evenement AddEvenement(Evenement evenement)
@@ -35,6 +37,14 @@ namespace Events.Api.Data
             Participations.Add(participation);
 
             return participation;
+        }
+        public static Categorie AddCategorie(Categorie categorie)
+        {
+
+            categorie.Id = _idSequenceCategorie++;
+            Categories.Add(categorie);
+
+            return categorie;
         }
     }
 }

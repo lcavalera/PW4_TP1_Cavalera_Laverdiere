@@ -29,9 +29,9 @@ namespace Events.Api.Controllers
         /// <returns></returns>
         // GET: api/<ParticipationController>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Participation>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<Participation>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<Participation>> Get()
+        public ActionResult<List<Participation>> Get()
         {
             return Ok(_participationBL.ObtenirTout());
         }

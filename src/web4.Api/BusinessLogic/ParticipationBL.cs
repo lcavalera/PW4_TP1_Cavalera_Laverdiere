@@ -55,33 +55,27 @@ namespace Events.Api.BusinessLogic
 
         public Participation? ObtenirSelonId(int id)
         {
-            return Repository.Participations.FirstOrDefault(x => x.Id == id);
+            Participation? participation = Repository.Participations.First(x => x.Id == id);
+            if (participation == null)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
+            }
+            return participation;
         }
 
-        public IEnumerable<Participation> ObtenirTout()
+        public List<Participation> ObtenirTout()
         {
             return Repository.Participations.ToList();
         }
 
         public void Supprimer(int id)
         {
-            Participation? participation = Repository.Participations.FirstOrDefault(x => x.Id == id);
-            if (participation == null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
-            }
-            else
-            {
-                Repository.Participations.Remove(participation);
-            }
+            Participation? participation = ObtenirSelonId(id);
+            Repository.Participations.Remove(participation);
         }
         public bool VerifierStatus(int id)
         {
             Participation? participation = ObtenirSelonId(id);
-            if (participation == null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Participation introuvable (id={id})" } };
-            }
             SimulerVerifierStatus(participation);
             return participation.EstValide;
         }
