@@ -64,7 +64,7 @@ namespace Events.Api.BusinessLogic
             {
                 if (Repository.Evenements.Any(e => e.VilleId == ville.Id))
                 {
-                    throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
+                    throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la ville: un ou plusieurs évènement utilise cette ville" } };
                 }
 
                 Repository.Villes.Remove(ville);
