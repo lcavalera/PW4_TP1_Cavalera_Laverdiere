@@ -57,7 +57,7 @@ namespace Events.Api.Controllers
             Participation? participation = _participationBL.ObtenirSelonId(id);
             return participation == null ? NotFound() : Ok(participation);
         }
-        [HttpGet("{villeId}/ville")]
+        [HttpGet("{evenementId}/evenement")]
         [ProducesResponseType(typeof(List<Participation>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<IEnumerable<Participation>> GetByEvenementId(int evenementId)
