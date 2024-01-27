@@ -57,7 +57,7 @@ namespace Events.Api.BusinessLogic
             }
             if (!possedeCategorie)
             {
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Aucune categorie correspondante (categories de l'évenement ={evenement.Categories.ToList()})" } };
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Aucune categorie correspondante (évenement id={evenement.Id})" } };
             }
             if (!Repository.Villes.Any(v => v.Id == evenement.VilleId))
             {
