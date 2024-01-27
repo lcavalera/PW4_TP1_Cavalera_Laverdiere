@@ -35,12 +35,6 @@ namespace Events.Api.BusinessLogic
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
 
-            if (evenement.Categories.Count == 0)
-            {
-                //BadRequest
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
-            }
-
             if (evenement.DateDebut > evenement.DateDeFin)
             {
                 //BadRequest
