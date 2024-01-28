@@ -57,6 +57,18 @@ namespace Events.Api.Controllers
             Participation? participation = _participationBL.ObtenirSelonId(id);
             return participation == null ? NotFound() : Ok(participation);
         }
+        /// <summary>
+        /// Retourne une liste des participations selon un evenement
+        /// </summary>
+        /// <param name="evenementId">id de l'evenement des participations à retourner</param>
+        /// <remarks>
+        /// 
+        ///     GET api/participation/1/evenement
+        ///
+        /// </remarks>
+        /// <response code="200">participations trouvés et retourné</response>
+        /// <response code="500">service indisponible pour le moment</response>
+        /// <returns></returns>
         [HttpGet("{evenementId}/evenement")]
         [ProducesResponseType(typeof(List<Participation>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
