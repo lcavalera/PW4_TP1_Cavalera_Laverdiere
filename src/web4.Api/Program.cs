@@ -1,5 +1,8 @@
 using Events.Api.BusinessLogic;
+using Events.Api.Data;
+using Events.Api.Extensions;
 using Events.Api.Filters.Web;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -33,6 +36,10 @@ builder.Services.AddSwaggerGen(options =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     options.IncludeXmlComments(xmlPath);
 });
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connectionString));
+
 builder.Services.AddScoped<IVillesBL, VillesBL>();
 builder.Services.AddScoped<ICategorieBL, CategorieBL>();
 builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
@@ -58,6 +65,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+app.CreateDbIfNotExists();
 
 app.Run();
 

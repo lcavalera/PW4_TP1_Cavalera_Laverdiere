@@ -2,9 +2,8 @@
 
 namespace Events.Api.Entites
 {
-    public class Participation
+    public class Participation: BaseEntity
     {
-        public int Id { get; set; }
         [Required]
         public int NombrePlaces { get; set; }
         [EmailAddress, Required]
@@ -13,10 +12,10 @@ namespace Events.Api.Entites
         public string Nom { get; set; }
         [Required]
         public string Prenom { get; set; }
+        public bool EstValide { get; set; } = false;
+
         [Required]
         public int EvenementID { get; set; }
-        //À valider à la place de "Nom", "Prenom" et "Courriel":
-        //public int UsagerId { get; set; }
-        public bool EstValide { get; set; } = false;
+
     }
 }

@@ -2,9 +2,8 @@
 
 namespace Events.Api.Entites
 {
-    public class Ville
+    public class Ville: BaseEntity
     {
-        public int Id { get; set; }
         [Required]
         public string Nom { get; set; }
         public Region Region { get; set; }

@@ -2,12 +2,10 @@
 
 namespace Events.Api.Entites
 {
-    public class Categorie
+    public class Categorie: BaseEntity
     {
-        public int Id { get; set; }
         [Required]
         public NomCategorie Nom { get; set; }
-
     }
 
     public enum NomCategorie
