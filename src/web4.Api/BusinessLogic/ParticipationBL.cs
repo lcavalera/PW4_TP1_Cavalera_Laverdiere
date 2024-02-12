@@ -75,7 +75,7 @@ namespace Events.Api.BusinessLogic
         public async Task Supprimer(int id)
         {
             ParticipationDTO? participation = await ObtenirSelonId(id);
-            Repository.Participations.Remove(new Participation { Id = participation.Id, Nom = participation.Nom, Prenom = participation.Prenom, Courriel = participation.Courriel, EstValide = participation.EstValide, EvenementID = participation.EvenementID, NombrePlaces = participation.NombrePlaces });
+            await _participationRepo.DeleteAsync(new Participation { Id = participation.Id, Nom = participation.Nom, Prenom = participation.Prenom, Courriel = participation.Courriel, EstValide = participation.EstValide, EvenementID = participation.EvenementID, NombrePlaces = participation.NombrePlaces });
         }
         public async Task<bool> VerifierStatus(int id)
         {
