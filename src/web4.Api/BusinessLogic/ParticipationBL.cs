@@ -33,7 +33,7 @@ namespace Events.Api.BusinessLogic
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du courriel est obligatoire pour participer à un évènement" } };
             }
-            Task<Evenement>? evenement = _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
+            Evenement? evenement = await _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
             bool participeDeja = Repository.Participations.Any(p => p.Courriel == demandeParticipation.Courriel && p.EvenementID == demandeParticipation.EvenementID);
             if (participeDeja)
             {
