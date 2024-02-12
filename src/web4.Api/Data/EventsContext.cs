@@ -7,7 +7,7 @@ namespace Events.Api.Data
     {
         public EventsContext(DbContextOptions<EventsContext> options): base(options)
         {
-
+            //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         public DbSet<Categorie>? Categories { get; set; }
