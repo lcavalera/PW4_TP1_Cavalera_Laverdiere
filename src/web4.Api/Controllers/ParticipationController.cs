@@ -106,7 +106,7 @@ namespace Events.Api.Controllers
         [ProducesResponseType(typeof(Participation), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<Participation> Post([FromBody] DemandeParticipation demandeParticipation)
+        public ActionResult<Participation> Post([FromBody] ParticipationDTO demandeParticipation)
         {
             Participation? participation = _participationBL.Ajouter(demandeParticipation);
             return new AcceptedResult { Location = Url.Action(nameof(Status), new { id = participation.Id }) };

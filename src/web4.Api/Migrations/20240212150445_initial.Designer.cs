@@ -12,8 +12,13 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Events.Api.Migrations
 {
     [DbContext(typeof(EventsContext))]
+<<<<<<<< HEAD:src/web4.Api/Migrations/20240212150450_Initial.Designer.cs
     [Migration("20240212150450_Initial")]
     partial class Initial
+========
+    [Migration("20240212150445_initial")]
+    partial class initial
+>>>>>>>> 56cca31db3d90c20c7b4fe8242de8d940dc888ab:src/web4.Api/Migrations/20240212150445_initial.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

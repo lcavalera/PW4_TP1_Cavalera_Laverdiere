@@ -22,6 +22,7 @@ namespace Events.Api.Entites
         public ICollection<Categorie> Categories { get; set; }
         [Required]
         public int VilleId { get; set; }
+        //public List<Participation>? Participations { get; set; }
 
     }
 }

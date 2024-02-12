@@ -9,7 +9,7 @@ namespace Events.Api.BusinessLogic
     {
         private readonly IEvenementsBL _evenementBL = evenementBL;
 
-        public Participation Ajouter(DemandeParticipation demandeParticipation)
+        public Participation Ajouter(ParticipationDTO demandeParticipation)
         {
             if (demandeParticipation == null)
             {

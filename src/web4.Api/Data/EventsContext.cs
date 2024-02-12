@@ -7,7 +7,13 @@ namespace Events.Api.Data
     {
         public EventsContext(DbContextOptions<EventsContext> options): base(options)
         {
-            //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<Evenement>().HasMany(e => e.Participations).WithOne(p => p.Evenement).OnDelete(DeleteBehavior.Cascade);
         }
 
         public DbSet<Categorie>? Categories { get; set; }
