@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Events.Api.Migrations
 {
     [DbContext(typeof(EventsContext))]
-    [Migration("20240211180439_Initial")]
-    partial class Initial
+    [Migration("20240212150445_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,7 +118,7 @@ namespace Events.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Partecipations");
+                    b.ToTable("Participations");
                 });
 
             modelBuilder.Entity("Events.Api.Entites.Ville", b =>
