@@ -2,14 +2,16 @@
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Events.Api.Exceptions;
+using System.Collections.Generic;
 
 namespace Events.Api.BusinessLogic
 {
-    public class ParticipationBL(IEvenementsBL evenementBL) : IParticipationBL
+    public class ParticipationBL(IEvenementsBL evenementBL, IAsyncRepository<Participation> participationRepo) : IParticipationBL
     {
         private readonly IEvenementsBL _evenementBL = evenementBL;
+        private readonly IAsyncRepository<Participation> _participationRepo = participationRepo;
 
-        public Participation Ajouter(ParticipationDTO demandeParticipation)
+        public async Task Ajouter(ParticipationDTO demandeParticipation)
         {
             if (demandeParticipation == null)
             {
@@ -31,56 +33,57 @@ namespace Events.Api.BusinessLogic
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du courriel est obligatoire pour participer à un évènement" } };
             }
-            Evenement? evenement = _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
+            Task<Evenement>? evenement = _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
             bool participeDeja = Repository.Participations.Any(p => p.Courriel == demandeParticipation.Courriel && p.EvenementID == demandeParticipation.EvenementID);
             if (participeDeja)
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Cette adresse électronique participe déjà à cet Évènement" } };
             }
-            Participation participation = new()
+            
+            await _participationRepo.AddAsync(new Participation()
             {
                 Courriel = demandeParticipation.Courriel,
                 Nom = demandeParticipation.Nom,
                 Prenom = demandeParticipation.Prenom,
                 EvenementID = demandeParticipation.EvenementID,
                 NombrePlaces = demandeParticipation.NombrePlaces
-            };
-
-            return Repository.AddParticipation(participation);
+            });
         }
 
-        public List<Participation> ObtenirSelonEvenementId(int evenementId)
+        public async Task<List<ParticipationDTO>> ObtenirSelonEvenementId(int evenementId)
         {
-            return Repository.Participations.Where(e => e.EvenementID == evenementId).ToList();
+            IEnumerable<Participation>? participations = await _participationRepo.ListAsync();
+            return participations.Where(p => p.EvenementID == evenementId).Select(p => new ParticipationDTO { Id = p.Id, Nom = p.Nom, Prenom = p.Prenom, Courriel = p.Courriel, EstValide = p.EstValide, EvenementID = p.EvenementID, NombrePlaces = p.NombrePlaces }).ToList();
         }
 
-        public Participation? ObtenirSelonId(int id)
+        public async Task<ParticipationDTO?> ObtenirSelonId(int id)
         {
-            Participation? participation = Repository.Participations.FirstOrDefault(x => x.Id == id);
+            Participation? participation = await _participationRepo.GetByIdAsync(id);
             if (participation == null)
             {
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
             }
-            return participation;
+            return new ParticipationDTO { Id = participation.Id, Nom = participation.Nom, Prenom = participation.Prenom, Courriel = participation.Courriel, EstValide = participation.EstValide, EvenementID = participation.EvenementID, NombrePlaces = participation.NombrePlaces };
         }
 
-        public List<Participation> ObtenirTout()
+        public async Task<List<ParticipationDTO>> ObtenirTout()
         {
-            return Repository.Participations.ToList();
+            IEnumerable<Participation>? participations = await _participationRepo.ListAsync();
+            return participations.Select(p => new ParticipationDTO { Id = p.Id, Nom = p.Nom, Prenom = p.Prenom, Courriel = p.Courriel, EstValide = p.EstValide, EvenementID = p.EvenementID, NombrePlaces = p.NombrePlaces }).ToList();
         }
 
-        public void Supprimer(int id)
+        public async Task Supprimer(int id)
         {
-            Participation? participation = ObtenirSelonId(id);
-            Repository.Participations.Remove(participation);
+            ParticipationDTO? participation = await ObtenirSelonId(id);
+            Repository.Participations.Remove(new Participation { Id = participation.Id, Nom = participation.Nom, Prenom = participation.Prenom, Courriel = participation.Courriel, EstValide = participation.EstValide, EvenementID = participation.EvenementID, NombrePlaces = participation.NombrePlaces });
         }
-        public bool VerifierStatus(int id)
+        public async Task<bool> VerifierStatus(int id)
         {
-            Participation? participation = ObtenirSelonId(id);
+            ParticipationDTO? participation = await ObtenirSelonId(id);
             SimulerVerifierStatus(participation);
             return participation.EstValide;
         }
-        private void SimulerVerifierStatus(Participation participation)
+        private void SimulerVerifierStatus(ParticipationDTO participation)
         {
             if (!participation.EstValide)
             {
