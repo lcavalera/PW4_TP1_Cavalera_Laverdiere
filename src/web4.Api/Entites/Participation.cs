@@ -16,7 +16,7 @@ namespace Events.Api.Entites
 
         [Required]
         public int EvenementID { get; set; }
-        public Evenement? Evenement { get; set; }
+        //public Evenement? Evenement { get; set; }
 
     }
 }

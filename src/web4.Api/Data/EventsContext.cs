@@ -13,7 +13,7 @@ namespace Events.Api.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Evenement>().HasMany(e => e.Participations).WithOne(p => p.Evenement).OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Evenement>().HasMany(e => e.Participations).WithOne(p => p.Evenement).OnDelete(DeleteBehavior.Cascade);
         }
 
         public DbSet<Categorie>? Categories { get; set; }
