@@ -7,13 +7,24 @@ namespace Events.Api.BusinessLogic
 {
     public class EvenementsBL: IEvenementsBL
     {
-        public IEnumerable<Evenement> ObtenirTout()
+        private readonly IAsyncRepository<Evenement> _evenementsRepository;
+        private readonly IAsyncRepository<Categorie> _categoriesRepository;
+        private readonly IAsyncRepository<Ville> _villesRepository;
+
+        public EvenementsBL(IAsyncRepository<Evenement> evenementsRepository, IAsyncRepository<Categorie> categoriesRepository, IAsyncRepository<Ville> villesRepository)
         {
-            return Repository.Evenements.ToList();
+            _evenementsRepository = evenementsRepository;
+            _categoriesRepository = categoriesRepository;
+            _villesRepository = villesRepository;
         }
-        public Evenement? ObtenirSelonId(int id)
+    
+        public async Task<IEnumerable<Evenement>> ObtenirTout()
         {
-            var evenement = Repository.Evenements.FirstOrDefault(e => e.Id == id);
+            return await _evenementsRepository.ListAsync();
+        }
+        public Task<Evenement>? ObtenirSelonId(int id)
+        {
+            var evenement = _evenementsRepository.GetByIdAsync(id);
             
             if (evenement == null)
             {
@@ -23,11 +34,14 @@ namespace Events.Api.BusinessLogic
 
             return evenement;
         }
-        public IEnumerable<Evenement> ObtenirSelonIdVille(int villeId)
+
+        public async Task<IEnumerable<Evenement>> ObtenirSelonIdVille(int villeId)
         {
-            return Repository.Evenements.Where(e => e.VilleId == villeId).ToList();
+            var evenements = await _evenementsRepository.ListAsync();
+            return evenements.Where(e => e.VilleId == villeId).ToList();
         }
-        public Evenement Ajouter(Evenement evenement)
+
+        public async Task Ajouter(Evenement evenement)
         {
             if (evenement == null)
             {
@@ -43,8 +57,9 @@ namespace Events.Api.BusinessLogic
             bool possedeCategorie = false;
             foreach (int Id in evenement.Categories.Select(c => c.Id))
             {
-                
-                if (Repository.Categories.Any(c => c.Id == Id))
+                var categories = await _categoriesRepository.ListAsync();
+
+                if (categories.Any(c => c.Id == Id))
                 {
                     possedeCategorie = true;
                 }
@@ -53,15 +68,17 @@ namespace Events.Api.BusinessLogic
             {
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Aucune categorie correspondante (évenement id={evenement.Id})" } };
             }
-            if (!Repository.Villes.Any(v => v.Id == evenement.VilleId))
+
+            if (!await VilleExhiste(evenement))
             {
                 //NotFound
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleId})" } };
             }
 
-            return Repository.AddEvenement(evenement);
+            await _evenementsRepository.AddAsync(evenement);
         }
-        public void Modifier(int id, Evenement evenement)
+
+        public async Task Modifier(int id, Evenement evenement)
         {
             if (evenement == null)
             {
@@ -75,34 +92,25 @@ namespace Events.Api.BusinessLogic
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "La date de fin doit être supérieur à la date de debut" } };
             }
 
-            if (!Repository.Villes.Any(v => v.Id == evenement.VilleId))
+            if (!await VilleExhiste(evenement))
             {
                 //NotFound
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleId})" } };
             }
 
-            var evenementAModifier = Repository.Evenements.FirstOrDefault(e => e.Id == id);
+            var evenementAModifier = await _evenementsRepository.GetByIdAsync(id);
 
             if (evenementAModifier == null)
             {
                 //NotFound
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
             }
-
-            evenementAModifier.DateDebut = evenement.DateDebut;
-            evenementAModifier.DateDeFin = evenement.DateDeFin;
-            evenementAModifier.Titre = evenement.Titre;
-            evenementAModifier.Description = evenement.Description;
-            evenementAModifier.Categories = evenement.Categories;
-            evenementAModifier.Adresse = evenement.Adresse;
-            evenementAModifier.NomOrganisateur = evenement.NomOrganisateur;
-            evenementAModifier.VilleId = evenement.VilleId;
-            evenementAModifier.Prix = evenement.Prix;
-
+            await _evenementsRepository.EditAsync(evenement);
         }
-        public void Supprimer(int id)
+
+        public async Task Supprimer(int id)
         {
-            var evenement = Repository.Evenements.FirstOrDefault(e => e.Id == id);
+            var evenement = await _evenementsRepository.GetByIdAsync(id);
 
             if (evenement == null)
             {
@@ -111,8 +119,19 @@ namespace Events.Api.BusinessLogic
             }
             else
             {
-                Repository.Evenements.Remove(evenement);
+                await _evenementsRepository.DeleteAsync(evenement);
             }
+        }
+
+        private async Task<bool> VilleExhiste(Evenement evenement)
+        {
+            var villes = await _villesRepository.ListAsync();
+
+            if (villes.Any(v => v.Id == evenement.VilleId))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

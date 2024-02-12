@@ -115,7 +115,7 @@ namespace Events.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Partecipations");
+                    b.ToTable("Participations");
                 });
 
             modelBuilder.Entity("Events.Api.Entites.Ville", b =>

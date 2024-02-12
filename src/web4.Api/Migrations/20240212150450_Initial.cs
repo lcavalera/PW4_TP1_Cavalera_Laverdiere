@@ -33,7 +33,7 @@ namespace Events.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Partecipations",
+                name: "Participations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -47,7 +47,7 @@ namespace Events.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Partecipations", x => x.Id);
+                    table.PrimaryKey("PK_Participations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,7 +96,7 @@ namespace Events.Api.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Partecipations");
+                name: "Participations");
 
             migrationBuilder.DropTable(
                 name: "Villes");
