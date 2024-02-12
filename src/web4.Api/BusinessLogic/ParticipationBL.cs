@@ -13,33 +13,8 @@ namespace Events.Api.BusinessLogic
 
         public async Task Ajouter(ParticipationDTO demandeParticipation)
         {
-            if (demandeParticipation == null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
-            }
-            if (demandeParticipation.NombrePlaces == 0)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Nombre de places doit être supérieur à zéro" } };
-            }
-            if (demandeParticipation.Prenom == null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du prenom est obligatoire pour participer à un évènement" } };
-            }
-            if (demandeParticipation.Nom == null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du nom est obligatoire pour participer à un évènement" } };
-            }
-            if (demandeParticipation.Courriel == null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du courriel est obligatoire pour participer à un évènement" } };
-            }
-            Evenement? evenement = await _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
-            bool participeDeja = Repository.Participations.Any(p => p.Courriel == demandeParticipation.Courriel && p.EvenementID == demandeParticipation.EvenementID);
-            if (participeDeja)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Cette adresse électronique participe déjà à cet Évènement" } };
-            }
-            
+            await Validations(demandeParticipation);
+
             await _participationRepo.AddAsync(new Participation()
             {
                 Courriel = demandeParticipation.Courriel,
@@ -89,6 +64,35 @@ namespace Events.Api.BusinessLogic
             {
                 bool EstValide = new Random().Next(1, 10) > 5 ? true : false;
                 participation.EstValide = EstValide;
+            }
+        }
+        private async Task Validations(ParticipationDTO demandeParticipation)
+        {
+            if (demandeParticipation == null)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
+            }
+            if (demandeParticipation.NombrePlaces == 0)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Nombre de places doit être supérieur à zéro" } };
+            }
+            if (demandeParticipation.Prenom == null)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du prenom est obligatoire pour participer à un évènement" } };
+            }
+            if (demandeParticipation.Nom == null)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du nom est obligatoire pour participer à un évènement" } };
+            }
+            if (demandeParticipation.Courriel == null)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du courriel est obligatoire pour participer à un évènement" } };
+            }
+            Evenement? evenement = await _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
+            bool participeDeja = Repository.Participations.Any(p => p.Courriel == demandeParticipation.Courriel && p.EvenementID == demandeParticipation.EvenementID);
+            if (participeDeja)
+            {
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Cette adresse électronique participe déjà à cet Évènement" } };
             }
         }
     }
