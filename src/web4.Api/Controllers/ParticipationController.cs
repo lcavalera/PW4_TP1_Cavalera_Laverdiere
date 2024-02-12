@@ -29,11 +29,11 @@ namespace Events.Api.Controllers
         /// <returns></returns>
         // GET: api/<ParticipationController>
         [HttpGet]
-        [ProducesResponseType(typeof(List<Participation>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ParticipationDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<List<Participation>> Get()
+        public async Task<ActionResult<List<ParticipationDTO>>> Get()
         {
-            return Ok(_participationBL.ObtenirTout());
+            return Ok(await _participationBL.ObtenirTout());
         }
         /// <summary>
         /// Retourne une participation spécifique à partir de son id
@@ -49,12 +49,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // GET api/<ParticipationController>/5
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Participation), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ParticipationDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<Participation> GetById(int id)
+        public async Task<ActionResult<ParticipationDTO>> GetById(int id)
         {
-            Participation? participation = _participationBL.ObtenirSelonId(id);
+            ParticipationDTO? participation = await _participationBL.ObtenirSelonId(id);
             return participation == null ? NotFound() : Ok(participation);
         }
         /// <summary>
@@ -70,11 +70,11 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         /// <returns></returns>
         [HttpGet("{evenementId}/evenement")]
-        [ProducesResponseType(typeof(List<Participation>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ParticipationDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<Participation>> GetByEvenementId(int evenementId)
+        public async Task<ActionResult<IEnumerable<ParticipationDTO>>> GetByEvenementId(int evenementId)
         {
-            return Ok(_participationBL.ObtenirSelonEvenementId(evenementId));
+            return Ok(await _participationBL.ObtenirSelonEvenementId(evenementId));
         }
         /// <summary>
         /// Ajoute une participation à la base de donnée
@@ -102,14 +102,14 @@ namespace Events.Api.Controllers
         // POST api/<ParticipationController>
         [HttpPost]
         [Consumes("application/json")]
-        [ProducesResponseType(typeof(Participation), StatusCodes.Status202Accepted)]
-        [ProducesResponseType(typeof(Participation), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ParticipationDTO), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(typeof(ParticipationDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<Participation> Post([FromBody] ParticipationDTO demandeParticipation)
+        public async Task<ActionResult<ParticipationDTO>> Post([FromBody] ParticipationDTO demandeParticipation)
         {
-            Participation? participation = _participationBL.Ajouter(demandeParticipation);
-            return new AcceptedResult { Location = Url.Action(nameof(Status), new { id = participation.Id }) };
+            await _participationBL.Ajouter(demandeParticipation);
+            return new AcceptedResult { Location = Url.Action(nameof(Status), new { id = demandeParticipation.Id }) };
         }
         /// <summary>
         /// Supprime une participation
@@ -120,12 +120,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<ParticipationController>/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Participation), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ParticipationDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _participationBL.Supprimer(id);
+            await _participationBL.Supprimer(id);
             return NoContent();
         }
         /// <summary>
@@ -139,9 +139,9 @@ namespace Events.Api.Controllers
         [ProducesResponseType(StatusCodes.Status303SeeOther)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Status(int id)
+        public async Task<IActionResult> Status(int id)
         {
-            bool estValide = _participationBL.VerifierStatus(id);
+            bool estValide = await _participationBL.VerifierStatus(id);
             if (estValide)
             {
                 Response.Headers.Add("Location", Url.Action(nameof(GetById), new { id }));

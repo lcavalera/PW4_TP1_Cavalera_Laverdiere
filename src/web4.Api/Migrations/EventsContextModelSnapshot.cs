@@ -56,10 +56,10 @@ namespace Events.Api.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("DateDeFin")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("DateDebut")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()

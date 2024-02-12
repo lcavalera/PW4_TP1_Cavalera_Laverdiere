@@ -8,6 +8,6 @@ namespace Events.Api.BusinessLogic
         public Categorie? ObtenirSelonId(int id);
         public Categorie Ajouter(Categorie categorie);
         public void Modifier(int id, Categorie categorie);
-        public void Supprimer(int id);
+        public Task Supprimer(int id);
     }
 }

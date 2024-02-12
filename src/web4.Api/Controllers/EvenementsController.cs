@@ -118,9 +118,9 @@ namespace Events.Api.Controllers
         [ProducesResponseType(typeof(Evenement), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Ville), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Post([FromBody] Evenement evenement)
+        public async Task<IActionResult> Post([FromBody] Evenement evenement)
         {
-            evenement = _evenementsBL.Ajouter(evenement);
+            await _evenementsBL.Ajouter(evenement);
             return CreatedAtAction(nameof(GetById), new { id = evenement.Id }, null);
         }
 

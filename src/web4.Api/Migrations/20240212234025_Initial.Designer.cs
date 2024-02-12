@@ -12,13 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Events.Api.Migrations
 {
     [DbContext(typeof(EventsContext))]
-<<<<<<<< HEAD:src/web4.Api/Migrations/20240212150450_Initial.Designer.cs
-    [Migration("20240212150450_Initial")]
+    [Migration("20240212234025_Initial")]
     partial class Initial
-========
-    [Migration("20240212150445_initial")]
-    partial class initial
->>>>>>>> 56cca31db3d90c20c7b4fe8242de8d940dc888ab:src/web4.Api/Migrations/20240212150445_initial.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,10 +59,10 @@ namespace Events.Api.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("DateDeFin")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("DateDebut")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()

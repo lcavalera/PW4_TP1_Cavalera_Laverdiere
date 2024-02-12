@@ -45,10 +45,11 @@ namespace Events.Api.BusinessLogic
             return Repository.Categories.ToList();
         }
 
-        public void Supprimer(int id)
+        public async Task Supprimer(int id)
         {
             Categorie? categorie = ObtenirSelonId(id);
-            bool evenementAssocier = _evenementsBL.ObtenirTout().Any(e => e.Categories.Any(c => c.Nom == categorie.Nom));
+            var liste = await _evenementsBL.ObtenirTout();
+            bool evenementAssocier = liste.Any(e => e.Categories.Any(c => c.Nom == categorie.Nom));
             if (evenementAssocier)
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la categorie: un ou plusieurs évènement utilise cette catégorie " } };
