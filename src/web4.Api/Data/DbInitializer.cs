@@ -9,7 +9,7 @@ namespace Events.Api.Data
         public static void Initialize(EventsContext context)
         {
             //On valide s'il y a des données dans la BD
-            if (context.Categories.Any() || context.Villes.Any() || context.Partecipations.Any() || context.Evenements.Any())
+            if (context.Categories.Any() || context.Villes.Any() || context.Participations.Any() || context.Evenements.Any())
             {
                 return;
             }
@@ -47,7 +47,7 @@ namespace Events.Api.Data
 
             context.Evenements.AddRange(evenements);
 
-            var partecipations = new Participation[]
+            var participations = new Participation[]
             {
                 new Participation { Nom= "Peggy", Prenom="Justice", Courriel="jpeggy76@gmail.com", NombrePlaces=2, EvenementID=evenements[0].Id, EstValide=true},
                 new Participation { Nom= "Norman", Prenom="Laura", Courriel="lnorman546@outlook.com", NombrePlaces=3, EvenementID=evenements[3].Id, EstValide=true},
@@ -59,7 +59,7 @@ namespace Events.Api.Data
                 new Participation { Nom= "Nino", Prenom="Olivetto", Courriel="nolivetto47@gmail.com", NombrePlaces=2, EvenementID=evenements[0].Id, EstValide=true}
             };
 
-            context.Partecipations.AddRange(partecipations);
+            context.Participations.AddRange(participations);
 
             context.SaveChanges();
         }
