@@ -3,11 +3,10 @@ using Events.Api.Entites.DTO;
 
 namespace Events.Api.Entites
 {
-    public class MappingProfiles : Profile
+    public class MappingProfile : Profile
     {
-        public MappingProfiles() {
+        public MappingProfile() {
             CreateMap<Categorie, CategorieDTO>();
-            //CreateMap<CategorieDTO, Categorie>();
             CreateMap<Participation, ParticipationDTO>();
             CreateMap<Ville, VilleDTO>();
             CreateMap<Evenement, EvenementDTO>();
