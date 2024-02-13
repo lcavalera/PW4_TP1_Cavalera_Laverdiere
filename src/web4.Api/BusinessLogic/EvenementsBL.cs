@@ -22,9 +22,9 @@ namespace Events.Api.BusinessLogic
         {
             return await _evenementsRepository.ListAsync();
         }
-        public Task<Evenement>? ObtenirSelonId(int id)
+        public async Task<Evenement> ObtenirSelonId(int id)
         {
-            var evenement = _evenementsRepository.GetByIdAsync(id);
+            var evenement = await _evenementsRepository.GetByIdAsync(id);
             
             if (evenement == null)
             {

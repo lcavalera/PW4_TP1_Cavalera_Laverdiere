@@ -6,13 +6,22 @@ namespace Events.Api.BusinessLogic
 {
     public class VillesBL : IVillesBL
     {
-        public IEnumerable<Ville> ObtenirTout()
+        private readonly IAsyncRepository<Ville> _villesRepository;
+        private readonly IAsyncRepository<Evenement> _evenementsRepository;
+
+        public VillesBL(IAsyncRepository<Ville> villesRepository, IAsyncRepository<Evenement> evenementsRepository)
         {
-            return Repository.Villes.ToList();
+            _villesRepository = villesRepository;
+            _evenementsRepository = evenementsRepository;
         }
-        public Ville? ObtenirSelonId(int id)
+
+        public async Task<IEnumerable<Ville>> ObtenirTout()
         {
-            var ville = Repository.Villes.FirstOrDefault(v => v.Id == id);
+            return await _villesRepository.ListAsync();
+        }
+        public async Task<Ville> ObtenirSelonId(int id)
+        {
+            var ville = await _villesRepository.GetByIdAsync(id);
 
             if (ville == null)
             {
@@ -22,7 +31,7 @@ namespace Events.Api.BusinessLogic
 
             return ville;
         }
-        public Ville Ajouter(Ville ville)
+        public async Task Ajouter(Ville ville)
         {
             if (ville == null)
             {
@@ -30,9 +39,9 @@ namespace Events.Api.BusinessLogic
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
 
-            return Repository.AddVille(ville);
+            await _villesRepository.AddAsync(ville);
         }
-        public void Modifier(int id, Ville ville)
+        public async Task Modifier(int id, Ville ville)
         {
             if (ville == null)
             {
@@ -40,7 +49,7 @@ namespace Events.Api.BusinessLogic
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
 
-            var villeAModifier = Repository.Villes.FirstOrDefault(v => v.Id == id);
+            var villeAModifier = await _villesRepository.GetByIdAsync(id);
 
             if (villeAModifier == null)
             {
@@ -48,12 +57,11 @@ namespace Events.Api.BusinessLogic
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
             }
 
-            villeAModifier.Nom = ville.Nom;
-            villeAModifier.Region = ville.Region;
+            await _villesRepository.EditAsync(ville);
         }
-        public void Supprimer(int id)
+        public async Task Supprimer(int id)
         {
-            var ville = Repository.Villes.FirstOrDefault(v => v.Id == id);
+            var ville = await _villesRepository.GetByIdAsync(id);
 
             if (ville == null)
             {
@@ -62,12 +70,14 @@ namespace Events.Api.BusinessLogic
             }
             else
             {
-                if (Repository.Evenements.Any(e => e.VilleId == ville.Id))
+                var evenements = await _evenementsRepository.ListAsync();
+
+                if (evenements.Any(e => e.VilleId == ville.Id))
                 {
                     throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la ville: un ou plusieurs évènement utilise cette ville" } };
                 }
 
-                Repository.Villes.Remove(ville);
+                await _villesRepository.DeleteAsync(ville);
             }
         }
     }

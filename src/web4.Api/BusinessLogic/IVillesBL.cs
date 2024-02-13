@@ -4,10 +4,10 @@ namespace Events.Api.BusinessLogic
 {
     public interface IVillesBL
     {
-        public IEnumerable<Ville> ObtenirTout();
-        public Ville? ObtenirSelonId(int id);
-        public Ville Ajouter(Ville ville);
-        public void Modifier(int id, Ville ville);
-        public void Supprimer(int id);
+        Task<IEnumerable<Ville>> ObtenirTout();
+        Task<Ville> ObtenirSelonId(int id);
+        Task Ajouter(Ville ville);
+        Task Modifier(int id, Ville ville);
+        Task Supprimer(int id);
     }
 }
