@@ -38,7 +38,7 @@ namespace Events.Api.BusinessLogic
         public async Task<IEnumerable<Evenement>> ObtenirSelonIdVille(int villeId)
         {
             var evenements = await _evenementsRepository.ListAsync();
-            return evenements.Where(e => e.VilleId == villeId).ToList();
+            return evenements.Where(e => e.VilleID == villeId).ToList();
         }
 
         public async Task Ajouter(Evenement evenement)
@@ -72,7 +72,7 @@ namespace Events.Api.BusinessLogic
             if (!await VilleExhiste(evenement))
             {
                 //NotFound
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleId})" } };
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleID})" } };
             }
 
             await _evenementsRepository.AddAsync(evenement);
@@ -95,7 +95,7 @@ namespace Events.Api.BusinessLogic
             if (!await VilleExhiste(evenement))
             {
                 //NotFound
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleId})" } };
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleID})" } };
             }
 
             var evenementAModifier = await _evenementsRepository.GetByIdAsync(id);
@@ -127,7 +127,7 @@ namespace Events.Api.BusinessLogic
         {
             var villes = await _villesRepository.ListAsync();
 
-            if (villes.Any(v => v.Id == evenement.VilleId))
+            if (villes.Any(v => v.Id == evenement.VilleID))
             {
                 return true;
             }

@@ -72,7 +72,7 @@ namespace Events.Api.BusinessLogic
             {
                 var evenements = await _evenementsRepository.ListAsync();
 
-                if (evenements.Any(e => e.VilleId == ville.Id))
+                if (evenements.Any(e => e.VilleID == ville.Id))
                 {
                     throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la ville: un ou plusieurs évènement utilise cette ville" } };
                 }

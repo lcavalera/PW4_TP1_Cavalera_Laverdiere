@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Events.Api.Migrations
 {
     [DbContext(typeof(EventsContext))]
-    [Migration("20240212234025_Initial")]
+    [Migration("20240213193217_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -79,10 +79,12 @@ namespace Events.Api.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("VilleId")
+                    b.Property<int>("VilleID")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("VilleID");
 
                     b.ToTable("Evenements");
                 });
@@ -118,6 +120,8 @@ namespace Events.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EvenementID");
+
                     b.ToTable("Participations");
                 });
 
@@ -146,6 +150,28 @@ namespace Events.Api.Migrations
                     b.HasOne("Events.Api.Entites.Evenement", null)
                         .WithMany("Categories")
                         .HasForeignKey("EvenementId");
+                });
+
+            modelBuilder.Entity("Events.Api.Entites.Evenement", b =>
+                {
+                    b.HasOne("Events.Api.Entites.Ville", "Ville")
+                        .WithMany()
+                        .HasForeignKey("VilleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ville");
+                });
+
+            modelBuilder.Entity("Events.Api.Entites.Participation", b =>
+                {
+                    b.HasOne("Events.Api.Entites.Evenement", "Evenement")
+                        .WithMany()
+                        .HasForeignKey("EvenementID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Evenement");
                 });
 
             modelBuilder.Entity("Events.Api.Entites.Evenement", b =>

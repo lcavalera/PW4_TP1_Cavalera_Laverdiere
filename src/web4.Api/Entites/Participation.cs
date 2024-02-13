@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Events.Api.Entites
 {
@@ -16,7 +17,7 @@ namespace Events.Api.Entites
 
         [Required]
         public int EvenementID { get; set; }
-        //public Evenement? Evenement { get; set; }
+        public virtual Evenement? Evenement { get; set; }
 
     }
 }

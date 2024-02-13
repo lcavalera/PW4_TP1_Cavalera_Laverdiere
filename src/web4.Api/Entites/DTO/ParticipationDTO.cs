@@ -13,7 +13,9 @@ namespace Events.Api.Entites.DTO
         [Required]
         public string Prenom { get; set; }
         public bool EstValide { get; set; }
+
         [Required]
         public int EvenementID { get; set; }
+        //public Evenement Evenement { get; set; }
     }
 }

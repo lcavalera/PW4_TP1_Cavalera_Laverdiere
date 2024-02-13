@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Events.Api.Entites
 {
@@ -20,9 +21,9 @@ namespace Events.Api.Entites
 
         [Required]
         public ICollection<Categorie> Categories { get; set; }
-        [Required]
-        public int VilleId { get; set; }
-        //public List<Participation>? Participations { get; set; }
 
+        [Required]
+        public int VilleID { get; set; }
+        public virtual Ville? Ville { get; set; }
     }
 }
