@@ -92,7 +92,7 @@ namespace Events.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] Ville ville)
         {
-            ville = _villesBL.Ajouter(ville);
+            _villesBL.Ajouter(ville);
             return CreatedAtAction(nameof(GetById), new { id = ville.Id }, null);
         }
 
