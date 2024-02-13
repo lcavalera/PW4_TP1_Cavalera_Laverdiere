@@ -1,6 +1,7 @@
 ﻿using Events.Api.BusinessLogic;
 using Events.Api.Data;
 using Events.Api.Entites;
+using Events.Api.Entites.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -27,11 +28,11 @@ namespace Events.Api.Controllers
         /// <returns></returns>
         // GET: api/<CategorieController>
         [HttpGet]
-        [ProducesResponseType(typeof(List<Categorie>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<CategorieDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<List<Categorie>> Get()
+        public async Task<ActionResult<List<CategorieDTO>>> Get()
         {
-            return Ok(_categorieBL.ObtenirTout());
+            return Ok(await _categorieBL.ObtenirTout());
         }
 
 
@@ -49,12 +50,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // GET api/<CategorieController>/5
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<Categorie> GetById(int id)
+        public async Task<ActionResult<CategorieDTO>> GetById(int id)
         {
-            Categorie? categorie = _categorieBL.ObtenirSelonId(id);
+            CategorieDTO? categorie = await _categorieBL.ObtenirSelonId(id);
             return categorie != null ? Ok(categorie) : NotFound();
         }
 
@@ -81,15 +82,15 @@ namespace Events.Api.Controllers
         // POST api/<CategorieController>
         [HttpPost]
         [Consumes("application/json")]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Post([FromBody] Categorie categorie)
+        public async Task<IActionResult> Post([FromBody] CategorieDTO categorie)
         {
-            categorie = _categorieBL.Ajouter(categorie);
+            await _categorieBL.Ajouter(categorie);
             return CreatedAtAction(nameof(GetById), new { id = categorie.Id }, null);
         }
 
@@ -106,14 +107,14 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<CategorieController>/5
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Put(int id, [FromBody] Categorie categorie)
+        public async Task<IActionResult> Put(int id, [FromBody] CategorieDTO categorie)
         {
-            _categorieBL.Modifier(id, categorie);
+            await _categorieBL.Modifier(id, categorie);
             return NoContent();
         }
 
@@ -126,12 +127,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<CategorieController>/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Categorie), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _categorieBL.Supprimer(id);
+            await _categorieBL.Supprimer(id);
             return NoContent();
         }
     }
