@@ -40,6 +40,7 @@ builder.Services.AddSwaggerGen(options =>
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connectionString));
 
+builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
 builder.Services.AddScoped<IVillesBL, VillesBL>();
 builder.Services.AddScoped<ICategorieBL, CategorieBL>();
 builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
