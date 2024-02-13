@@ -5,10 +5,10 @@ namespace Events.Api.BusinessLogic
 {
     public interface ICategorieBL
     {
-        public Task<List<CategorieDTO>> ObtenirTout();
-        public Task<CategorieDTO?> ObtenirSelonId(int id);
-        public Task Ajouter(CategorieDTO categorie);
-        public Task Modifier(int id, CategorieDTO categorie);
-        public Task Supprimer(int id);
+        Task<List<CategorieDTO>> ObtenirTout();
+        Task<CategorieDTO?> ObtenirSelonId(int id);
+        Task Ajouter(CategorieDTO categorie);
+        Task Modifier(int id, CategorieDTO categorie);
+        Task Supprimer(int id);
     }
 }

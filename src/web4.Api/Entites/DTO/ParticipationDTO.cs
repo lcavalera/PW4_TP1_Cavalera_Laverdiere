@@ -12,7 +12,7 @@ namespace Events.Api.Entites.DTO
         public string Nom { get; set; }
         [Required]
         public string Prenom { get; set; }
-        public bool EstValide { get; set; } = false;
+        public bool EstValide { get; set; }
         [Required]
         public int EvenementID { get; set; }
     }

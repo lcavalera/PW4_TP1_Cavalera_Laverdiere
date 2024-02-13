@@ -1,8 +1,11 @@
+using AutoMapper;
 using Events.Api.BusinessLogic;
 using Events.Api.Data;
+using Events.Api.Entites;
 using Events.Api.Extensions;
 using Events.Api.Filters.Web;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -40,7 +43,13 @@ builder.Services.AddSwaggerGen(options =>
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connectionString));
 
+
+builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfiles>());
+
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
+
+
+
 builder.Services.AddScoped<IVillesBL, VillesBL>();
 builder.Services.AddScoped<ICategorieBL, CategorieBL>();
 builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
@@ -54,7 +63,9 @@ builder.Services.AddControllers(options =>
     .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true).
     AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

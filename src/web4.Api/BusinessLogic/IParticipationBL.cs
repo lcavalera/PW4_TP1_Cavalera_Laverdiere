@@ -5,11 +5,11 @@ namespace Events.Api.BusinessLogic
 {
     public interface IParticipationBL
     {
-        public Task<List<ParticipationDTO>> ObtenirTout();
-        public Task<ParticipationDTO?> ObtenirSelonId(int id);
-        public Task Ajouter(ParticipationDTO demandeParticipation);
-        public Task Supprimer(int id);
-        public Task<bool> VerifierStatus(int id);
-        public Task<List<ParticipationDTO>> ObtenirSelonEvenementId(int evenementId);
+        Task<List<ParticipationDTO>> ObtenirTout();
+        Task<ParticipationDTO?> ObtenirSelonId(int id);
+        Task Ajouter(ParticipationDTO demandeParticipation);
+        Task Supprimer(int id);
+        Task<bool> VerifierStatus(int id);
+        Task<List<ParticipationDTO>> ObtenirSelonEvenementId(int evenementId);
     }
 }
