@@ -7,7 +7,6 @@ namespace Events.Api.Entites
     {
         public MappingProfiles() {
             CreateMap<Categorie, CategorieDTO>();
-            //CreateMap<CategorieDTO, Categorie>();
             CreateMap<Participation, ParticipationDTO>();
             CreateMap<Ville, VilleDTO>();
             CreateMap<Evenement, EvenementDTO>();

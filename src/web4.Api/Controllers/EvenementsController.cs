@@ -1,5 +1,6 @@
 ﻿using Events.Api.BusinessLogic;
 using Events.Api.Entites;
+using Events.Api.Entites.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -31,11 +32,11 @@ namespace Events.Api.Controllers
         /// <returns></returns>
         // GET: api/<EvenementsController>
         [HttpGet]
-        [ProducesResponseType(typeof(List<Evenement>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<EvenementDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<Evenement>> Get()
+        public async Task<ActionResult<IEnumerable<EvenementDTO>>> Get()
         {
-            return Ok(_evenementsBL.ObtenirTout());
+            return Ok(await _evenementsBL.ObtenirTout());
         }
 
         /// <summary>
@@ -52,12 +53,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // GET api/<EvenementsController>/5
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<Evenement> GetById(int id)
+        public async Task<ActionResult<EvenementDTO>> GetById(int id)
         {
-            var evenement = _evenementsBL.ObtenirSelonId(id);
+            EvenementDTO evenement = await _evenementsBL.ObtenirSelonId(id);
             return evenement == null ? NotFound() : Ok(evenement);
         }
 
@@ -73,11 +74,11 @@ namespace Events.Api.Controllers
         /// <response code="200">evenements trouvés et retournés</response>
         /// <response code="500">service indisponible pour le moment</response>
         [HttpGet("{villeId}/ville")]
-        [ProducesResponseType(typeof(IEnumerable<Evenement>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<EvenementDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<Evenement>> GetByIdVille(int villeId)
+        public async Task<ActionResult<IEnumerable<EvenementDTO>>> GetByIdVille(int villeId)
         {
-            return Ok(_evenementsBL.ObtenirSelonIdVille(villeId));
+            return Ok(await _evenementsBL.ObtenirSelonIdVille(villeId));
         }
 
         /// <summary>
@@ -112,15 +113,15 @@ namespace Events.Api.Controllers
         // POST api/<EvenementsController>
         [HttpPost]
         [Consumes("application/json")]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Post([FromBody] Evenement evenement)
+        public async Task<IActionResult> Post([FromBody] EvenementDTO evenement)
         {
-            _evenementsBL.Ajouter(evenement);
+            await _evenementsBL.Ajouter(evenement);
             return CreatedAtAction(nameof(GetById), new { id = evenement.Id }, null);
         }
 
@@ -137,14 +138,14 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<EvenementsController>/5
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Put(int id, [FromBody] Evenement evenement)
+        public async Task<IActionResult> Put(int id, [FromBody] EvenementDTO evenement)
         {
-            _evenementsBL.Modifier(id, evenement);
+            await _evenementsBL.Modifier(id, evenement);
             return NoContent();
         }
 
@@ -157,12 +158,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<EvenementsController>/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Evenement), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _evenementsBL.Supprimer(id);
+            await _evenementsBL.Supprimer(id);
             return NoContent();
         }
     }
