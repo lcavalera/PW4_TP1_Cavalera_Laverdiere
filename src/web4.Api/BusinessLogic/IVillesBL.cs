@@ -1,13 +1,14 @@
 ﻿using Events.Api.Entites;
+using Events.Api.Entites.DTO;
 
 namespace Events.Api.BusinessLogic
 {
     public interface IVillesBL
     {
-        Task<IEnumerable<Ville>> ObtenirTout();
-        Task<Ville> ObtenirSelonId(int id);
-        Task Ajouter(Ville ville);
-        Task Modifier(int id, Ville ville);
+        Task<IEnumerable<VilleDTO>> ObtenirTout();
+        Task<VilleDTO> ObtenirSelonId(int id);
+        Task Ajouter(VilleDTO ville);
+        Task Modifier(int id, VilleDTO ville);
         Task Supprimer(int id);
     }
 }

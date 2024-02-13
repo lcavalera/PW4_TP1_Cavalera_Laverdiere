@@ -1,5 +1,6 @@
 ﻿using Events.Api.BusinessLogic;
 using Events.Api.Entites;
+using Events.Api.Entites.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -31,11 +32,11 @@ namespace Events.Api.Controllers
         /// <returns></returns>
         // GET: api/<VillesController>
         [HttpGet]
-        [ProducesResponseType(typeof(List<Ville>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<VilleDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<Ville>> Get()
+        public async Task<ActionResult<IEnumerable<VilleDTO>>> Get()
         {
-            return Ok(_villesBL.ObtenirTout());
+            return Ok(await _villesBL.ObtenirTout());
         }
 
         /// <summary>
@@ -52,12 +53,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // GET api/<VillesController>/5
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<Ville> GetById(int id)
+        public async Task<ActionResult<VilleDTO>> GetById(int id)
         {
-            var ville = _villesBL.ObtenirSelonId(id);
+            VilleDTO ville = await _villesBL.ObtenirSelonId(id);
             return ville == null ? NotFound() : Ok(ville);
         }
 
@@ -85,14 +86,14 @@ namespace Events.Api.Controllers
         // POST api/<VillesController>
         [HttpPost]
         [Consumes("application/json")]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Post([FromBody] Ville ville)
+        public async Task<IActionResult> Post([FromBody] VilleDTO ville)
         {
-            _villesBL.Ajouter(ville);
+            await _villesBL.Ajouter(ville);
             return CreatedAtAction(nameof(GetById), new { id = ville.Id }, null);
         }
 
@@ -109,14 +110,14 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<VillesController>/5
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Put(int id, [FromBody] Ville ville)
+        public async Task<IActionResult> Put(int id, [FromBody] VilleDTO ville)
         {
-            _villesBL.Modifier(id, ville);
+            await _villesBL.Modifier(id, ville);
             return NoContent();
         }
 
@@ -129,12 +130,12 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<UsagersController>/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Ville), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _villesBL.Supprimer(id);
+            await _villesBL.Supprimer(id);
             return NoContent();
         }
     }

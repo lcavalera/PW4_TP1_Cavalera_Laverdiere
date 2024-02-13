@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace Events.Api.BusinessLogic
 {
-    public class ParticipationBL(IEvenementsBL evenementBL, IAsyncRepository<Participation> participationRepo) : IParticipationBL
+    public class ParticipationBL(IAsyncRepository<Participation> participationRepo) : IParticipationBL
     {
-        private readonly IEvenementsBL _evenementBL = evenementBL;
+        //private readonly IEvenementsBL _evenementBL = evenementBL;
         private readonly IAsyncRepository<Participation> _participationRepo = participationRepo;
 
         public async Task Ajouter(ParticipationDTO demandeParticipation)
