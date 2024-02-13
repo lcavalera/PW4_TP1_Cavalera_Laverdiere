@@ -1,4 +1,5 @@
-﻿using Events.Api.Data;
+﻿using AutoMapper;
+using Events.Api.Data;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Events.Api.Exceptions;
@@ -6,65 +7,50 @@ using System.Collections.Generic;
 
 namespace Events.Api.BusinessLogic
 {
-    public class ParticipationBL(IAsyncRepository<Participation> participationRepo) : IParticipationBL
+    public class ParticipationBL(IAsyncRepository<Participation> participationRepo, IMapper mapper) : IParticipationBL
     {
         //private readonly IEvenementsBL _evenementBL = evenementBL;
         private readonly IAsyncRepository<Participation> _participationRepo = participationRepo;
-
+        private readonly IMapper _mapper = mapper;
         public async Task Ajouter(ParticipationDTO demandeParticipation)
         {
             await Validations(demandeParticipation);
 
-            await _participationRepo.AddAsync(new Participation()
-            {
-                Courriel = demandeParticipation.Courriel,
-                Nom = demandeParticipation.Nom,
-                Prenom = demandeParticipation.Prenom,
-                EvenementID = demandeParticipation.EvenementID,
-                NombrePlaces = demandeParticipation.NombrePlaces
-            });
+            await _participationRepo.AddAsync(_mapper.Map<Participation>(demandeParticipation));
         }
 
         public async Task<List<ParticipationDTO>> ObtenirSelonEvenementId(int evenementId)
         {
-            IEnumerable<Participation>? participations = await _participationRepo.ListAsync();
-            return participations.Where(p => p.EvenementID == evenementId).Select(p => new ParticipationDTO { Id = p.Id, Nom = p.Nom, Prenom = p.Prenom, Courriel = p.Courriel, EstValide = p.EstValide, EvenementID = p.EvenementID, NombrePlaces = p.NombrePlaces }).ToList();
+            List<ParticipationDTO> participations = await ObtenirTout();
+            return participations.Where(p => p.EvenementID == evenementId).ToList();
         }
 
         public async Task<ParticipationDTO?> ObtenirSelonId(int id)
         {
-            Participation? participation = await _participationRepo.GetByIdAsync(id);
-            if (participation == null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
-            }
-            return new ParticipationDTO { Id = participation.Id, Nom = participation.Nom, Prenom = participation.Prenom, Courriel = participation.Courriel, EstValide = participation.EstValide, EvenementID = participation.EvenementID, NombrePlaces = participation.NombrePlaces };
+            return _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
         }
 
         public async Task<List<ParticipationDTO>> ObtenirTout()
         {
-            IEnumerable<Participation>? participations = await _participationRepo.ListAsync();
-            return participations.Select(p => new ParticipationDTO { Id = p.Id, Nom = p.Nom, Prenom = p.Prenom, Courriel = p.Courriel, EstValide = p.EstValide, EvenementID = p.EvenementID, NombrePlaces = p.NombrePlaces }).ToList();
+            return _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
         }
 
         public async Task Supprimer(int id)
         {
-            ParticipationDTO? participation = await ObtenirSelonId(id);
-            await _participationRepo.DeleteAsync(new Participation { Id = participation.Id, Nom = participation.Nom, Prenom = participation.Prenom, Courriel = participation.Courriel, EstValide = participation.EstValide, EvenementID = participation.EvenementID, NombrePlaces = participation.NombrePlaces });
+            await _participationRepo.DeleteAsync(_mapper.Map<Participation>(await ObtenirSelonId(id)));
         }
         public async Task<bool> VerifierStatus(int id)
         {
-            ParticipationDTO? participation = await ObtenirSelonId(id);
-            SimulerVerifierStatus(participation);
-            return participation.EstValide;
+            return SimulerVerifierStatus(await ObtenirSelonId(id));
         }
-        private void SimulerVerifierStatus(ParticipationDTO participation)
+        private bool SimulerVerifierStatus(ParticipationDTO participation)
         {
             if (!participation.EstValide)
             {
                 bool EstValide = new Random().Next(1, 10) > 5 ? true : false;
                 participation.EstValide = EstValide;
             }
+            return participation.EstValide;
         }
         private async Task Validations(ParticipationDTO demandeParticipation)
         {

@@ -44,7 +44,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connectionString));
 
 
-builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfiles>());
+builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
 
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
 
