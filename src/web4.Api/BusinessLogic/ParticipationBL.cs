@@ -47,8 +47,7 @@ namespace Events.Api.BusinessLogic
         {
             if (!participation.EstValide)
             {
-                bool EstValide = new Random().Next(1, 10) > 5 ? true : false;
-                participation.EstValide = EstValide;
+                participation.EstValide = new Random().Next(1, 10) > 5 ? true : false;
             }
             return participation.EstValide;
         }
