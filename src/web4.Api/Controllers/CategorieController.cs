@@ -75,7 +75,6 @@ namespace Events.Api.Controllers
         ///
         /// </remarks>
         /// <response code="201">Categorie ajouté avec succès</response>
-        /// <response code="200">traitement executé avec succès, contenu retourné</response>
         /// <response code="204">traitement executé avec succès, aucune contenu retourné</response>
         /// <response code="400">model Invalide, mauvaise requête</response>
         /// <response code="500">service indisponible pour le moment</response>
@@ -83,7 +82,6 @@ namespace Events.Api.Controllers
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status404NotFound)]
@@ -100,16 +98,14 @@ namespace Events.Api.Controllers
         /// <param name="id">id de la Categorie à modifier</param>
         /// <param name="categorie"></param>
         /// <returns>La Categorie a été modifié</returns>
-        /// <response code="200">traitement executé avec succès, contenu retourné</response>
         /// <response code="204">Categorie modifié avec succès, aucune contenu retourné</response>
         /// <response code="400">model Invalide, mauvaise requête</response>
         /// <response code="404">Categorie introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<CategorieController>/5
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Put(int id, [FromBody] CategorieDTO categorie)
@@ -127,7 +123,7 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<CategorieController>/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(CategorieDTO), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Delete(int id)
