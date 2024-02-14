@@ -21,53 +21,62 @@ namespace Events.Api.BusinessLogic
 
         public async Task<IEnumerable<VilleDTO>> ObtenirTout()
         {
-            IEnumerable<Ville>? villes = await _villesRepository.ListAsync();
-            return villes.Select(v => new VilleDTO { Id=v.Id, Nom=v.Nom, Region=v.Region }).ToList();
+            //IEnumerable<Ville>? villes = await _villesRepository.ListAsync();
+            //return villes.Select(v => new VilleDTO { Id=v.Id, Nom=v.Nom, Region=v.Region }).ToList();
+
+            return _mapper.Map<List<VilleDTO>>(await _villesRepository.ListAsync());
         }
 
         public async Task<VilleDTO> ObtenirSelonId(int id)
         {
-            Ville ville = await _villesRepository.GetByIdAsync(id);
-
-            if (ville == null)
-            {
-                //NotFound
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
-            }
-
-            return new VilleDTO { Id = ville.Id, Nom = ville.Nom, Region = ville.Region };
+            return _mapper.Map<VilleDTO>(await _villesRepository.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
         }
 
         public async Task Ajouter(VilleDTO ville)
         {
-            if (ville == null)
-            {
-                //BadRequest
-                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
-            }
+            await Validations(ville);
 
-            await _villesRepository.AddAsync(new Ville { Id = ville.Id, Nom = ville.Nom, Region = ville.Region });
+            await _villesRepository.AddAsync(new Ville
+            {
+                Id = ville.Id,
+                Nom = ville.Nom,
+                Region = ville.Region
+            });
         }
 
         public async Task Modifier(int id, VilleDTO ville)
+        {
+            await Validations(ville);
+
+            Ville villeAModifier = await VilleExiste(id);
+
+            villeAModifier.Id = ville.Id;
+            villeAModifier.Nom = ville.Nom;
+            villeAModifier.Region = ville.Region;
+
+            await _villesRepository.EditAsync(villeAModifier);
+
+        }
+
+        public async Task Supprimer(int id)
+        {
+            Ville ville = await VilleExiste(id);
+
+            await EvenementExiste(ville);
+
+            await _villesRepository.DeleteAsync(ville);
+        }
+
+        private async Task Validations(VilleDTO ville)
         {
             if (ville == null)
             {
                 //BadRequest
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
-
-            Ville villeAModifier = await _villesRepository.GetByIdAsync(id);
-
-            if (villeAModifier == null)
-            {
-                //NotFound
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
-            }
-
-            await _villesRepository.EditAsync(new Ville { Id = ville.Id, Nom = ville.Nom, Region = ville.Region });
         }
-        public async Task Supprimer(int id)
+
+        private async Task<Ville> VilleExiste(int id)
         {
             Ville ville = await _villesRepository.GetByIdAsync(id);
 
@@ -76,16 +85,17 @@ namespace Events.Api.BusinessLogic
                 //NotFound
                 throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
             }
-            else
+
+            return ville;
+        }
+
+        private async Task EvenementExiste(Ville ville)
+        {
+            var evenements = await _evenementsRepository.ListAsync();
+
+            if (evenements.Any(e => e.VilleID == ville.Id))
             {
-                var evenements = await _evenementsRepository.ListAsync();
-
-                if (evenements.Any(e => e.VilleID == ville.Id))
-                {
-                    throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la ville: un ou plusieurs évènement utilise cette ville" } };
-                }
-
-                await _villesRepository.DeleteAsync(ville);
+                throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la ville: un ou plusieurs évènement utilise cette ville" } };
             }
         }
     }

@@ -2,8 +2,9 @@
 
 namespace Events.Api.Entites.DTO
 {
-    public class EvenementDTO: BaseEntity
+    public class EvenementDTO
     {
+        public int Id { get; set; }
         [Required]
         public DateTime DateDebut { get; set; }
         [Required]
@@ -19,10 +20,10 @@ namespace Events.Api.Entites.DTO
         public int? Prix { get; set; }
 
         [Required]
-        public ICollection<Categorie> Categories { get; set; }
+        public List<int> CategoriesIds { get; set; }
 
         [Required]
         public int VilleID { get; set; }
-        public virtual Ville? Ville { get; set; }
+        public Ville? Ville { get; set; }
     }
 }

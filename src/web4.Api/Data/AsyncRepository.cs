@@ -19,7 +19,7 @@ namespace Events.Api.Data
 
         public async Task<IEnumerable<TBaseEntity>> ListAsync()
         {
-            return await _context.Set<TBaseEntity>().ToListAsync();
+            return await _context.Set<TBaseEntity>().AsNoTracking().ToListAsync();
         }
 
         public async Task AddAsync(TBaseEntity entity)
