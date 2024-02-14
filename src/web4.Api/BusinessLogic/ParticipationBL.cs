@@ -9,7 +9,6 @@ namespace Events.Api.BusinessLogic
 {
     public class ParticipationBL(IAsyncRepository<Participation> participationRepo, IMapper mapper) : IParticipationBL
     {
-        //private readonly IEvenementsBL _evenementBL = evenementBL;
         private readonly IAsyncRepository<Participation> _participationRepo = participationRepo;
         private readonly IMapper _mapper = mapper;
         public async Task Ajouter(ParticipationDTO demandeParticipation)
@@ -73,8 +72,6 @@ namespace Events.Api.BusinessLogic
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Renseignement du courriel est obligatoire pour participer à un évènement" } };
             }
-            //Evenement? evenement = await _evenementBL.ObtenirSelonId(demandeParticipation.EvenementID);
-
             IEnumerable<Participation>? participations = await _participationRepo.ListAsync();
 
             bool participeDeja = participations.Any(p => p.Courriel == demandeParticipation.Courriel && p.EvenementID == demandeParticipation.EvenementID);

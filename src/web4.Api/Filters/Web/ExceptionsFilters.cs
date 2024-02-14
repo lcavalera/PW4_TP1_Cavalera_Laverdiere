@@ -31,7 +31,7 @@ namespace Events.Api.Filters.Web
                     //object anonyme
                     context.Result = new ObjectResult(new ProblemDetails { Title = "Internal server error", Status = 500, Detail = context.Exception.Message })
                     {
-                        StatusCode = 500
+                        StatusCode = context.HttpContext.Response.StatusCode
                     };
 
                     _logger.LogError(context.Exception, "internal server error {mdg}", context.Exception.Message); //pour garder la trace du log
