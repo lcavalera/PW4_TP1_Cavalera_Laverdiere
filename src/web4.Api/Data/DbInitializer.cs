@@ -38,11 +38,11 @@ namespace Events.Api.Data
 
             var categories = new Categorie[]
 {
-                new Categorie { Nom=NomCategorie.Sport },
-                new Categorie { Nom=NomCategorie.Spectacle },
-                new Categorie { Nom=NomCategorie.Musique },
-                new Categorie { Nom=NomCategorie.Festival },
-                new Categorie { Nom=NomCategorie.Theatre }
+                new Categorie { Nom="Sport" },
+                new Categorie { Nom="Spectacle"},
+                new Categorie { Nom="Musique" },
+                new Categorie { Nom="Festival" },
+                new Categorie { Nom="Theatre" }
 };
 
             context.Categories.AddRange(categories);
