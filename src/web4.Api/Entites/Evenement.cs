@@ -25,5 +25,6 @@ namespace Events.Api.Entites
         [Required]
         public int VilleId { get; set; }
         public virtual Ville? Ville { get; set; }
+        public List<Participation> Participations { get; set; }
     }
 }
