@@ -34,9 +34,10 @@ namespace Events.Api.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<EvenementDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IEnumerable<EvenementDTO>>> Get()
+        public async Task<ActionResult<IEnumerable<EvenementDTO>>> Get(int pageIndex = 1, int pageCount = 10)
         {
-            return Ok(await _evenementsBL.ObtenirTout());
+            var evenements = await _evenementsBL.ObtenirTout();
+            return Ok(evenements.OrderBy(e=> e.DateDebut).Skip((pageIndex - 1) * pageCount).Take(pageCount));
         }
 
         /// <summary>
