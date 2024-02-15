@@ -24,18 +24,6 @@ namespace Events.Api.Data
 
             context.Villes.AddRange(villes);
 
-            var evenements = new Evenement[]
-{
-                new Evenement { Titre="Pentathlon des neiges", Description="Événement de plein air hivernal", Adresse="Plaines d'Abraham", DateDebut=new DateTime(2024,02,17), DateDeFin=new DateTime(2024,02,25), NomOrganisateur ="Ville de Québec", Ville=villes[0], Prix=0},
-                new Evenement { Titre="ONF Live in Canada", Description="Concert", Adresse="Rialto Theatre, 5723 Avenue du Parc", DateDebut=new DateTime(2024,03,03), DateDeFin=new DateTime(2024,03,03), NomOrganisateur ="J&B Entertainment", Ville=villes[1], Prix=60},
-                new Evenement { Titre="Ingrid St‑Pierre", Description="Concert seul au piano", Adresse="Grand Théâtre de Québec, 269 Bd René-Lévesque E", DateDebut=new DateTime(2024,02,17), DateDeFin=new DateTime(2024,02,20), NomOrganisateur ="Grand Théâtre Québec", Ville=villes[0], Prix=50},
-                new Evenement { Titre="Great Ice! Sled Dog Rides", Description="Promenades en chiens de traîneau", Adresse="Shore Acres, 237 Shore Acres Drive North Hero", DateDebut=new DateTime(2024,02,16), DateDeFin=new DateTime(2024,02,16), NomOrganisateur ="Great Ice", Ville=villes[3], Prix=13},
-                new Evenement { Titre="Basketball - Concordia vs UQAM", Description="Dernier match à domicile à la saison régulière!", Adresse="Centre sportif de l'UQAM, 1212 rue Sanguinet", DateDebut=new DateTime(2024,02,24), DateDeFin=new DateTime(2024,02,24), NomOrganisateur ="Citadins de l'UQAM", Ville=villes[1]},
-                new Evenement { Titre="Billy Tellier", Description="Souper spectacle d'humour", Adresse="Centre Maillet, 12 Ben-Martin Avenue", DateDebut=new DateTime(2024,05,03), DateDeFin=new DateTime(2024,05,05), NomOrganisateur ="Levée de fonds", Ville=villes[2]}
-};
-
-            context.Evenements.AddRange(evenements);
-
             var categories = new Categorie[]
 {
                 new Categorie { Nom="Sport" },
@@ -46,6 +34,18 @@ namespace Events.Api.Data
 };
 
             context.Categories.AddRange(categories);
+
+            var evenements = new Evenement[]
+{
+                new Evenement { Titre="Pentathlon des neiges", Description="Événement de plein air hivernal", Adresse="Plaines d'Abraham", DateDebut=new DateTime(2024,02,17), DateDeFin=new DateTime(2024,02,25), NomOrganisateur ="Ville de Québec", CategorieIds=[ 0, 3 ], Ville=villes[0], Prix=0},
+                new Evenement { Titre="ONF Live in Canada", Description="Concert", Adresse="Rialto Theatre, 5723 Avenue du Parc", DateDebut=new DateTime(2024,03,03), DateDeFin=new DateTime(2024,03,03), NomOrganisateur ="J&B Entertainment", CategorieIds=[ 1, 2 ], Ville=villes[1], Prix=60},
+                new Evenement { Titre="Ingrid St‑Pierre", Description="Concert seul au piano", Adresse="Grand Théâtre de Québec, 269 Bd René-Lévesque E", DateDebut=new DateTime(2024,02,17), DateDeFin=new DateTime(2024,02,20), NomOrganisateur ="Grand Théâtre Québec", CategorieIds=[ 2 ], Ville=villes[0], Prix=50},
+                new Evenement { Titre="Great Ice! Sled Dog Rides", Description="Promenades en chiens de traîneau", Adresse="Shore Acres, 237 Shore Acres Drive North Hero", DateDebut=new DateTime(2024,02,16), DateDeFin=new DateTime(2024,02,16), NomOrganisateur ="Great Ice", CategorieIds=[ 0, 3 ], Ville=villes[3], Prix=13},
+                new Evenement { Titre="Basketball - Concordia vs UQAM", Description="Dernier match à domicile à la saison régulière!", Adresse="Centre sportif de l'UQAM, 1212 rue Sanguinet", DateDebut=new DateTime(2024,02,24), DateDeFin=new DateTime(2024,02,24), NomOrganisateur ="Citadins de l'UQAM", CategorieIds=[ 0 ], Ville=villes[1]},
+                new Evenement { Titre="Billy Tellier", Description="Souper spectacle d'humour", Adresse="Centre Maillet, 12 Ben-Martin Avenue", DateDebut=new DateTime(2024,05,03), DateDeFin=new DateTime(2024,05,05), NomOrganisateur ="Levée de fonds", CategorieIds=[ 2, 4 ], Ville=villes[2]}
+};
+
+            context.Evenements.AddRange(evenements);
 
             var participations = new Participation[]
             {

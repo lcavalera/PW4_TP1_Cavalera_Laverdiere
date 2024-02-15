@@ -27,8 +27,8 @@ namespace Events.Api.BusinessLogic
         {
             //IEnumerable<Evenement>? evenements = await _evenementsRepository.ListAsync();
             //return evenements.Select(e => new EvenementDTO { Id=e.Id, Titre=e.Titre, Description=e.Description, Adresse=e.Adresse, NomOrganisateur=e.NomOrganisateur, Categories=e.Categories, DateDebut=e.DateDebut, DateDeFin=e.DateDeFin, Ville=e.Ville, Prix=e.Prix}).ToList();
-            var evenements = await _evenementsRepository.ListAsync();
-            return _mapper.Map<List<EvenementDTO>>(evenements.AsQueryable().Include(e => e.Categories));
+
+            return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
 
             //return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
         }
@@ -54,6 +54,7 @@ namespace Events.Api.BusinessLogic
                 Description = evenement.Description,
                 Adresse = evenement.Adresse,
                 NomOrganisateur = evenement.NomOrganisateur,
+                CategorieIds = evenement.CategorieIds,
                 DateDebut = evenement.DateDebut,
                 DateDeFin = evenement.DateDeFin,
                 VilleId = evenement.VilleId,
@@ -72,6 +73,7 @@ namespace Events.Api.BusinessLogic
             evenementAmodifier.Description = evenement.Description;
             evenementAmodifier.Adresse = evenement.Adresse;
             evenementAmodifier.NomOrganisateur = evenement.NomOrganisateur;
+            evenementAmodifier.CategorieIds = evenement.CategorieIds;
             evenementAmodifier.DateDebut = evenement.DateDebut;
             evenementAmodifier.DateDeFin = evenement.DateDeFin;
             evenementAmodifier.VilleId = evenement.VilleId;
