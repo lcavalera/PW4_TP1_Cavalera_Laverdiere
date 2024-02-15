@@ -15,6 +15,9 @@ namespace Events.Api.BusinessLogic
         {
             await Validations(demandeParticipation);
 
+            // toute demande ajouté est invalide,    #6 de l`énoncé
+            demandeParticipation.EstValide = false;
+
             await _participationRepo.AddAsync(_mapper.Map<Participation>(demandeParticipation));
         }
 
@@ -26,13 +29,14 @@ namespace Events.Api.BusinessLogic
 
         public async Task<ParticipationDTO?> ObtenirSelonId(int id)
         {
-            return _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
+            return _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
         }
 
         public async Task<List<ParticipationDTO>> ObtenirTout()
         {
-            var liste = _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
-            return liste.Where(l => l.EstValide).ToList();
+            //var liste = _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
+            //return liste.Where(l => l.EstValide).ToList();
+            return _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
         }
 
         public async Task Supprimer(int id)
@@ -51,6 +55,14 @@ namespace Events.Api.BusinessLogic
             }
             return participation.EstValide;
         }
+        //private ParticipationDTO? FiltreParticipationValide(ParticipationDTO participation)
+        //{
+        //    return participation.EstValide ? participation : throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={participation.Id})" } }; ;
+        //}
+        //private List<ParticipationDTO> FiltreParticipationValide(List<ParticipationDTO> participation)
+        //{
+        //    return participation.Where(p => p.EstValide).ToList();
+        //}
         private async Task Validations(ParticipationDTO demandeParticipation)
         {
             if (demandeParticipation == null)
