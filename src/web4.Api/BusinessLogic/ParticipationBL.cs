@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace Events.Api.BusinessLogic
 {
-    public class ParticipationBL(IAsyncRepository<Participation> participationRepo, IMapper mapper) : IParticipationBL
+    public class ParticipationBL(IAsyncParticipationRepository participationRepo, IMapper mapper) : IParticipationBL
     {
-        private readonly IAsyncRepository<Participation> _participationRepo = participationRepo;
+        private readonly IAsyncParticipationRepository _participationRepo = participationRepo;
         private readonly IMapper _mapper = mapper;
         public async Task Ajouter(ParticipationDTO demandeParticipation)
         {
@@ -45,7 +45,7 @@ namespace Events.Api.BusinessLogic
         }
         public async Task<bool> VerifierStatus(int id)
         {
-            return SimulerVerifierStatus(await ObtenirSelonId(id));
+            return SimulerVerifierStatus(_mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdVerifyStatus(id)));
         }
         private bool SimulerVerifierStatus(ParticipationDTO participation)
         {
@@ -55,14 +55,6 @@ namespace Events.Api.BusinessLogic
             }
             return participation.EstValide;
         }
-        //private ParticipationDTO? FiltreParticipationValide(ParticipationDTO participation)
-        //{
-        //    return participation.EstValide ? participation : throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={participation.Id})" } }; ;
-        //}
-        //private List<ParticipationDTO> FiltreParticipationValide(List<ParticipationDTO> participation)
-        //{
-        //    return participation.Where(p => p.EstValide).ToList();
-        //}
         private async Task Validations(ParticipationDTO demandeParticipation)
         {
             if (demandeParticipation == null)

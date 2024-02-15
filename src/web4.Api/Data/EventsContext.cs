@@ -13,7 +13,7 @@ namespace Events.Api.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Participation>().HasQueryFilter(p => p.EstValide); // .HasQueryFilter(p => EF.Property<bool>(p, "isValid") == false);
+            modelBuilder.Entity<Participation>().HasQueryFilter(p => p.EstValide);
             //modelBuilder.Entity<Evenement>().HasMany(e => e.Participations).WithOne(p => p.Evenement).OnDelete(DeleteBehavior.Cascade);
         }
 
