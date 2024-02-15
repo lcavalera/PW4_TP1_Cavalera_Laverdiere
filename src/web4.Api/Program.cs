@@ -47,13 +47,14 @@ builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connec
 builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
 
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
-builder.Services.AddScoped(typeof(AsyncRepositoryEvenements<Evenement>), typeof(AsyncRepositoryEvenements<Evenement>));
 
+builder.Services.AddScoped<IAsyncParticipationRepository, ParticipationAsyncRepository>();
 
 builder.Services.AddScoped<IVillesBL, VillesBL>();
 builder.Services.AddScoped<ICategorieBL, CategorieBL>();
 builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
 builder.Services.AddScoped<IParticipationBL, ParticipationBL>();
+
 
 builder.Services.AddControllers(options =>
 {

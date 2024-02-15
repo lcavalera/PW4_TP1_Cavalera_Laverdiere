@@ -7,13 +7,16 @@ using System.Collections.Generic;
 
 namespace Events.Api.BusinessLogic
 {
-    public class ParticipationBL(IAsyncRepository<Participation> participationRepo, IMapper mapper) : IParticipationBL
+    public class ParticipationBL(IAsyncParticipationRepository participationRepo, IMapper mapper) : IParticipationBL
     {
-        private readonly IAsyncRepository<Participation> _participationRepo = participationRepo;
+        private readonly IAsyncParticipationRepository _participationRepo = participationRepo;
         private readonly IMapper _mapper = mapper;
         public async Task Ajouter(ParticipationDTO demandeParticipation)
         {
             await Validations(demandeParticipation);
+
+            // toute demande ajouté est invalide,    #6 de l`énoncé
+            demandeParticipation.EstValide = false;
 
             await _participationRepo.AddAsync(_mapper.Map<Participation>(demandeParticipation));
         }
@@ -26,13 +29,14 @@ namespace Events.Api.BusinessLogic
 
         public async Task<ParticipationDTO?> ObtenirSelonId(int id)
         {
-            return _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
+            return _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
         }
 
         public async Task<List<ParticipationDTO>> ObtenirTout()
         {
-            var liste = _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
-            return liste.Where(l => l.EstValide).ToList();
+            //var liste = _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
+            //return liste.Where(l => l.EstValide).ToList();
+            return _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
         }
 
         public async Task Supprimer(int id)
@@ -41,7 +45,7 @@ namespace Events.Api.BusinessLogic
         }
         public async Task<bool> VerifierStatus(int id)
         {
-            return SimulerVerifierStatus(await ObtenirSelonId(id));
+            return SimulerVerifierStatus(_mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdVerifyStatus(id)));
         }
         private bool SimulerVerifierStatus(ParticipationDTO participation)
         {
