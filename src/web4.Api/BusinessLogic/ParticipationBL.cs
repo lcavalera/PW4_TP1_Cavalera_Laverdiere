@@ -31,7 +31,8 @@ namespace Events.Api.BusinessLogic
 
         public async Task<List<ParticipationDTO>> ObtenirTout()
         {
-            return _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
+            var liste = _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
+            return liste.Where(l => l.EstValide).ToList();
         }
 
         public async Task Supprimer(int id)
