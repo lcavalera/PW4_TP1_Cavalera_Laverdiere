@@ -14,7 +14,7 @@ namespace Events.Api.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Participation>().HasQueryFilter(p => p.EstValide);
-            //modelBuilder.Entity<Evenement>().HasMany(e => e.Participations).WithOne(p => p.Evenement).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Evenement>().HasMany(e => e.Participations).WithOne(p => p.Evenement).OnDelete(DeleteBehavior.Cascade);
         }
 
         public DbSet<Categorie>? Categories { get; set; }
