@@ -17,7 +17,7 @@ namespace Events.Api.Entites.DTO
         public string Adresse { get; set; }
         [Required]
         public string NomOrganisateur { get; set; }
-        public int? Prix { get; set; }
+        public int Prix { get; set; }
 
         [Required]
         public List<int> CategorieIds { get; set; }

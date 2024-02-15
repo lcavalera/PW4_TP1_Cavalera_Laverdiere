@@ -47,7 +47,7 @@ builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connec
 builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
 
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
-
+builder.Services.AddScoped(typeof(AsyncRepositoryEvenements<Evenement>), typeof(AsyncRepositoryEvenements<Evenement>));
 
 
 builder.Services.AddScoped<IVillesBL, VillesBL>();

@@ -10,12 +10,12 @@ namespace Events.Api.BusinessLogic
 {
     public class EvenementsBL : IEvenementsBL
     {
-        private readonly IAsyncRepository<Evenement> _evenementsRepository;
+        private readonly AsyncRepositoryEvenements<Evenement> _evenementsRepository;
         private readonly IAsyncRepository<Categorie> _categoriesRepository;
         private readonly IAsyncRepository<Ville> _villesRepository;
         private readonly IMapper _mapper;
 
-        public EvenementsBL(IAsyncRepository<Evenement> evenementsRepository, IAsyncRepository<Categorie> categoriesRepository, IAsyncRepository<Ville> villesRepository, IMapper mapper)
+        public EvenementsBL(AsyncRepositoryEvenements<Evenement> evenementsRepository, IAsyncRepository<Categorie> categoriesRepository, IAsyncRepository<Ville> villesRepository, IMapper mapper)
         {
             _evenementsRepository = evenementsRepository;
             _categoriesRepository = categoriesRepository;
@@ -34,6 +34,7 @@ namespace Events.Api.BusinessLogic
         }
         public async Task<EvenementDTO> ObtenirSelonId(int id)
         {
+            int total = await _evenementsRepository.GetTotal(id);
             return _mapper.Map<EvenementDTO>(await _evenementsRepository.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
         }
 
