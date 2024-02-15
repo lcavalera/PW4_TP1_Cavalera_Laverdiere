@@ -23,7 +23,7 @@ namespace Events.Api.Entites
         public ICollection<Categorie> Categories { get; set; }
 
         [Required]
-        public int VilleID { get; set; }
+        public int VilleId { get; set; }
         public virtual Ville? Ville { get; set; }
     }
 }

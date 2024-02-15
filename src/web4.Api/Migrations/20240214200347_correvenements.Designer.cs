@@ -3,6 +3,7 @@ using System;
 using Events.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Events.Api.Migrations
 {
     [DbContext(typeof(EventsContext))]
-    partial class EventsContextModelSnapshot : ModelSnapshot
+    [Migration("20240214200347_correvenements")]
+    partial class correvenements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +36,8 @@ namespace Events.Api.Migrations
                     b.Property<int?>("EvenementId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Nom")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Nom")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

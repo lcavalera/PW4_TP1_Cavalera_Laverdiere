@@ -23,7 +23,8 @@ namespace Events.Api.Entites.DTO
         public List<int> CategoriesIds { get; set; }
 
         [Required]
-        public int VilleID { get; set; }
-        public Ville? Ville { get; set; }
+        public int VilleId { get; set; }
+
+        //public Ville Ville { get; set; }
     }
 }

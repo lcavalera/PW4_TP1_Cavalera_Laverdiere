@@ -3,6 +3,7 @@ using Events.Api.Data;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Events.Api.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Events.Api.BusinessLogic
@@ -26,6 +27,8 @@ namespace Events.Api.BusinessLogic
         {
             //IEnumerable<Evenement>? evenements = await _evenementsRepository.ListAsync();
             //return evenements.Select(e => new EvenementDTO { Id=e.Id, Titre=e.Titre, Description=e.Description, Adresse=e.Adresse, NomOrganisateur=e.NomOrganisateur, Categories=e.Categories, DateDebut=e.DateDebut, DateDeFin=e.DateDeFin, Ville=e.Ville, Prix=e.Prix}).ToList();
+            //var evenements = await _evenementsRepository.ListAsync();
+            //return _mapper.Map<List<EvenementDTO>>(evenements.AsQueryable().Include(e=> e.Categories));
 
             return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
         }
@@ -37,25 +40,34 @@ namespace Events.Api.BusinessLogic
         public async Task<IEnumerable<EvenementDTO>> ObtenirSelonIdVille(int villeId)
         {
             IEnumerable<EvenementDTO> evenements = await ObtenirTout();
-            return evenements.Where(p => p.VilleID == villeId).ToList();
+            return evenements.Where(p => p.VilleId == villeId).ToList();
         }
 
         public async Task Ajouter(EvenementDTO evenement)
         {
             await Validations(evenement);
 
-            await _evenementsRepository.AddAsync(new Evenement
-            {
-                Id = evenement.Id,
-                Titre = evenement.Titre,
-                Description = evenement.Description,
-                Adresse = evenement.Adresse,
-                NomOrganisateur = evenement.NomOrganisateur,
-                DateDebut = evenement.DateDebut,
-                DateDeFin = evenement.DateDeFin,
-                VilleID = evenement.VilleID,
-                Prix = evenement.Prix
-            });
+            await _evenementsRepository.AddAsync(_mapper.Map<Evenement>(evenement));
+            //List<Categorie> categories = new List<Categorie>();
+
+            //foreach (int id in evenement.CategoriesIds)
+            //{
+            //    categories.Add(await _categoriesRepository.GetByIdAsync(id));
+            //}
+
+            //await _evenementsRepository.AddAsync(new Evenement
+            //{
+            //    Id = evenement.Id,
+            //    Titre = evenement.Titre,
+            //    Description = evenement.Description,
+            //    Adresse = evenement.Adresse,
+            //    NomOrganisateur = evenement.NomOrganisateur,
+            //    DateDebut = evenement.DateDebut,
+            //    DateDeFin = evenement.DateDeFin,
+            //    Categories = categories,
+            //    VilleId = evenement.VilleId,
+            //    Prix = evenement.Prix,
+            //});
         }
 
         public async Task Modifier(int id, EvenementDTO evenement)
@@ -71,7 +83,7 @@ namespace Events.Api.BusinessLogic
             evenementAmodifier.NomOrganisateur = evenement.NomOrganisateur;
             evenementAmodifier.DateDebut = evenement.DateDebut;
             evenementAmodifier.DateDeFin = evenement.DateDeFin;
-            evenementAmodifier.VilleID = evenement.VilleID;
+            evenementAmodifier.VilleId = evenement.VilleId;
             evenementAmodifier.Prix = evenement.Prix;
 
             await _evenementsRepository.EditAsync(evenementAmodifier);
@@ -102,7 +114,7 @@ namespace Events.Api.BusinessLogic
             if (!await VilleExiste(evenement))
             {
                 //NotFound
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleID})" } };
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (ville id={evenement.VilleId})" } };
             }
 
             if (!await PossiedeCategorie(evenement))
@@ -128,7 +140,7 @@ namespace Events.Api.BusinessLogic
         {
             var villes = await _villesRepository.ListAsync();
 
-            if (villes.Any(v => v.Id == evenement.VilleID))
+            if (villes.Any(v => v.Id == evenement.VilleId))
             {
                 return true;
             }
