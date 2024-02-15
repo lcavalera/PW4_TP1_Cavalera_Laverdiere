@@ -43,7 +43,7 @@ namespace Events.Api.BusinessLogic
         {
             CategorieDTO? categorie = await ObtenirSelonId(id);
             var liste = await _evenementsBL.ObtenirTout(); ////////////////////////////////////////////// a changer apres le passage devenement en dto        //////////////////////////////////////////////////////////////////////////
-            bool evenementAssocier = liste.Any(e => e.CategoriesIds.Any(c => c == categorie.Id));
+            bool evenementAssocier = liste.Any(e => e.CategorieIds.Any(c => c == categorie.Id));
             if (evenementAssocier)
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la categorie: un ou plusieurs évènement utilise cette catégorie " } };

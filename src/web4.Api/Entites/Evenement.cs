@@ -20,7 +20,7 @@ namespace Events.Api.Entites
         public int? Prix { get; set; }
 
         [Required]
-        public ICollection<Categorie> Categories { get; set; }
+        public List<Categorie> Categories { get; set; }
 
         [Required]
         public int VilleId { get; set; }

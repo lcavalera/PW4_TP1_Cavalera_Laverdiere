@@ -27,10 +27,10 @@ namespace Events.Api.BusinessLogic
         {
             //IEnumerable<Evenement>? evenements = await _evenementsRepository.ListAsync();
             //return evenements.Select(e => new EvenementDTO { Id=e.Id, Titre=e.Titre, Description=e.Description, Adresse=e.Adresse, NomOrganisateur=e.NomOrganisateur, Categories=e.Categories, DateDebut=e.DateDebut, DateDeFin=e.DateDeFin, Ville=e.Ville, Prix=e.Prix}).ToList();
-            //var evenements = await _evenementsRepository.ListAsync();
-            //return _mapper.Map<List<EvenementDTO>>(evenements.AsQueryable().Include(e=> e.Categories));
+            var evenements = await _evenementsRepository.ListAsync();
+            return _mapper.Map<List<EvenementDTO>>(evenements.AsQueryable().Include(e => e.Categories));
 
-            return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
+            //return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
         }
         public async Task<EvenementDTO> ObtenirSelonId(int id)
         {
@@ -47,27 +47,18 @@ namespace Events.Api.BusinessLogic
         {
             await Validations(evenement);
 
-            await _evenementsRepository.AddAsync(_mapper.Map<Evenement>(evenement));
-            //List<Categorie> categories = new List<Categorie>();
-
-            //foreach (int id in evenement.CategoriesIds)
-            //{
-            //    categories.Add(await _categoriesRepository.GetByIdAsync(id));
-            //}
-
-            //await _evenementsRepository.AddAsync(new Evenement
-            //{
-            //    Id = evenement.Id,
-            //    Titre = evenement.Titre,
-            //    Description = evenement.Description,
-            //    Adresse = evenement.Adresse,
-            //    NomOrganisateur = evenement.NomOrganisateur,
-            //    DateDebut = evenement.DateDebut,
-            //    DateDeFin = evenement.DateDeFin,
-            //    Categories = categories,
-            //    VilleId = evenement.VilleId,
-            //    Prix = evenement.Prix,
-            //});
+            await _evenementsRepository.AddAsync(new Evenement
+            {
+                Id = evenement.Id,
+                Titre = evenement.Titre,
+                Description = evenement.Description,
+                Adresse = evenement.Adresse,
+                NomOrganisateur = evenement.NomOrganisateur,
+                DateDebut = evenement.DateDebut,
+                DateDeFin = evenement.DateDeFin,
+                VilleId = evenement.VilleId,
+                Prix = evenement.Prix,
+            });
         }
 
         public async Task Modifier(int id, EvenementDTO evenement)
@@ -149,7 +140,7 @@ namespace Events.Api.BusinessLogic
 
         private async Task<bool> PossiedeCategorie(EvenementDTO evenement)
         {
-            foreach (int Id in evenement.CategoriesIds)
+            foreach (int Id in evenement.CategorieIds.Select(c=> c).ToList())
             {
                 var categories = await _categoriesRepository.ListAsync();
 
