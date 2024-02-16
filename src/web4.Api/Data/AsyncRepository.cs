@@ -12,7 +12,7 @@ namespace Events.Api.Data
             _context = context;
         }
 
-        public async Task<TBaseEntity> GetByIdAsync(int id)
+        public async Task<TBaseEntity?> GetByIdAsync(int id)
         {
             return await _context.Set<TBaseEntity>().AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
         }

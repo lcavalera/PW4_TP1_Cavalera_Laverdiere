@@ -25,8 +25,12 @@ namespace Events.Api.BusinessLogic
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
-            
-            await _categorieRepo.EditAsync(_mapper.Map<Categorie>(categorie));
+
+            CategorieDTO? categorieAmodifier = await ObtenirSelonId(id);
+
+            categorieAmodifier.Nom = categorie.Nom;
+
+            await _categorieRepo.EditAsync(_mapper.Map<Categorie>(categorieAmodifier));
         }
 
         public async Task<CategorieDTO?> ObtenirSelonId(int id)
@@ -50,5 +54,18 @@ namespace Events.Api.BusinessLogic
             }
             await _categorieRepo.DeleteAsync(_mapper.Map<Categorie>(categorie));
         }
+        private async Task<Categorie> CategorieExiste(int id)
+        {
+            Categorie categorie = await _categorieRepo.GetByIdAsync(id);
+
+            if (categorie == null)
+            {
+                //NotFound
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
+            }
+
+            return categorie;
+        }
+
     }
 }
