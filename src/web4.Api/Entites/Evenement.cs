@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Events.Api.Filters.Swagger;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Events.Api.Entites
@@ -25,6 +26,7 @@ namespace Events.Api.Entites
         [Required]
         public int VilleId { get; set; }
         public virtual Ville? Ville { get; set; }
+        [SwaggerIgnore]
         public List<Participation> Participations { get; set; }
     }
 }

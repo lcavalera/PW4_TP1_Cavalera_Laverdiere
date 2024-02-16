@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Events.Api.Filters.Swagger;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Events.Api.Entites
@@ -13,6 +14,7 @@ namespace Events.Api.Entites
         public string Nom { get; set; }
         [Required]
         public string Prenom { get; set; }
+        [SwaggerIgnore]
         public bool EstValide { get; set; }
 
         [Required]

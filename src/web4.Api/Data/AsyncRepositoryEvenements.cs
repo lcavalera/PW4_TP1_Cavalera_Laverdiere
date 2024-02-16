@@ -14,5 +14,14 @@ namespace Events.Api.Data
             Evenement? evenement = await _context.Set<Evenement>().Include(e=> e.Participations).AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
             return evenement == null ? 0 : evenement.Prix * evenement.Participations.Sum(c => c.NombrePlaces);
         }
+        //public async Task GetVillesPopulaires()
+        //{
+        //    var test = await _context.Set<Evenement>().ToListAsync();
+        //    var meh = test.Select(c => c.VilleId);
+        //    var h = meh.ToList();
+        //    var t = h.Distinct();
+        //    var s = t.Count();
+
+        //}
     }
 }
