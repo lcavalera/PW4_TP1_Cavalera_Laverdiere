@@ -16,6 +16,6 @@ namespace Events.Api.Entites.DTO
 
         [Required]
         public int EvenementID { get; set; }
-        public virtual Evenement? Evenement { get; set; }
+        //public virtual Evenement? Evenement { get; set; }
     }
 }

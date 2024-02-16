@@ -10,12 +10,12 @@ namespace Events.Api.BusinessLogic
 {
     public class EvenementsBL : IEvenementsBL
     {
-        private readonly AsyncRepositoryEvenements<Evenement> _evenementsRepository;
+        private readonly IAsyncRepositoryEvenements _evenementsRepository;
         private readonly IAsyncRepository<Categorie> _categoriesRepository;
         private readonly IAsyncRepository<Ville> _villesRepository;
         private readonly IMapper _mapper;
 
-        public EvenementsBL(AsyncRepositoryEvenements<Evenement> evenementsRepository, IAsyncRepository<Categorie> categoriesRepository, IAsyncRepository<Ville> villesRepository, IMapper mapper)
+        public EvenementsBL(IAsyncRepositoryEvenements evenementsRepository, IAsyncRepository<Categorie> categoriesRepository, IAsyncRepository<Ville> villesRepository, IMapper mapper)
         {
             _evenementsRepository = evenementsRepository;
             _categoriesRepository = categoriesRepository;
