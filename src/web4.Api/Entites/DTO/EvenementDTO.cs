@@ -24,7 +24,5 @@ namespace Events.Api.Entites.DTO
 
         [Required]
         public int VilleId { get; set; }
-
-        //public Ville Ville { get; set; }
     }
 }

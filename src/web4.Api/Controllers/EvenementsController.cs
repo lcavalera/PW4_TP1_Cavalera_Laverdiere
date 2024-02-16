@@ -137,7 +137,7 @@ namespace Events.Api.Controllers
         /// Modification d'un'evenement
         /// </summary>
         /// <param name="id">id de l'evenement à modifier</param>
-        /// <param name="ville"></param>
+        /// <param name="evenement"></param>
         /// <returns>La evenement a été modifié</returns>
         /// <response code="200">traitement executé avec succès, contenu retourné</response>
         /// <response code="204">evenement modifié avec succès, aucune contenu retourné</response>
@@ -158,11 +158,11 @@ namespace Events.Api.Controllers
         }
 
         /// <summary>
-        /// Supprime une ville
+        /// Supprime un evenement
         /// </summary>
-        /// <param name="id">id de la ville à supprimer</param>
-        /// <response code="204">ville supprimé avec succès, aucune contenu retourné</response>
-        /// <response code="404">ville introuvable pour l'id spécifié</response>
+        /// <param name="id">id de l'evenement à supprimer</param>
+        /// <response code="204">evenement supprimé avec succès, aucune contenu retourné</response>
+        /// <response code="404">evenement introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<EvenementsController>/5
         [HttpDelete("{id}")]

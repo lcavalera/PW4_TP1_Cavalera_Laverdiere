@@ -21,9 +21,6 @@ namespace Events.Api.BusinessLogic
 
         public async Task<IEnumerable<VilleDTO>> ObtenirTout()
         {
-            //IEnumerable<Ville>? villes = await _villesRepository.ListAsync();
-            //return villes.Select(v => new VilleDTO { Id=v.Id, Nom=v.Nom, Region=v.Region }).ToList();
-
             return _mapper.Map<List<VilleDTO>>(await _villesRepository.ListAsync());
         }
 

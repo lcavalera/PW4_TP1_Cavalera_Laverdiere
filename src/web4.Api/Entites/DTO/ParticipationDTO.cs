@@ -21,7 +21,5 @@ namespace Events.Api.Entites.DTO
 
         [Required]
         public int EvenementID { get; set; }
-        [SwaggerIgnore]
-        public virtual Evenement? Evenement { get; set; }
     }
 }

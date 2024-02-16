@@ -25,16 +25,14 @@ namespace Events.Api.BusinessLogic
 
         public async Task<IEnumerable<EvenementDTO>> ObtenirTout()
         {
-            //IEnumerable<Evenement>? evenements = await _evenementsRepository.ListAsync();
-            //return evenements.Select(e => new EvenementDTO { Id=e.Id, Titre=e.Titre, Description=e.Description, Adresse=e.Adresse, NomOrganisateur=e.NomOrganisateur, Categories=e.Categories, DateDebut=e.DateDebut, DateDeFin=e.DateDeFin, Ville=e.Ville, Prix=e.Prix}).ToList();
-
             return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
-
-            //return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
         }
+
         public async Task<EvenementDTO> ObtenirSelonId(int id)
         {
-            int total = await _evenementsRepository.GetTotal(id);
+            //Activer pour verifier la methode pour le calcul de ventes totales
+            //int total = await _evenementsRepository.GetTotal(id);
+
             return _mapper.Map<EvenementDTO>(await _evenementsRepository.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
         }
 

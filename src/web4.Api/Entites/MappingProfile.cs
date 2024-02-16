@@ -14,13 +14,7 @@ namespace Events.Api.Entites
             CreateMap<ParticipationDTO, Participation>();
 
             CreateMap<Ville, VilleDTO>();
-            //CreateMap<VilleDTO, Ville>();
-
             CreateMap<Evenement, EvenementDTO>();
-                //.ForMember(dest => dest.CategorieIds, opt => opt.MapFrom(src => src.CategorieIds.Select(c => c.Id).ToList()));
-
-            CreateMap<EvenementDTO, Evenement>();
-                //.ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories.Select(id => new Categorie { Id = id })));
 
         }
     }
