@@ -3,6 +3,7 @@ using Events.Api.BusinessLogic;
 using Events.Api.Data;
 using Events.Api.Entites;
 using Events.Api.Extensions;
+using Events.Api.Filters.Swagger;
 using Events.Api.Filters.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +38,10 @@ builder.Services.AddSwaggerGen(options =>
     });
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.EnableAnnotations();
+    options.SchemaFilter<SwaggerSkipPropertyFilter>();
     options.IncludeXmlComments(xmlPath);
+    
 });
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-
+using System.ComponentModel.DataAnnotations.@Schema;
+using Swashbuckle.AspNetCore.Annotations;
+using Events.Api.Filters.Swagger;
 namespace Events.Api.Entites.DTO
 {
     public class ParticipationDTO : BaseEntity
@@ -14,7 +16,7 @@ namespace Events.Api.Entites.DTO
         public string Nom { get; set; }
         [Required]
         public string Prenom { get; set; }
-        //[JsonIgnore]
+        [SwaggerIgnore]
         public bool EstValide { get; set; }
 
         [Required]
