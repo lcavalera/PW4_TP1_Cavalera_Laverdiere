@@ -1,7 +1,7 @@
 ﻿using Events.Api.Entites;
 using System.Linq.Expressions;
 
-namespace Events.Api.Data
+namespace Events.Api.Data.Interfaces
 {
     public interface IAsyncRepository<TBaseEntity> where TBaseEntity : BaseEntity
     {

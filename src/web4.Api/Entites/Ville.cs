@@ -7,6 +7,7 @@ namespace Events.Api.Entites
         [Required]
         public string Nom { get; set; }
         public Region Region { get; set; }
+        public List<Evenement>? Evenements { get; set; }
     }
 
     public enum Region

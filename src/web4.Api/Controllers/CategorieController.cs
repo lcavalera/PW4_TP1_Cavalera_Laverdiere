@@ -1,4 +1,4 @@
-﻿using Events.Api.BusinessLogic;
+﻿using Events.Api.BusinessLogic.Interfaces;
 using Events.Api.Data;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;

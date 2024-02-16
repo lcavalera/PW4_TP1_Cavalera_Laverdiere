@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
-using Events.Api.Data;
+using Events.Api.BusinessLogic.Interfaces;
+using Events.Api.Data.Interfaces;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Events.Api.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace Events.Api.BusinessLogic
+namespace Events.Api.BusinessLogic.Classes
 {
     public class EvenementsBL : IEvenementsBL
     {
@@ -27,7 +28,6 @@ namespace Events.Api.BusinessLogic
         {
             //IEnumerable<Evenement>? evenements = await _evenementsRepository.ListAsync();
             //return evenements.Select(e => new EvenementDTO { Id=e.Id, Titre=e.Titre, Description=e.Description, Adresse=e.Adresse, NomOrganisateur=e.NomOrganisateur, Categories=e.Categories, DateDebut=e.DateDebut, DateDeFin=e.DateDeFin, Ville=e.Ville, Prix=e.Prix}).ToList();
-
             return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
 
             //return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
@@ -143,7 +143,7 @@ namespace Events.Api.BusinessLogic
 
         private async Task<bool> PossiedeCategorie(EvenementDTO evenement)
         {
-            foreach (int Id in evenement.CategorieIds.Select(c=> c).ToList())
+            foreach (int Id in evenement.CategorieIds.Select(c => c).ToList())
             {
                 var categories = await _categoriesRepository.ListAsync();
 

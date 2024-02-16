@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
-using Events.Api.Data;
+using Events.Api.BusinessLogic.Interfaces;
+using Events.Api.Data.Interfaces;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Events.Api.Exceptions;
 
-namespace Events.Api.BusinessLogic
+namespace Events.Api.BusinessLogic.Classes
 {
     public class VillesBL : IVillesBL
     {

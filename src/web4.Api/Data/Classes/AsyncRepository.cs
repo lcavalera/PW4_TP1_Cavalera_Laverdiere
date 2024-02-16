@@ -1,9 +1,10 @@
-﻿using Events.Api.Entites;
+﻿using Events.Api.Data.Interfaces;
+using Events.Api.Entites;
 using Microsoft.EntityFrameworkCore;
 
-namespace Events.Api.Data
+namespace Events.Api.Data.Classes
 {
-    public class AsyncRepository<TBaseEntity>: IAsyncRepository<TBaseEntity> where TBaseEntity : BaseEntity
+    public class AsyncRepository<TBaseEntity> : IAsyncRepository<TBaseEntity> where TBaseEntity : BaseEntity
     {
         protected readonly EventsContext _context;
 
