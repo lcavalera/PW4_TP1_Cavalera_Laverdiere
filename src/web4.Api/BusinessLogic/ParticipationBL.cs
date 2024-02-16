@@ -46,11 +46,9 @@ namespace Events.Api.BusinessLogic
         public async Task<bool> VerifierStatus(int id)
         {
             var participation = _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdVerifyStatus(id));
-            if (participation is null)
-            {
-                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
-            }
-            return SimulerVerifierStatus(participation);
+            return participation is null
+                ? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }
+                : SimulerVerifierStatus(participation);
         }
         private bool SimulerVerifierStatus(ParticipationDTO participation)
         {
