@@ -10,5 +10,6 @@ namespace Events.Api.BusinessLogic.Interfaces
         Task Ajouter(VilleDTO ville);
         Task Modifier(int id, VilleDTO ville);
         Task Supprimer(int id);
+        Task<List<string>> ObtenirVillesPopulaires();
     }
 }

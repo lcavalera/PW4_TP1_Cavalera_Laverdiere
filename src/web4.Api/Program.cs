@@ -56,6 +56,7 @@ builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
 builder.Services.AddScoped<IAsyncRepositoryEvenements, AsyncRepositoryEvenements>();
 builder.Services.AddScoped<IAsyncParticipationRepository, ParticipationAsyncRepository>();
+builder.Services.AddScoped<IAsyncRepositoryVilles, AsyncRepositoryVilles>();
 
 builder.Services.AddScoped<IVillesBL, VillesBL>();
 builder.Services.AddScoped<ICategorieBL, CategorieBL>();

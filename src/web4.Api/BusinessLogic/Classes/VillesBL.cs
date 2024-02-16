@@ -9,11 +9,11 @@ namespace Events.Api.BusinessLogic.Classes
 {
     public class VillesBL : IVillesBL
     {
-        private readonly IAsyncRepository<Ville> _villesRepository;
+        private readonly IAsyncRepositoryVilles _villesRepository;
         private readonly IAsyncRepository<Evenement> _evenementsRepository;
         private readonly IMapper _mapper;
 
-        public VillesBL(IAsyncRepository<Ville> villesRepository, IAsyncRepository<Evenement> evenementsRepository, IMapper mapper)
+        public VillesBL(IAsyncRepositoryVilles villesRepository, IAsyncRepository<Evenement> evenementsRepository, IMapper mapper)
         {
             _villesRepository = villesRepository;
             _evenementsRepository = evenementsRepository;
@@ -98,6 +98,10 @@ namespace Events.Api.BusinessLogic.Classes
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la ville: un ou plusieurs évènement utilise cette ville" } };
             }
+        }
+        public async Task<List<string>> ObtenirVillesPopulaires()
+        {
+            return await _villesRepository.GetVillesPopulaires();
         }
     }
 }
