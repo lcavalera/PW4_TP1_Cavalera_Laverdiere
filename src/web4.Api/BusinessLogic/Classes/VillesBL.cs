@@ -27,12 +27,13 @@ namespace Events.Api.BusinessLogic.Classes
 
         public async Task<VilleDTO> ObtenirSelonId(int id)
         {
-            return _mapper.Map<VilleDTO>(await _villesRepository.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
+            Ville ville = await VilleExiste(id);
+            return _mapper.Map<VilleDTO>(ville);
         }
 
         public async Task Ajouter(VilleDTO ville)
         {
-            await Validations(ville);
+            Validations(ville);
 
             await _villesRepository.AddAsync(new Ville
             {
@@ -44,7 +45,7 @@ namespace Events.Api.BusinessLogic.Classes
 
         public async Task Modifier(int id, VilleDTO ville)
         {
-            await Validations(ville);
+            Validations(ville);
 
             Ville villeAModifier = await VilleExiste(id);
 
@@ -65,7 +66,7 @@ namespace Events.Api.BusinessLogic.Classes
             await _villesRepository.DeleteAsync(ville);
         }
 
-        private async Task Validations(VilleDTO ville)
+        private void Validations(VilleDTO ville)
         {
             if (ville == null)
             {
@@ -76,7 +77,7 @@ namespace Events.Api.BusinessLogic.Classes
 
         private async Task<Ville> VilleExiste(int id)
         {
-            Ville ville = await _villesRepository.GetByIdAsync(id);
+            Ville? ville = await _villesRepository.GetByIdAsync(id);
 
             if (ville == null)
             {

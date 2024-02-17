@@ -26,16 +26,13 @@ namespace Events.Api.BusinessLogic.Classes
 
         public async Task<IEnumerable<EvenementDTO>> ObtenirTout()
         {
-            //IEnumerable<Evenement>? evenements = await _evenementsRepository.ListAsync();
-            //return evenements.Select(e => new EvenementDTO { Id=e.Id, Titre=e.Titre, Description=e.Description, Adresse=e.Adresse, NomOrganisateur=e.NomOrganisateur, Categories=e.Categories, DateDebut=e.DateDebut, DateDeFin=e.DateDeFin, Ville=e.Ville, Prix=e.Prix}).ToList();
             return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
-
-            //return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
         }
+
         public async Task<EvenementDTO> ObtenirSelonId(int id)
         {
-            int total = await _evenementsRepository.GetTotal(id);
-            return _mapper.Map<EvenementDTO>(await _evenementsRepository.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
+            Evenement evenement = await EvenementExiste(id);
+            return _mapper.Map<EvenementDTO>(evenement);
         }
 
         public async Task<IEnumerable<EvenementDTO>> ObtenirSelonIdVille(int villeId)
@@ -86,9 +83,7 @@ namespace Events.Api.BusinessLogic.Classes
         public async Task Supprimer(int id)
         {
             Evenement evenement = await EvenementExiste(id);
-
             await _evenementsRepository.DeleteAsync(evenement);
-
         }
 
         private async Task Validations(EvenementDTO evenement)
@@ -119,7 +114,7 @@ namespace Events.Api.BusinessLogic.Classes
 
         private async Task<Evenement> EvenementExiste(int id)
         {
-            var evenement = await _evenementsRepository.GetByIdAsync(id);
+            Evenement? evenement = await _evenementsRepository.GetByIdAsync(id);
 
             if (evenement == null)
             {

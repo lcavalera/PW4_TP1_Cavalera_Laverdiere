@@ -2,21 +2,30 @@
 using Events.Api.BusinessLogic.Interfaces;
 using Events.Api.Data.Interfaces;
 using Events.Api.Entites.DTO;
+using Microsoft.Extensions.Logging;
 
 namespace Events.Api.BusinessLogic.Classes
 {
-    public class StatistiquesBL(IAsyncRepositoryVilles villesRepo, IAsyncRepositoryEvenements evenementsRepo, IMapper mapper) : IStatistiquesBL
+    public class StatistiquesBL(IAsyncRepositoryVilles villesRepo, IAsyncRepositoryEvenements evenementsRepo) : IStatistiquesBL
     {
         private readonly IAsyncRepositoryVilles _villesRepo = villesRepo;
         private readonly IAsyncRepositoryEvenements _evenementsRepo = evenementsRepo;
-        private readonly IMapper _mapper = mapper;
-        public async Task<List<string>> ObtenirVillesPopulairesAsync()
+        public async Task<List<VillesPopulairesDTO>> ObtenirVillesPopulairesAsync()
         {
-            return await _villesRepo.GetVillesPopulairesAsync();
+            var villes = await _villesRepo.GetVillesEvenementsAsync();
+
+            List<VillesPopulairesDTO> liste = [];
+            foreach (var v in villes)
+            {
+                liste.Add(new VillesPopulairesDTO { Nom = v.Nom, NbEvenements = v.Evenements.Count() });
+            }
+
+            return liste.OrderByDescending(v=> v.NbEvenements).Take(10).ToList();
         }
         public async Task<List<EvenementsProfitablesDTO>> ObtenirEvenementsProfitables()
         {
-            var events = _mapper.Map<List<EvenementDTO>>(await _evenementsRepo.ListAsync());
+            var events = await _evenementsRepo.ListAsync();
+
             List<EvenementsProfitablesDTO> liste = [];
             foreach (var e in events)
             {

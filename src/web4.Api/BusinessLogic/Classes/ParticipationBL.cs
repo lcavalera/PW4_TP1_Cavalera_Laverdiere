@@ -35,7 +35,8 @@ namespace Events.Api.BusinessLogic.Classes
 
         public async Task<ParticipationDTO?> ObtenirSelonId(int id)
         {
-            return _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
+            Participation participation = await ParticipationExiste(id);
+            return _mapper.Map<ParticipationDTO>(participation);
         }
 
         public async Task<List<ParticipationDTO>> ObtenirTout()
@@ -45,8 +46,10 @@ namespace Events.Api.BusinessLogic.Classes
 
         public async Task Supprimer(int id)
         {
-            await _participationRepo.DeleteAsync(_mapper.Map<Participation>(await ObtenirSelonId(id)));
+            Participation participation = await ParticipationExiste(id);
+            await _participationRepo.DeleteAsync(participation);
         }
+
         public async Task<bool> VerifierStatus(int id)
         {
             var participation = _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdVerifyStatus(id));
@@ -83,6 +86,19 @@ namespace Events.Api.BusinessLogic.Classes
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Cette adresse électronique participe déjà à cet Évènement" } };
             }
+        }
+
+        private async Task<Participation> ParticipationExiste(int id)
+        {
+            Participation? participation = await _participationRepo.GetByIdAsync(id);
+
+            if (participation == null)
+            {
+                //NotFound
+                throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } };
+            }
+
+            return participation;
         }
     }
 }

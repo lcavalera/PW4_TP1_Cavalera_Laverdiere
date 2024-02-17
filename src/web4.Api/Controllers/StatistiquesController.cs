@@ -11,15 +11,43 @@ namespace Events.Api.Controllers
     public class StatistiquesController(IStatistiquesBL statistiquesBL) : ControllerBase
     {
         private readonly IStatistiquesBL _statistiquesBL = statistiquesBL;
+
+        /// <summary>
+        /// Retourne une liste des évènements en ordre de rentabilité
+        /// </summary>
+        /// <remarks>
+        /// 
+        ///     GET api/evenements
+        ///
+        /// </remarks>
+        /// <response code="200">évènements trouvés et retournés</response>
+        /// <response code="500">service indisponible pour le moment</response>
+        /// <returns></returns>
         // GET: api/<StatistiquesController>
         [HttpGet("/GetEvenementsProfitables")]
+        [ProducesResponseType(typeof(List<EvenementsProfitablesDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public Task<List<EvenementsProfitablesDTO>> Get()
         {
             return _statistiquesBL.ObtenirEvenementsProfitables();
         }
+
+        /// <summary>
+        /// Retourne une liste des villes le plus populaires en ordre de nombre des évènements
+        /// </summary>
+        /// <remarks>
+        /// 
+        ///     GET api/villes
+        ///
+        /// </remarks>
+        /// <response code="200">villes trouvés et retournés</response>
+        /// <response code="500">service indisponible pour le moment</response>
+        /// <returns></returns>
         // GET: api/<StatistiquesController>
         [HttpGet("/GetVillesPopulaires")]
-        public async Task<List<string>> GetVillesPopulaires()
+        [ProducesResponseType(typeof(List<VillesPopulairesDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<List<VillesPopulairesDTO>> GetVillesPopulaires()
         {
             return await _statistiquesBL.ObtenirVillesPopulairesAsync();
         }

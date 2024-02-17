@@ -4,7 +4,7 @@ namespace Events.Api.BusinessLogic.Interfaces
 {
     public interface IStatistiquesBL
     {
-        Task<List<string>> ObtenirVillesPopulairesAsync();
+        Task<List<VillesPopulairesDTO>> ObtenirVillesPopulairesAsync();
         Task<List<EvenementsProfitablesDTO>> ObtenirEvenementsProfitables();
     }
 }

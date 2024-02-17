@@ -30,16 +30,18 @@ namespace Events.Api.BusinessLogic.Classes
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
 
-            CategorieDTO? categorieAmodifier = await ObtenirSelonId(id);
+            Categorie categorieAmodifier = await CategorieExiste(id);
 
             categorieAmodifier.Nom = categorie.Nom;
 
-            await _categorieRepo.EditAsync(_mapper.Map<Categorie>(categorieAmodifier));
+            await _categorieRepo.EditAsync(categorieAmodifier);
         }
 
         public async Task<CategorieDTO?> ObtenirSelonId(int id)
         {
-            return _mapper.Map<CategorieDTO>(await _categorieRepo.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = "Categorie introuvable" } };
+            Categorie categorie = await CategorieExiste(id);
+
+            return _mapper.Map<CategorieDTO>(categorie);
         }
 
         public async Task<List<CategorieDTO>> ObtenirTout()
@@ -49,18 +51,18 @@ namespace Events.Api.BusinessLogic.Classes
 
         public async Task Supprimer(int id)
         {
-            CategorieDTO? categorie = await ObtenirSelonId(id);
-            var liste = await _evenementsBL.ObtenirTout(); ////////////////////////////////////////////// a changer apres le passage devenement en dto        //////////////////////////////////////////////////////////////////////////
+            Categorie categorie = await CategorieExiste(id);
+            var liste = await _evenementsBL.ObtenirTout();
             bool evenementAssocier = liste.Any(e => e.CategorieIds.Any(c => c == categorie.Id));
             if (evenementAssocier)
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la categorie: un ou plusieurs évènement utilise cette catégorie " } };
             }
-            await _categorieRepo.DeleteAsync(_mapper.Map<Categorie>(categorie));
+            await _categorieRepo.DeleteAsync(categorie);
         }
         private async Task<Categorie> CategorieExiste(int id)
         {
-            Categorie categorie = await _categorieRepo.GetByIdAsync(id);
+            Categorie? categorie = await _categorieRepo.GetByIdAsync(id);
 
             if (categorie == null)
             {

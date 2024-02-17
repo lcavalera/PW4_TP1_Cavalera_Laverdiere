@@ -9,11 +9,13 @@ namespace Events.Api.Data.Classes
         public AsyncRepositoryVilles(EventsContext context) : base(context)
         {
         }
-        public async Task<List<string>> GetVillesPopulairesAsync()
+        public async Task<List<Ville>> GetVillesEvenementsAsync()
         {
-            var villes = await _context.Set<Ville>().Include(v => v.Evenements).ToListAsync();
-            var villesOrdreParCount = villes.OrderByDescending(c => c.Evenements.Count);
-            return villesOrdreParCount.Select(c => c.Nom).Take(10).ToList();
+            return await _context.Set<Ville>().Include(v => v.Evenements).ToListAsync();
+
+            //var villes = await _context.Set<Ville>().Include(v => v.Evenements).ToListAsync();
+            //var villesOrdreParCount = villes.OrderByDescending(c => c.Evenements.Count);
+            //return villesOrdreParCount.Select(c => c.Nom).Take(10).ToList();
         }
     }
 }
