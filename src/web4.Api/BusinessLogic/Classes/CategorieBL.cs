@@ -18,7 +18,10 @@ namespace Events.Api.BusinessLogic.Classes
             {
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Parametres d'entrés non valides" } };
             }
-            await _categorieRepo.AddAsync(_mapper.Map<Categorie>(categorie));
+            await _categorieRepo.AddAsync(new Categorie
+            {
+                Nom = categorie.Nom
+            });
         }
         public async Task Modifier(int id, CategorieDTO categorie)
         {
