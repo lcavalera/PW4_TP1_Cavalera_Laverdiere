@@ -1,7 +1,7 @@
 ﻿using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 
-namespace Events.Api.BusinessLogic
+namespace Events.Api.BusinessLogic.Interfaces
 {
     public interface IVillesBL
     {

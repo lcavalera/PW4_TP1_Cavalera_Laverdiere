@@ -1,7 +1,10 @@
 using AutoMapper;
-using Events.Api.BusinessLogic;
+using Events.Api.BusinessLogic.Classes;
+using Events.Api.BusinessLogic.Interfaces;
 using Events.Api.Data;
-using Events.Api.Entites;
+using Events.Api.Data.Classes;
+using Events.Api.Data.Interfaces;
+using Events.Api.Entites.Profiles;
 using Events.Api.Extensions;
 using Events.Api.Filters.Swagger;
 using Events.Api.Filters.Web;
@@ -53,11 +56,13 @@ builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
 builder.Services.AddScoped<IAsyncRepositoryEvenements, AsyncRepositoryEvenements>();
 builder.Services.AddScoped<IAsyncParticipationRepository, ParticipationAsyncRepository>();
+builder.Services.AddScoped<IAsyncRepositoryVilles, AsyncRepositoryVilles>();
 
 builder.Services.AddScoped<IVillesBL, VillesBL>();
 builder.Services.AddScoped<ICategorieBL, CategorieBL>();
 builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
 builder.Services.AddScoped<IParticipationBL, ParticipationBL>();
+builder.Services.AddScoped<IStatistiquesBL, StatistiquesBL>();
 
 
 builder.Services.AddControllers(options =>

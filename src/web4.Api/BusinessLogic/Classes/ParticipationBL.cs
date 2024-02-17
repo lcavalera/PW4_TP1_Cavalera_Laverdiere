@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using Events.Api.Data;
+using Events.Api.BusinessLogic.Interfaces;
+using Events.Api.Data.Interfaces;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Events.Api.Exceptions;
 using System.Collections.Generic;
 
-namespace Events.Api.BusinessLogic
+namespace Events.Api.BusinessLogic.Classes
 {
     public class ParticipationBL(IAsyncParticipationRepository participationRepo, IMapper mapper) : IParticipationBL
     {
@@ -34,8 +35,6 @@ namespace Events.Api.BusinessLogic
 
         public async Task<List<ParticipationDTO>> ObtenirTout()
         {
-            //var liste = _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
-            //return liste.Where(l => l.EstValide).ToList();
             return _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
         }
 

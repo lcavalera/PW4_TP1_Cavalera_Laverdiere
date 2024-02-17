@@ -1,18 +1,19 @@
 ﻿using AutoMapper;
-using Events.Api.Data;
+using Events.Api.BusinessLogic.Interfaces;
+using Events.Api.Data.Interfaces;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Events.Api.Exceptions;
 
-namespace Events.Api.BusinessLogic
+namespace Events.Api.BusinessLogic.Classes
 {
     public class VillesBL : IVillesBL
     {
-        private readonly IAsyncRepository<Ville> _villesRepository;
+        private readonly IAsyncRepositoryVilles _villesRepository;
         private readonly IAsyncRepository<Evenement> _evenementsRepository;
         private readonly IMapper _mapper;
 
-        public VillesBL(IAsyncRepository<Ville> villesRepository, IAsyncRepository<Evenement> evenementsRepository, IMapper mapper)
+        public VillesBL(IAsyncRepositoryVilles villesRepository, IAsyncRepository<Evenement> evenementsRepository, IMapper mapper)
         {
             _villesRepository = villesRepository;
             _evenementsRepository = evenementsRepository;

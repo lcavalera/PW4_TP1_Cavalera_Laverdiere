@@ -1,6 +1,6 @@
 ﻿using Events.Api.Entites;
 
-namespace Events.Api.Data
+namespace Events.Api.Data.Interfaces
 {
     public interface IAsyncParticipationRepository : IAsyncRepository<Participation>
     {

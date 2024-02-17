@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
-using Events.Api.Data;
+using Events.Api.BusinessLogic.Interfaces;
+using Events.Api.Data.Interfaces;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Events.Api.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace Events.Api.BusinessLogic
+namespace Events.Api.BusinessLogic.Classes
 {
     public class EvenementsBL : IEvenementsBL
     {
@@ -25,14 +26,15 @@ namespace Events.Api.BusinessLogic
 
         public async Task<IEnumerable<EvenementDTO>> ObtenirTout()
         {
+            //IEnumerable<Evenement>? evenements = await _evenementsRepository.ListAsync();
+            //return evenements.Select(e => new EvenementDTO { Id=e.Id, Titre=e.Titre, Description=e.Description, Adresse=e.Adresse, NomOrganisateur=e.NomOrganisateur, Categories=e.Categories, DateDebut=e.DateDebut, DateDeFin=e.DateDeFin, Ville=e.Ville, Prix=e.Prix}).ToList();
             return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
-        }
 
+            //return _mapper.Map<List<EvenementDTO>>(await _evenementsRepository.ListAsync());
+        }
         public async Task<EvenementDTO> ObtenirSelonId(int id)
         {
-            //Activer pour verifier la methode pour le calcul de ventes totales
-            //int total = await _evenementsRepository.GetTotal(id);
-
+            int total = await _evenementsRepository.GetTotal(id);
             return _mapper.Map<EvenementDTO>(await _evenementsRepository.GetByIdAsync(id)) ?? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }; ;
         }
 
@@ -141,7 +143,7 @@ namespace Events.Api.BusinessLogic
 
         private async Task<bool> PossiedeCategorie(EvenementDTO evenement)
         {
-            foreach (int Id in evenement.CategorieIds.Select(c=> c).ToList())
+            foreach (int Id in evenement.CategorieIds.Select(c => c).ToList())
             {
                 var categories = await _categoriesRepository.ListAsync();
 
