@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using Events.Api.Entites.DTO;
 
-namespace Events.Api.Entites
+namespace Events.Api.Entites.Profiles
 {
     public class MappingProfile : Profile
     {
-        public MappingProfile() {
+        public MappingProfile()
+        {
 
             CreateMap<Categorie, CategorieDTO>();
             CreateMap<CategorieDTO, Categorie>();

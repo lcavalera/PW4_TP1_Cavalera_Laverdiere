@@ -16,10 +16,15 @@ namespace Events.Api.BusinessLogic.Classes
         {
             await Validations(demandeParticipation);
 
-            // toute demande ajouté est invalide,    #6 de l`énoncé
-            demandeParticipation.EstValide = false;
-
-            await _participationRepo.AddAsync(_mapper.Map<Participation>(demandeParticipation));
+            await _participationRepo.AddAsync(new Participation
+            {
+                EstValide = false,
+                Courriel = demandeParticipation.Courriel,
+                EvenementID = demandeParticipation.EvenementID,
+                Nom = demandeParticipation.Nom,
+                Prenom = demandeParticipation.Prenom,
+                NombrePlaces = demandeParticipation.NombrePlaces
+            });
         }
 
         public async Task<List<ParticipationDTO>> ObtenirSelonEvenementId(int evenementId)
@@ -47,15 +52,7 @@ namespace Events.Api.BusinessLogic.Classes
             var participation = _mapper.Map<ParticipationDTO>(await _participationRepo.GetByIdVerifyStatus(id));
             return participation is null
                 ? throw new HttpException { StatusCode = StatusCodes.Status404NotFound, Errors = new { Errors = $"Element introuvable (id={id})" } }
-                : SimulerVerifierStatus(participation);
-        }
-        private bool SimulerVerifierStatus(ParticipationDTO participation)
-        {
-            if (!participation.EstValide)
-            {
-                participation.EstValide = new Random().Next(1, 10) > 5 ? true : false;
-            }
-            return participation.EstValide;
+                : _participationRepo.SimulerVerifierStatus(await _participationRepo.GetByIdVerifyStatus(id));
         }
         private async Task Validations(ParticipationDTO demandeParticipation)
         {
