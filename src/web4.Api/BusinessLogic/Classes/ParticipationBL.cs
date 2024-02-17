@@ -35,8 +35,6 @@ namespace Events.Api.BusinessLogic.Classes
 
         public async Task<List<ParticipationDTO>> ObtenirTout()
         {
-            //var liste = _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
-            //return liste.Where(l => l.EstValide).ToList();
             return _mapper.Map<List<ParticipationDTO>>(await _participationRepo.ListAsync());
         }
 

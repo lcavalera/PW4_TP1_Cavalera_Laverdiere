@@ -4,6 +4,6 @@ namespace Events.Api.Data.Interfaces
 {
     public interface IAsyncRepositoryVilles : IAsyncRepository<Ville>
     {
-        Task<List<string>> GetVillesPopulaires();
+        Task<List<string>> GetVillesPopulairesAsync();
     }
 }

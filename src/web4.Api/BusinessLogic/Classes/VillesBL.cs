@@ -99,9 +99,5 @@ namespace Events.Api.BusinessLogic.Classes
                 throw new HttpException { StatusCode = StatusCodes.Status400BadRequest, Errors = new { Errors = "Impossible de supprimer la ville: un ou plusieurs évènement utilise cette ville" } };
             }
         }
-        public async Task<List<string>> ObtenirVillesPopulaires()
-        {
-            return await _villesRepository.GetVillesPopulaires();
-        }
     }
 }

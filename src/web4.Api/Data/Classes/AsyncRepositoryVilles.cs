@@ -9,7 +9,7 @@ namespace Events.Api.Data.Classes
         public AsyncRepositoryVilles(EventsContext context) : base(context)
         {
         }
-        public async Task<List<string>> GetVillesPopulaires()
+        public async Task<List<string>> GetVillesPopulairesAsync()
         {
             var villes = await _context.Set<Ville>().Include(v => v.Evenements).ToListAsync();
             var villesOrdreParCount = villes.OrderByDescending(c => c.Evenements.Count);

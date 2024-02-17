@@ -62,6 +62,7 @@ builder.Services.AddScoped<IVillesBL, VillesBL>();
 builder.Services.AddScoped<ICategorieBL, CategorieBL>();
 builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
 builder.Services.AddScoped<IParticipationBL, ParticipationBL>();
+builder.Services.AddScoped<IStatistiquesBL, StatistiquesBL>();
 
 
 builder.Services.AddControllers(options =>
