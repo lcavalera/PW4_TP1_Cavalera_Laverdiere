@@ -50,6 +50,20 @@ builder.Services.AddSwaggerGen(options =>
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connectionString));
 
+//auth
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "oidc";
+}).AddCookie("Cookies").AddOpenIdConnect("oidc", options =>
+{
+    options.Authority = "https://localhost:5001";
+    options.ClientId = "swagger_ui";
+    options.ClientSecret = "secret";
+    options.ResponseType = "code";
+    options.Scope.Add("api1");
+    options.GetClaimsFromUserInfoEndpoint = true;
+});
 
 builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
 
@@ -86,7 +100,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapControllers();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers().RequireAuthorization();
 
 app.CreateDbIfNotExists();
 

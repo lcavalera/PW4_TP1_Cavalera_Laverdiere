@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Events.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Events.Api.Controllers.CategorieController.Get">
+             <summary>
+             Retourne une liste des Categories 
+             </summary>
+             <remarks>
+             
+                 GET api/Categorie
+            
+             </remarks>
+             <response code="200">Categories trouvés et retournés</response>
+             <response code="500">service indisponible pour le moment</response>
+             <returns></returns>
+        </member>
+        <member name="M:Events.Api.Controllers.CategorieController.GetById(System.Int32)">
+             <summary>
+             Retourne une Categorie spécifique à partir de son id
+             </summary>
+             <param name="id">id de la Categorie à retourner</param>
+             <remarks>
+             
+                 GET /Categorie/1
+            
+             </remarks>
+             <response code="200">Categorie trouvé et retourné</response>
+             <response code="404">Categorie introuvable pour l'id spécifié</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.CategorieController.Post(Events.Api.Entites.DTO.CategorieDTO)">
+             <summary>
+             Ajoute une Categorie à la base de donnée
+             </summary>
+             <param name="categorie">Categorie à ajouter</param>
+             <returns>Une nouvelle Categorie a été créé</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /Categorie
+                 {
+                    "id": 1,
+                    "nom": "nom de la Categorie"
+                 }
+            
+             </remarks>
+             <response code="201">Categorie ajouté avec succès</response>
+             <response code="204">traitement executé avec succès, aucune contenu retourné</response>
+             <response code="400">model Invalide, mauvaise requête</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.CategorieController.Put(System.Int32,Events.Api.Entites.DTO.CategorieDTO)">
+            <summary>
+            Modification d'une Categorie
+            </summary>
+            <param name="id">id de la Categorie à modifier</param>
+            <param name="categorie"></param>
+            <returns>La Categorie a été modifié</returns>
+            <response code="204">Categorie modifié avec succès, aucune contenu retourné</response>
+            <response code="400">model Invalide, mauvaise requête</response>
+            <response code="404">Categorie introuvable pour l'id spécifié</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.CategorieController.Delete(System.Int32)">
+            <summary>
+            Supprime une Categorie
+            </summary>
+            <param name="id">id de la Categorie à supprimer</param>
+            <response code="204">Categorie supprimé avec succès, aucune contenu retourné</response>
+            <response code="404">Categorie introuvable pour l'id spécifié</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.EvenementsController.Get(System.String,System.Int32,System.Int32)">
+             <summary>
+             Retourne une liste des evenements 
+             </summary>
+             <param name="filtre">filtre pour titre ou description des evenements à retourner</param>
+             <remarks>
+             
+                 GET api/evenements
+            
+             </remarks>
+             <response code="200">evenements trouvés et retournés</response>
+             <response code="500">service indisponible pour le moment</response>
+             <returns></returns>
+        </member>
+        <member name="M:Events.Api.Controllers.EvenementsController.GetById(System.Int32)">
+             <summary>
+             Retourne un'evenement spécifique à partir de son id
+             </summary>
+             <param name="id">id de l'evenement à retourner</param>
+             <remarks>
+             
+                 GET /Evenement/1
+            
+             </remarks>
+             <response code="200">evenement trouvé et retourné</response>
+             <response code="404">evenement introuvable pour l'id spécifié</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.EvenementsController.GetByIdVille(System.Int32)">
+             <summary>
+             Retourne une liste des evenements à partir de l'id de la ville spécifiée
+             </summary>
+             <param name="villeId">id de la ville de les evenements à retourner</param>
+             <remarks>
+             
+                 GET /Evenement/1/Ville
+            
+             </remarks>
+             <response code="200">evenements trouvés et retournés</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.EvenementsController.Post(Events.Api.Entites.DTO.EvenementDTO)">
+             <summary>
+             Ajoute un'evenement à la base de donnée
+             </summary>
+             <param name="evenement">evenement à ajouter</param>
+             <returns>Un nouveau evenement a été créé</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /Evenement
+                 {
+                    "id": 1,
+                    "dateDebut": "date de debut de l'evenement",
+                    "dateDeFin": "date de fin de l'evenement"
+                    "Titre": "titre de l'evenement",
+                    "Description": "description de l'evenement",
+                    "Categories": "liste de categories de l'evenement"
+                    "Adresse": "adresse de l'evenement",
+                    "NomOrganisateur": "nom de l'organisateur de l'evenement"
+                    "Ville": "Ville de l'evenement",
+                    "Prix": "Prix de l'evenement"
+                 }
+            
+             </remarks>
+             <response code="201">evenement ajouté avec succès</response>
+             <response code="200">traitement executé avec succès, contenu retourné</response>
+             <response code="204">traitement executé avec succès, aucune contenu retourné</response>
+             <response code="400">model Invalide, mauvaise requête</response>
+             <response code="404">ville introuvable pour l'id spécifié</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.EvenementsController.Put(System.Int32,Events.Api.Entites.DTO.EvenementDTO)">
+            <summary>
+            Modification d'un'evenement
+            </summary>
+            <param name="id">id de l'evenement à modifier</param>
+            <param name="evenement"></param>
+            <returns>La evenement a été modifié</returns>
+            <response code="200">traitement executé avec succès, contenu retourné</response>
+            <response code="204">evenement modifié avec succès, aucune contenu retourné</response>
+            <response code="400">model Invalide, mauvaise requête</response>
+            <response code="404">evenement introuvable pour l'id spécifié</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.EvenementsController.Delete(System.Int32)">
+            <summary>
+            Supprime un evenement
+            </summary>
+            <param name="id">id de l'evenement à supprimer</param>
+            <response code="204">evenement supprimé avec succès, aucune contenu retourné</response>
+            <response code="404">evenement introuvable pour l'id spécifié</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.Get">
+             <summary>
+             Retourne une liste des participations 
+             </summary>
+             <remarks>
+             
+                 GET api/participations
+            
+             </remarks>
+             <response code="200">participations trouvés et retournés</response>
+             <response code="500">service indisponible pour le moment</response>
+             <returns></returns>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.GetById(System.Int32)">
+             <summary>
+             Retourne une participation spécifique à partir de son id
+             </summary>
+             <param name="id">id de la participation à retourner</param>
+             <remarks>
+             
+                 GET /Participation/1
+            
+             </remarks>
+             <response code="200">participation trouvé et retourné</response>
+             <response code="404">participation introuvable pour l'id spécifié</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.GetByEvenementId(System.Int32)">
+             <summary>
+             Retourne une liste des participations selon un evenement
+             </summary>
+             <param name="evenementId">id de l'evenement des participations à retourner</param>
+             <remarks>
+             
+                 GET api/participation/1/evenement
+            
+             </remarks>
+             <response code="200">participations trouvés et retourné</response>
+             <response code="500">service indisponible pour le moment</response>
+             <returns></returns>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.Post(Events.Api.Entites.DTO.ParticipationDTO)">
+             <summary>
+             Ajoute une participation à la base de donnée
+             </summary>
+             <param name="demandeParticipation">demande de participation à ajouter</param>
+             <returns>Une nouvelle participation a été accepté</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /demandeParticipation
+                 {
+                    "NombrePlaces": Nombre de participant
+                    "Courriel": Courriel de la personne applicante
+                    "Nom": Nom de la personne applicante
+                    "Prenom" Prenom de la personne applicante
+                    "EvenementID": ID de l'evenement de la demande de participation
+                 }
+            
+             </remarks>
+             <response code="202">participation accepté avec succès</response>
+             <response code="204">traitement executé avec succès, aucune contenu retourné</response>
+             <response code="400">model Invalide, mauvaise requête</response>
+             <response code="404">participation introuvable pour l'id spécifié</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.Delete(System.Int32)">
+            <summary>
+            Supprime une participation
+            </summary>
+            <param name="id">id de la participation à supprimer</param>
+            <response code="204">participation supprimé avec succès, aucune contenu retourné</response>
+            <response code="404">participation introuvable pour l'id spécifié</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.ParticipationController.Status(System.Int32)">
+            <summary>
+            verification du status dune participation
+            </summary>
+            <param name="id">id de la participation à verifier</param>
+            <response code="303">participation accepté, redirection à la participation</response>
+            <response code="200">participation en attente d'un service externe</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.StatistiquesController.Get">
+             <summary>
+             Retourne une liste des évènements en ordre de rentabilité
+             </summary>
+             <remarks>
+             
+                 GET api/evenements
+            
+             </remarks>
+             <response code="200">évènements trouvés et retournés</response>
+             <response code="500">service indisponible pour le moment</response>
+             <returns></returns>
+        </member>
+        <member name="M:Events.Api.Controllers.StatistiquesController.GetVillesPopulaires">
+             <summary>
+             Retourne une liste des villes le plus populaires en ordre de nombre des évènements
+             </summary>
+             <remarks>
+             
+                 GET api/villes
+            
+             </remarks>
+             <response code="200">villes trouvés et retournés</response>
+             <response code="500">service indisponible pour le moment</response>
+             <returns></returns>
+        </member>
+        <member name="M:Events.Api.Controllers.VillesController.Get">
+             <summary>
+             Retourne une liste des villes 
+             </summary>
+             <remarks>
+             
+                 GET api/villes
+            
+             </remarks>
+             <response code="200">villes trouvés et retournés</response>
+             <response code="500">service indisponible pour le moment</response>
+             <returns></returns>
+        </member>
+        <member name="M:Events.Api.Controllers.VillesController.GetById(System.Int32)">
+             <summary>
+             Retourne une ville spécifique à partir de son id
+             </summary>
+             <param name="id">id de la ville à retourner</param>
+             <remarks>
+             
+                 GET /Ville/1
+            
+             </remarks>
+             <response code="200">ville trouvé et retourné</response>
+             <response code="404">ville introuvable pour l'id spécifié</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.VillesController.Post(Events.Api.Entites.DTO.VilleDTO)">
+             <summary>
+             Ajoute une ville à la base de donnée
+             </summary>
+             <param name="ville">ville à ajouter</param>
+             <returns>Une nouvelle ville a été créé</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /Ville
+                 {
+                    "id": 1,
+                    "nom": "nom de la ville",
+                    "region": "region de la ville"
+                 }
+            
+             </remarks>
+             <response code="201">ville ajouté avec succès</response>
+             <response code="200">traitement executé avec succès, contenu retourné</response>
+             <response code="204">traitement executé avec succès, aucune contenu retourné</response>
+             <response code="400">model Invalide, mauvaise requête</response>
+             <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.VillesController.Put(System.Int32,Events.Api.Entites.DTO.VilleDTO)">
+            <summary>
+            Modification d'une ville
+            </summary>
+            <param name="id">id de la ville à modifier</param>
+            <param name="ville"></param>
+            <returns>La ville a été modifié</returns>
+            <response code="200">traitement executé avec succès, contenu retourné</response>
+            <response code="204">ville modifié avec succès, aucune contenu retourné</response>
+            <response code="400">model Invalide, mauvaise requête</response>
+            <response code="404">ville introuvable pour l'id spécifié</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="M:Events.Api.Controllers.VillesController.Delete(System.Int32)">
+            <summary>
+            Supprime une ville
+            </summary>
+            <param name="id">id de la ville à supprimer</param>
+            <response code="204">ville supprimé avec succès, aucune contenu retourné</response>
+            <response code="404">ville introuvable pour l'id spécifié</response>
+            <response code="500">service indisponible pour le moment</response>
+        </member>
+        <member name="T:Events.Api.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Events.Api.Migrations.correvenements">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.correvenements.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.correvenements.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.correvenements.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Events.Api.Migrations.enumToStringCategorie">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.enumToStringCategorie.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.enumToStringCategorie.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.enumToStringCategorie.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Events.Api.Migrations.corrListIdsCategorie">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.corrListIdsCategorie.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.corrListIdsCategorie.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.corrListIdsCategorie.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Events.Api.Migrations.OnDeleteRestrict">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.OnDeleteRestrict.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.OnDeleteRestrict.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.OnDeleteRestrict.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Events.Api.Migrations.OnDeleteCascade">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.OnDeleteCascade.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.OnDeleteCascade.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.OnDeleteCascade.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Events.Api.Migrations.corrPrixEvenement">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.corrPrixEvenement.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.corrPrixEvenement.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Events.Api.Migrations.corrPrixEvenement.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

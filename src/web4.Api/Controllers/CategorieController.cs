@@ -2,6 +2,7 @@
 using Events.Api.Data;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,6 +12,7 @@ namespace Events.Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize]
     public class CategorieController(ICategorieBL categorieBL) : ControllerBase
     {
         private readonly ICategorieBL _categorieBL = categorieBL;
