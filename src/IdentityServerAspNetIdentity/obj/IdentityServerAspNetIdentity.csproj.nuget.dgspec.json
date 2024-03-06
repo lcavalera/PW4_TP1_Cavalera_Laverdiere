@@ -1,33 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Luca\\Desktop\\PW4_TP2_B_Cavalera_Laverdiere\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj": {}
+    "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Luca\\Desktop\\PW4_TP2_B_Cavalera_Laverdiere\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj": {
+    "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luca\\Desktop\\PW4_TP2_B_Cavalera_Laverdiere\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
+        "projectUniqueName": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
         "projectName": "IdentityServerAspNetIdentity",
-        "projectPath": "C:\\Users\\Luca\\Desktop\\PW4_TP2_B_Cavalera_Laverdiere\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
-        "packagesPath": "C:\\Users\\Luca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luca\\Desktop\\PW4_TP2_B_Cavalera_Laverdiere\\src\\IdentityServerAspNetIdentity\\obj\\",
+        "projectPath": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
+        "packagesPath": "C:\\Users\\fredl\\.nuget\\packages\\",
+        "outputPath": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Luca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fredl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7"
+          "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nugetpoo.azurewebsites.net/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
-            "targetAlias": "net7",
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -35,11 +39,16 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net7.0": {
-          "targetAlias": "net7",
+          "targetAlias": "net7.0",
           "dependencies": {
             "IdentityServer4.AspNetIdentity": {
               "target": "Package",
@@ -71,9 +80,25 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "Microsoft.IdentityModel.JsonWebTokens": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[3.2.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.4.0, )"
             }
           },
           "imports": [
@@ -95,7 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

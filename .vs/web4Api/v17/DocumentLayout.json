@@ -3,52 +3,48 @@
   "WorkspaceRootPath": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\controllers\\participationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\controllers\\participationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93345E5C-FBE3-479A-B324-F81560F908E5}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93345E5C-FBE3-479A-B324-F81560F908E5}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\businesslogic\\classes\\categoriebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\businesslogic\\classes\\categoriebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\filters\\swagger\\authorizecheckoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\filters\\swagger\\authorizecheckoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\businesslogic\\classes\\participationbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\businesslogic\\classes\\participationbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\entites\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\entites\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\entites\\dto\\participationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\entites\\dto\\participationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\controllers\\villescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\controllers\\villescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\data\\classes\\participationasyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\data\\classes\\participationasyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93345E5C-FBE3-479A-B324-F81560F908E5}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93345E5C-FBE3-479A-B324-F81560F908E5}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\data\\interfaces\\iasyncparticipationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\data\\interfaces\\iasyncparticipationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93345E5C-FBE3-479A-B324-F81560F908E5}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93345E5C-FBE3-479A-B324-F81560F908E5}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\entites\\ville.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\entites\\ville.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93345E5C-FBE3-479A-B324-F81560F908E5}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\identityserveraspnetidentity.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{93345E5C-FBE3-479A-B324-F81560F908E5}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\identityserveraspnetidentity.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\data\\eventscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\data\\eventscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\events.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\events.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\entites\\participation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\entites\\participation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\entites\\evenement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\entites\\evenement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\controllers\\evenementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\controllers\\evenementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -158,148 +154,146 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategorieBL.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\BusinessLogic\\Classes\\CategorieBL.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\BusinessLogic\\Classes\\CategorieBL.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\BusinessLogic\\Classes\\CategorieBL.cs",
-              "RelativeToolTip": "src\\web4.Api\\BusinessLogic\\Classes\\CategorieBL.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAowBsAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.233Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ParticipationAsyncRepository.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\Classes\\ParticipationAsyncRepository.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Data\\Classes\\ParticipationAsyncRepository.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\Classes\\ParticipationAsyncRepository.cs",
-              "RelativeToolTip": "src\\web4.Api\\Data\\Classes\\ParticipationAsyncRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.267Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ParticipationBL.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\BusinessLogic\\Classes\\ParticipationBL.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\BusinessLogic\\Classes\\ParticipationBL.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\BusinessLogic\\Classes\\ParticipationBL.cs",
-              "RelativeToolTip": "src\\web4.Api\\BusinessLogic\\Classes\\ParticipationBL.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.269Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\Profiles\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Entites\\Profiles\\MappingProfile.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\Profiles\\MappingProfile.cs",
-              "RelativeToolTip": "src\\web4.Api\\Entites\\Profiles\\MappingProfile.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.272Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ParticipationController.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Controllers\\ParticipationController.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Controllers\\ParticipationController.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Controllers\\ParticipationController.cs",
-              "RelativeToolTip": "src\\web4.Api\\Controllers\\ParticipationController.cs",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAowJMAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.283Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IAsyncParticipationRepository.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\Interfaces\\IAsyncParticipationRepository.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Data\\Interfaces\\IAsyncParticipationRepository.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\Interfaces\\IAsyncParticipationRepository.cs",
-              "RelativeToolTip": "src\\web4.Api\\Data\\Interfaces\\IAsyncParticipationRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.264Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Ville.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\Ville.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Entites\\Ville.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\Ville.cs",
-              "RelativeToolTip": "src\\web4.Api\\Entites\\Ville.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.275Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Program.cs",
               "RelativeDocumentMoniker": "src\\web4.Api\\Program.cs",
               "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Program.cs",
               "RelativeToolTip": "src\\web4.Api\\Program.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAABsAAAA9AAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAF0AAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.277Z"
+              "WhenOpened": "2024-03-05T23:35:48.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VillesController.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Controllers\\VillesController.cs",
+              "RelativeDocumentMoniker": "src\\web4.Api\\Controllers\\VillesController.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Controllers\\VillesController.cs",
+              "RelativeToolTip": "src\\web4.Api\\Controllers\\VillesController.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAowGgAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T04:07:25.79Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ParticipationDTO.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\DTO\\ParticipationDTO.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Entites\\DTO\\ParticipationDTO.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\DTO\\ParticipationDTO.cs",
-              "RelativeToolTip": "src\\web4.Api\\Entites\\DTO\\ParticipationDTO.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAQwBEAAAAqAAAA",
+              "Title": "SeedData.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\SeedData.cs",
+              "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\SeedData.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\SeedData.cs",
+              "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\SeedData.cs",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAgwHEAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.28Z"
+              "WhenOpened": "2024-03-06T19:27:17.306Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "EventsContext.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\EventsContext.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Data\\EventsContext.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\EventsContext.cs",
-              "RelativeToolTip": "src\\web4.Api\\Data\\EventsContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Startup.cs",
+              "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Startup.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Startup.cs",
+              "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\Startup.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAIwDgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.285Z"
+              "WhenOpened": "2024-03-05T22:58:55.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Config.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Config.cs",
+              "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Config.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Config.cs",
+              "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\Config.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-05T23:13:34.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthorizeCheckOperationFilter.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Filters\\Swagger\\AuthorizeCheckOperationFilter.cs",
+              "RelativeDocumentMoniker": "src\\web4.Api\\Filters\\Swagger\\AuthorizeCheckOperationFilter.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Filters\\Swagger\\AuthorizeCheckOperationFilter.cs",
+              "RelativeToolTip": "src\\web4.Api\\Filters\\Swagger\\AuthorizeCheckOperationFilter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T04:16:13.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IdentityServerAspNetIdentity.csproj",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
+              "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
+              "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-06T19:16:26.991Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Participation.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\Participation.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Entites\\Participation.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\Participation.cs",
-              "RelativeToolTip": "src\\web4.Api\\Entites\\Participation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.288Z"
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "src\\web4.Api\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Properties\\launchSettings.json",
+              "RelativeToolTip": "src\\web4.Api\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-05T23:23:19.688Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Evenement.cs",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\Evenement.cs",
-              "RelativeDocumentMoniker": "src\\web4.Api\\Entites\\Evenement.cs",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Entites\\Evenement.cs",
-              "RelativeToolTip": "src\\web4.Api\\Entites\\Evenement.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAAAzAAAA",
+              "DocumentIndex": 7,
+              "Title": "Events.Api.csproj",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Events.Api.csproj",
+              "RelativeDocumentMoniker": "src\\web4.Api\\Events.Api.csproj",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Events.Api.csproj",
+              "RelativeToolTip": "src\\web4.Api\\Events.Api.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-06T19:17:04.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\web4.Api\\appsettings.json",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\appsettings.json",
+              "RelativeToolTip": "src\\web4.Api\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-05T22:59:31.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EvenementsController.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Controllers\\EvenementsController.cs",
+              "RelativeDocumentMoniker": "src\\web4.Api\\Controllers\\EvenementsController.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Controllers\\EvenementsController.cs",
+              "RelativeToolTip": "src\\web4.Api\\Controllers\\EvenementsController.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAwwKoAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T13:04:09.291Z"
+              "WhenOpened": "2024-03-06T04:05:24.874Z",
+              "EditorCaption": ""
             }
           ]
         }

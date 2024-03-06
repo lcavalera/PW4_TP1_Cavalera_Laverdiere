@@ -10,8 +10,10 @@ using Events.Api.Filters.Swagger;
 using Events.Api.Filters.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows
+        {
+            AuthorizationCode = new OpenApiOAuthFlow
+            {
+                AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
+                TokenUrl = new Uri("https://localhost:5001/connect/token"),
+                Scopes = new Dictionary<string, string>
+                {
+                    {"web2ApiScope", "web2Api"} //Demo API - scope 
+                }
+            }
+        }
+    });
+    options.OperationFilter<AuthorizeCheckOperationFilter>();
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
@@ -44,12 +63,10 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
     options.SchemaFilter<SwaggerSkipPropertyFilter>();
     options.IncludeXmlComments(xmlPath);
-    
+
 });
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connectionString));
-
+builder.Services.AddDbContext<EventsContext>(options => 
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
 
@@ -64,6 +81,25 @@ builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
 builder.Services.AddScoped<IParticipationBL, ParticipationBL>();
 builder.Services.AddScoped<IStatistiquesBL, StatistiquesBL>();
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Bearer";
+}).AddJwtBearer("Bearer", options =>
+{
+    options.Authority = "https://localhost:5001";
+    options.Audience = "Web2Api";
+    options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = true
+    };
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireAssertion(context => context.User.IsInRole("admin")));
+    options.AddPolicy("RequireManagerRole", policy => policy.RequireAssertion(context => context.User.IsInRole("manager")));
+});
 
 builder.Services.AddControllers(options =>
 {
@@ -86,7 +122,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapControllers();
+app.MapControllers(); //.RequireAuthorization()
 
 app.CreateDbIfNotExists();
 

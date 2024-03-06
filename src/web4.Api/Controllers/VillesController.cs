@@ -1,6 +1,7 @@
 ﻿using Events.Api.BusinessLogic.Interfaces;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -84,6 +85,7 @@ namespace Events.Api.Controllers
         /// <response code="400">model Invalide, mauvaise requête</response>
         /// <response code="500">service indisponible pour le moment</response>
         // POST api/<VillesController>
+        [Authorize] //(Policy = "RequireAdminRole")
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status201Created)]
@@ -109,6 +111,7 @@ namespace Events.Api.Controllers
         /// <response code="404">ville introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<VillesController>/5
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status204NoContent)]
@@ -129,6 +132,7 @@ namespace Events.Api.Controllers
         /// <response code="404">ville introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<UsagersController>/5
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
