@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -78,6 +79,13 @@ builder.Services.AddAuthentication(options =>
     {
         ValidateAudience = true
     };
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireAssertion(context => context.User.IsInRole("admin")));
+    options.AddPolicy("RequireManagerRole", policy => policy.RequireAssertion(context => context.User.IsInRole("manager")));
+
 });
 
 builder.Services.AddControllers(options =>
