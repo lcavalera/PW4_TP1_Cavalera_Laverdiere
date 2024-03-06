@@ -46,9 +46,8 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlPath);
     
 });
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<EventsContext>(options => 
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());

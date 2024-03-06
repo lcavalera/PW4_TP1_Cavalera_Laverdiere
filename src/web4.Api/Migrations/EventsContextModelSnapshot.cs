@@ -37,7 +37,7 @@ namespace Events.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Events.Api.Entites.Evenement", b =>
@@ -84,7 +84,7 @@ namespace Events.Api.Migrations
 
                     b.HasIndex("VilleId");
 
-                    b.ToTable("Evenements");
+                    b.ToTable("Evenements", (string)null);
                 });
 
             modelBuilder.Entity("Events.Api.Entites.Participation", b =>
@@ -120,7 +120,7 @@ namespace Events.Api.Migrations
 
                     b.HasIndex("EvenementID");
 
-                    b.ToTable("Participations");
+                    b.ToTable("Participations", (string)null);
                 });
 
             modelBuilder.Entity("Events.Api.Entites.Ville", b =>
@@ -140,7 +140,7 @@ namespace Events.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Villes");
+                    b.ToTable("Villes", (string)null);
                 });
 
             modelBuilder.Entity("Events.Api.Entites.Evenement", b =>
