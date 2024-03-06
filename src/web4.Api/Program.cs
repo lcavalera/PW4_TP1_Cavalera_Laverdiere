@@ -90,6 +90,7 @@ builder.Services.AddAuthentication(options =>
     options.Audience = "Web2Api";
     options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
     options.TokenValidationParameters = new TokenValidationParameters
+
     {
         ValidateAudience = true
     };
@@ -122,7 +123,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapControllers(); //.RequireAuthorization()
+app.MapControllers().RequireAuthorization(); //
 
 app.CreateDbIfNotExists();
 

@@ -85,7 +85,7 @@ namespace Events.Api.Controllers
         /// <response code="400">model Invalide, mauvaise requête</response>
         /// <response code="500">service indisponible pour le moment</response>
         // POST api/<VillesController>
-        [Authorize] //(Policy = "RequireAdminRole")
+        [Authorize(Roles ="admin")] //(Policy = "RequireAdminRole")
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(VilleDTO), StatusCodes.Status201Created)]

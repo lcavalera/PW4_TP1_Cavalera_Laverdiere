@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using Microsoft.IdentityModel.Tokens;
@@ -17,7 +18,16 @@ namespace IdentityServerAspNetIdentity
                         new IdentityResources.OpenId(),
                         new IdentityResources.Profile(),
                         new IdentityResources.Email(),
-                        new IdentityResource(){ Name="Web2Api"}
+                        new IdentityResource()
+                        { 
+                            Name="Web2Api",
+                            UserClaims =
+                            {
+                                JwtClaimTypes.Name,
+                                JwtClaimTypes.Profile,
+                                JwtClaimTypes.Scope
+                            }
+                        }
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -66,11 +76,11 @@ namespace IdentityServerAspNetIdentity
                     AllowedCorsOrigins = {"https://localhost:7132"},
                     RequireClientSecret = false,
                     RequirePkce = false,
-                    AllowedScopes = new List<string>
+                    AllowedScopes = new List<string>()
                     {
-                        "web2ApiScope"//,
-                        //IdentityServerConstants.StandardScopes.OpenId,
-                        //IdentityServerConstants.StandardScopes.Profile
+                        "web2ApiScope",
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
                     }
                 }
             };

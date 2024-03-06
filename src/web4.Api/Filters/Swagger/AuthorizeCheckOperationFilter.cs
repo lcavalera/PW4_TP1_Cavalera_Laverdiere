@@ -28,7 +28,7 @@ namespace Events.Api.Filters.Swagger
                                     Id = "oauth2"
                                 }
                             }
-                        ] = ["web2ApiScope"]
+                        ] = new[] { "web2ApiScope" }
                     }
                 };
             }
