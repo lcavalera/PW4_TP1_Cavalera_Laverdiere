@@ -10,6 +10,7 @@ using Events.Api.Filters.Swagger;
 using Events.Api.Filters.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -49,7 +50,6 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddDbContext<EventsContext>(options => 
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
 builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
 
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
@@ -63,6 +63,22 @@ builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
 builder.Services.AddScoped<IParticipationBL, ParticipationBL>();
 builder.Services.AddScoped<IStatistiquesBL, StatistiquesBL>();
 
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Bearer”";
+    options.DefaultChallengeScheme = "oidc";
+
+}).AddJwtBearer(options =>
+{
+    options.Authority = "https://localhost:5001";
+    options.Audience = "Web2Api";
+    options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = true
+    };
+});
 
 builder.Services.AddControllers(options =>
 {
