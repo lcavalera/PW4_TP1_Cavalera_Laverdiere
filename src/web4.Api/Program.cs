@@ -34,7 +34,7 @@ builder.Services.AddSwaggerGen(options =>
                 TokenUrl = new Uri("https://localhost:5001/connect/token"),
                 Scopes = new Dictionary<string, string>
                 {
-                    {"web2ApiScope", "Demo API - scope web2Api"}
+                    {"web2ApiScope", "web2Api"} //Demo API - scope 
                 }
             }
         }
@@ -81,22 +81,6 @@ builder.Services.AddScoped<IEvenementsBL, EvenementsBL>();
 builder.Services.AddScoped<IParticipationBL, ParticipationBL>();
 builder.Services.AddScoped<IStatistiquesBL, StatistiquesBL>();
 
-
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = "Bearer”";
-    options.DefaultChallengeScheme = "oidc";
-
-}).AddJwtBearer(options =>
-{
-    options.Authority = "https://localhost:5001";
-    options.Audience = "Web2Api";
-    options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateAudience = true
-    };
-});
 
 builder.Services.AddAuthorization(options =>
 {

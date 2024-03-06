@@ -4,11 +4,13 @@
     "Projects": [
       {
         "Name": "src\\web4.Api\\Events.Api.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": ""
       },
       {
         "Name": "src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": ""
       }
     ]
   }

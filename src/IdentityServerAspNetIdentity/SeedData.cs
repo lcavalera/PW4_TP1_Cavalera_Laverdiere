@@ -34,8 +34,20 @@ namespace IdentityServerAspNetIdentity
                 {
                     var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
                     context.Database.Migrate();
-
+                    
+                    var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+                    var roleName = roleMgr.FindByNameAsync("admin").Result;
+                    if (roleName == null)
+                    {
+                        var adminRole = roleMgr.CreateAsync(new IdentityRole
+                        {
+                            ConcurrencyStamp = DateTime.Now.ToString(),
+                            Name = "admin",
+                            NormalizedName = "admin"
+                        }).Result;
+                    }
                     var admin = userMgr.FindByNameAsync("admin").Result;
                     if (admin == null)
                     {
@@ -50,13 +62,17 @@ namespace IdentityServerAspNetIdentity
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
-
+                        result = userMgr.AddToRoleAsync(admin, "admin").Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
                         result = userMgr.AddClaimsAsync(admin, new Claim[]{
                             new Claim(JwtClaimTypes.Name, "bond james bond"),
                             new Claim(JwtClaimTypes.GivenName, "james"),
                             new Claim(JwtClaimTypes.FamilyName, "bond"),
                             new Claim(JwtClaimTypes.WebSite, "http://bondjamesbond.com"),
-                            new Claim(JwtClaimTypes.Role, "admin"),
+                            //new Claim(JwtClaimTypes.Role, "admin"),
                         }).Result;
                         if (!result.Succeeded)
                         {
@@ -68,7 +84,6 @@ namespace IdentityServerAspNetIdentity
                     {
                         Log.Debug("admin already exists");
                     }
-
                     var bob = userMgr.FindByNameAsync("bob").Result;
                     if (bob == null)
                     {
