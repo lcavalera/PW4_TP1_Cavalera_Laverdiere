@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G5s8p9MOn4nwwjZNW7clx09POyoyYhwRL5qrWP/aO9EjA7kv+hUain3n3pStX+y5zjjw2iRJlJ2SF45pTgHFjg==",
+  "dgSpecHash": "h/gAMu/sWksjdE9TB0zeQ+mCluH6bPtF37RhDH0IujzDp7f1zf71zsfKFELHGTEegJSAXV2lflFdhCjx9l1AYA==",
   "success": true,
   "projectFilePath": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
   "expectedPackageFiles": [
@@ -78,7 +78,7 @@
     "C:\\Users\\fredl\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\fredl\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\fredl\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
-    "C:\\Users\\fredl\\.nuget\\packages\\system.identitymodel.tokens.jwt\\5.6.0\\system.identitymodel.tokens.jwt.5.6.0.nupkg.sha512",
+    "C:\\Users\\fredl\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.4.0\\system.identitymodel.tokens.jwt.7.4.0.nupkg.sha512",
     "C:\\Users\\fredl\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\fredl\\.nuget\\packages\\system.io.filesystem\\4.0.1\\system.io.filesystem.4.0.1.nupkg.sha512",
     "C:\\Users\\fredl\\.nuget\\packages\\system.io.filesystem.primitives\\4.0.1\\system.io.filesystem.primitives.4.0.1.nupkg.sha512",
