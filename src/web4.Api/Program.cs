@@ -122,7 +122,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapControllers().RequireAuthorization();
+app.MapControllers(); //.RequireAuthorization()
 
 app.CreateDbIfNotExists();
 
