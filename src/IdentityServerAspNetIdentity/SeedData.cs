@@ -35,9 +35,11 @@ namespace IdentityServerAspNetIdentity
                     var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
                     context.Database.Migrate();
                     
+                    // recuperation des services users et roles
                     var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
+                    // creation du role admin
                     var roleName = roleMgr.FindByNameAsync("admin").Result;
                     if (roleName == null)
                     {
@@ -48,6 +50,18 @@ namespace IdentityServerAspNetIdentity
                             NormalizedName = "admin"
                         }).Result;
                     }
+                    // creation du role manager
+                    roleName = roleMgr.FindByNameAsync("manager").Result;
+                    if (roleName == null)
+                    {
+                        var adminRole = roleMgr.CreateAsync(new IdentityRole
+                        {
+                            ConcurrencyStamp = DateTime.Now.ToString(),
+                            Name = "manager",
+                            NormalizedName = "manager"
+                        }).Result;
+                    }
+                    // creation user admin
                     var admin = userMgr.FindByNameAsync("admin").Result;
                     if (admin == null)
                     {
@@ -84,6 +98,44 @@ namespace IdentityServerAspNetIdentity
                     {
                         Log.Debug("admin already exists");
                     }
+                    // creation user manager
+                    var manager = userMgr.FindByNameAsync("manager").Result;
+                    if (manager == null)
+                    {
+                        admin = new ApplicationUser
+                        {
+                            UserName = "manager",
+                            Email = "manager@email.com",
+                            EmailConfirmed = true,
+                        };
+                        var result = userMgr.CreateAsync(manager, "Pass123$").Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                        result = userMgr.AddToRoleAsync(manager, "manager").Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                        result = userMgr.AddClaimsAsync(manager, new Claim[]{
+                            new Claim(JwtClaimTypes.Name, "Benny"),
+                            new Claim(JwtClaimTypes.GivenName, "Ben"),
+                            new Claim(JwtClaimTypes.FamilyName, "Benito"),
+                            new Claim(JwtClaimTypes.WebSite, "http://Benito.com"),
+                            //new Claim(JwtClaimTypes.Role, "manager"),
+                        }).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                        Log.Debug("manager created");
+                    }
+                    else
+                    {
+                        Log.Debug("manager already exists");
+                    }
+                    ///////////////////////////////////////////////////////////////////////
                     var bob = userMgr.FindByNameAsync("bob").Result;
                     if (bob == null)
                     {
