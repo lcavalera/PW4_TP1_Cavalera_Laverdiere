@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Name": "src\\web4.Api\\Events.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Name": "src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

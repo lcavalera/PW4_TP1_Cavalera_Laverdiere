@@ -1,6 +1,7 @@
 ﻿using Events.Api.BusinessLogic.Interfaces;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -119,6 +120,7 @@ namespace Events.Api.Controllers
         /// <response code="404">ville introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // POST api/<EvenementsController>
+        [Authorize(Policy = "RequireManagerRole")]
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status201Created)]
@@ -145,6 +147,7 @@ namespace Events.Api.Controllers
         /// <response code="404">evenement introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<EvenementsController>/5
+        [Authorize(Policy = "RequireManagerRole")]
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status204NoContent)]
@@ -165,6 +168,7 @@ namespace Events.Api.Controllers
         /// <response code="404">evenement introuvable pour l'id spécifié</response>
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<EvenementsController>/5
+        [Authorize(Policy = "RequireManagerRole")]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

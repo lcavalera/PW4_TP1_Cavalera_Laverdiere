@@ -23,6 +23,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows
+        {
+            AuthorizationCode = new OpenApiOAuthFlow
+            {
+                AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
+                TokenUrl = new Uri("https://localhost:5001/connect/token"),
+                Scopes = new Dictionary<string, string>
+                {
+                    {"web2ApiScope", "Demo API - scope web2Api"}
+                }
+            }
+        }
+    });
+    options.OperationFilter<AuthorizeCheckOperationFilter>();
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
@@ -46,7 +63,7 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
     options.SchemaFilter<SwaggerSkipPropertyFilter>();
     options.IncludeXmlComments(xmlPath);
-    
+
 });
 builder.Services.AddDbContext<EventsContext>(options => 
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -85,7 +102,6 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdminRole", policy => policy.RequireAssertion(context => context.User.IsInRole("admin")));
     options.AddPolicy("RequireManagerRole", policy => policy.RequireAssertion(context => context.User.IsInRole("manager")));
-
 });
 
 builder.Services.AddControllers(options =>
