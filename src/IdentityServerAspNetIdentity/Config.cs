@@ -17,7 +17,7 @@ namespace IdentityServerAspNetIdentity
                         new IdentityResources.OpenId(),
                         new IdentityResources.Profile(),
                         new IdentityResources.Email(),
-                        new(){ Name="Web2Api", }
+                        new(){ Name="Web2Api"}
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
