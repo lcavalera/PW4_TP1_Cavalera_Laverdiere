@@ -49,6 +49,11 @@ namespace IdentityServerAspNetIdentity
                             Name = "admin",
                             NormalizedName = "admin"
                         }).Result;
+                        Log.Debug("Role: 'admin' created");
+                    }
+                    else
+                    {
+                        Log.Debug("Role: 'admin' already exist");
                     }
                     // creation du role manager
                     roleName = roleMgr.FindByNameAsync("manager").Result;
@@ -60,6 +65,11 @@ namespace IdentityServerAspNetIdentity
                             Name = "manager",
                             NormalizedName = "manager"
                         }).Result;
+                        Log.Debug("Role: 'manager' created");
+                    }
+                    else
+                    {
+                        Log.Debug("Role: 'manager' already exist");
                     }
                     // creation user admin
                     var admin = userMgr.FindByNameAsync("admin").Result;
@@ -102,7 +112,7 @@ namespace IdentityServerAspNetIdentity
                     var manager = userMgr.FindByNameAsync("manager").Result;
                     if (manager == null)
                     {
-                        admin = new ApplicationUser
+                        manager = new ApplicationUser
                         {
                             UserName = "manager",
                             Email = "manager@email.com",

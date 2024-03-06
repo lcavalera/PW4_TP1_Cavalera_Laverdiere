@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer4;
 using IdentityServer4.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace IdentityServerAspNetIdentity
                         new IdentityResources.OpenId(),
                         new IdentityResources.Profile(),
                         new IdentityResources.Email(),
-                        new(){ Name="Web2Api"}
+                        new(){ Name="Web2Api", }
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -66,7 +67,12 @@ namespace IdentityServerAspNetIdentity
                     RequireClientSecret = false,
                     RequirePkce = false,
 
-                    AllowedScopes = {"web2ApiScope"},
+                    AllowedScopes = new List<string>
+                    {
+                        "web2ApiScope",
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
+                    }
                 }
             };
     }
