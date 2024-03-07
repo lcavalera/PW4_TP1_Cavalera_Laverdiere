@@ -38,8 +38,7 @@ namespace IdentityServerAspNetIdentity
                 new ApiScope("scope2"),
                 new ApiScope("web2ApiScope", "access Event.API", userClaims: new[]
                 {
-                   JwtClaimTypes.Role,
-                   JwtClaimTypes.Audience
+                   JwtClaimTypes.Role
                 })
             };
 
