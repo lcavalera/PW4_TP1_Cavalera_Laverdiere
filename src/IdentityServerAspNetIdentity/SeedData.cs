@@ -96,7 +96,7 @@ namespace IdentityServerAspNetIdentity
                             new Claim(JwtClaimTypes.GivenName, "james"),
                             new Claim(JwtClaimTypes.FamilyName, "bond"),
                             new Claim(JwtClaimTypes.WebSite, "http://bondjamesbond.com"),
-                            //new Claim(JwtClaimTypes.Role, "admin"),
+                            //new Claim()
                         }).Result;
                         if (!result.Succeeded)
                         {
@@ -133,7 +133,7 @@ namespace IdentityServerAspNetIdentity
                             new Claim(JwtClaimTypes.GivenName, "Ben"),
                             new Claim(JwtClaimTypes.FamilyName, "Benito"),
                             new Claim(JwtClaimTypes.WebSite, "http://Benito.com"),
-                            //new Claim(JwtClaimTypes.Role, "manager"),
+                            //new Claim(JwtClaimTypes.Scope, "manager"),
                         }).Result;
                         if (!result.Succeeded)
                         {

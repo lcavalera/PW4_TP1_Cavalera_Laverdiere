@@ -7,6 +7,7 @@ using IdentityServer4;
 using IdentityServer4.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace IdentityServerAspNetIdentity
 {
@@ -17,25 +18,29 @@ namespace IdentityServerAspNetIdentity
                    {
                         new IdentityResources.OpenId(),
                         new IdentityResources.Profile(),
-                        new IdentityResources.Email(),
-                        new IdentityResource()
-                        { 
-                            Name="Web2Api",
-                            UserClaims =
-                            {
-                                JwtClaimTypes.Name,
-                                JwtClaimTypes.Profile,
-                                JwtClaimTypes.Scope
-                            }
-                        }
                    };
+        public static IEnumerable<ApiResource> ApiResources =>
+            new List<ApiResource>()
+            {
+                new ApiResource("Web2Api", "Web2Api")
+                {
+                    Scopes =
+                    {
+                        "web2ApiScope"
+                    }
+                }
+            };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
                 new ApiScope("scope1"),
                 new ApiScope("scope2"),
-                new ApiScope("web2ApiScope"),
+                new ApiScope("web2ApiScope", "access Event.API", userClaims: new[]
+                {
+                   JwtClaimTypes.Role,
+                   JwtClaimTypes.Audience
+                })
             };
 
         public static IEnumerable<Client> Clients =>
@@ -76,7 +81,7 @@ namespace IdentityServerAspNetIdentity
                     AllowedCorsOrigins = {"https://localhost:7132"},
                     RequireClientSecret = false,
                     RequirePkce = false,
-                    AllowedScopes = new List<string>()
+                    AllowedScopes = 
                     {
                         "web2ApiScope",
                         IdentityServerConstants.StandardScopes.OpenId,

@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text.Json.Serialization;
@@ -98,8 +99,10 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("RequireScope", policy => policy.RequireAssertion(co => co.User.HasClaim(cl => cl.Value.Equals("web2ApiScope"))));
     options.AddPolicy("RequireAdminRole", policy => policy.RequireAssertion(context => context.User.IsInRole("admin")));
     options.AddPolicy("RequireManagerRole", policy => policy.RequireAssertion(context => context.User.IsInRole("manager")));
+    options.DefaultPolicy = options.GetPolicy("RequireScope");
 });
 
 builder.Services.AddControllers(options =>
@@ -123,7 +126,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapControllers().RequireAuthorization(); //
+app.MapControllers();//.RequireAuthorization(); //
 
 app.CreateDbIfNotExists();
 

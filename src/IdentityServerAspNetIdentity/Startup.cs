@@ -48,9 +48,11 @@ namespace IdentityServerAspNetIdentity
                 options.EmitStaticAudienceClaim = true;
             })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
+                .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<ApplicationUser>();
+                
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
@@ -58,7 +60,7 @@ namespace IdentityServerAspNetIdentity
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
-                    options.SignInScheme = IdentityServerConstants.AccessTokenAudience; //.ExternalCookieAuthenticationScheme;
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme; //
 
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
