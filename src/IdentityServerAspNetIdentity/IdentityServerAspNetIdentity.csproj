@@ -2,12 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net7</TargetFramework>
+    <UserSecretsId>bcec9a78-4a38-43ce-8ea5-baeb03248569</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
 
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="7.0.0" />
+
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
 
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.0" />

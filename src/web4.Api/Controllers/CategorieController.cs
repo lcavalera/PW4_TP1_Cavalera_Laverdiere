@@ -4,6 +4,7 @@ using Events.Api.Entites;
 using Events.Api.Entites.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Web.Resource;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,10 +14,10 @@ namespace Events.Api.Controllers
     [ApiController]
     [Produces("application/json")]
     [Authorize]
+
     public class CategorieController(ICategorieBL categorieBL) : ControllerBase
     {
         private readonly ICategorieBL _categorieBL = categorieBL;
-
         /// <summary>
         /// Retourne une liste des Categories 
         /// </summary>
@@ -133,5 +134,9 @@ namespace Events.Api.Controllers
             await _categorieBL.Supprimer(id);
             return NoContent();
         }
+    }
+
+    internal class AutorizeAttribute : Attribute
+    {
     }
 }

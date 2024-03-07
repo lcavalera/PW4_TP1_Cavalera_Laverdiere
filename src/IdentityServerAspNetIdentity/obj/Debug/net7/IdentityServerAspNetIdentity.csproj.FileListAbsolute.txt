@@ -89,3 +89,5 @@ C:\Users\Luca\Desktop\PW4_TP2_B_Cavalera_Laverdiere\src\IdentityServerAspNetIden
 C:\Users\Luca\Desktop\PW4_TP2_B_Cavalera_Laverdiere\src\IdentityServerAspNetIdentity\obj\Debug\net7\IdentityServerAspNetIdentity.pdb
 C:\Users\Luca\Desktop\PW4_TP2_B_Cavalera_Laverdiere\src\IdentityServerAspNetIdentity\obj\Debug\net7\IdentityServerAspNetIdentity.genruntimeconfig.cache
 C:\Users\Luca\Desktop\PW4_TP2_B_Cavalera_Laverdiere\src\IdentityServerAspNetIdentity\obj\Debug\net7\ref\IdentityServerAspNetIdentity.dll
+C:\Users\Luca\Desktop\PW4_TP2_B_Cavalera_Laverdiere\src\IdentityServerAspNetIdentity\bin\Debug\net7\Npgsql.dll
+C:\Users\Luca\Desktop\PW4_TP2_B_Cavalera_Laverdiere\src\IdentityServerAspNetIdentity\bin\Debug\net7\Npgsql.EntityFrameworkCore.PostgreSQL.dll

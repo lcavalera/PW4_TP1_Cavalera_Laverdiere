@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "B+fat9mDGUH5PLhi8xAIIRl39TXekSqBgjkipchuVn5DktUSAe8kanY83si9ZxmSPZ7jxWAJrAMV5NS32sJaDQ==",
+  "dgSpecHash": "zO7z2JXgu0MH07kqVZNGjMsxlYDspFxlIOsL77VrquVOarjHeCzJJlowsG4hwonKcrByq8dMMow8q/qs4P9Mgg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Luca\\Desktop\\PW4_TP2_B_Cavalera_Laverdiere\\src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,8 @@
     "C:\\Users\\Luca\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\Luca\\.nuget\\packages\\npgsql\\7.0.0\\npgsql.7.0.0.nupkg.sha512",
+    "C:\\Users\\Luca\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.0\\npgsql.entityframeworkcore.postgresql.7.0.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\serilog\\2.8.0\\serilog.2.8.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\serilog.aspnetcore\\3.2.0\\serilog.aspnetcore.3.2.0.nupkg.sha512",
@@ -85,6 +87,7 @@
     "C:\\Users\\Luca\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\Luca\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\system.runtime.extensions\\4.3.0\\system.runtime.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\system.runtime.handles\\4.3.0\\system.runtime.handles.4.3.0.nupkg.sha512",
     "C:\\Users\\Luca\\.nuget\\packages\\system.runtime.interopservices\\4.3.0\\system.runtime.interopservices.4.3.0.nupkg.sha512",

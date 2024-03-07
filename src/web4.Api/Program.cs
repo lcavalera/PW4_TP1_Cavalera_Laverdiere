@@ -10,8 +10,10 @@ using Events.Api.Filters.Swagger;
 using Events.Api.Filters.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,8 +23,26 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows
+        {
+            AuthorizationCode = new OpenApiOAuthFlow
+            {
+                AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
+                TokenUrl = new Uri("https://localhost:5001/connect/token"),
+                Scopes = new Dictionary<string, string>
+                {
+                    {"web2ApiScope", "web2Api"} //Demo API - scope 
+                }
+            }
+        }
+    });
+    options.OperationFilter<AuthorizeCheckOperationFilter>();
     options.SwaggerDoc("v1", new OpenApiInfo
     {
+
         Version = "v1",
         Title = "API Web 2",
         Description = "API pour la gestion des covoiturages",
@@ -53,16 +73,17 @@ builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connec
 //auth
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultScheme = "Cookies";
-    options.DefaultChallengeScheme = "oidc";
-}).AddCookie("Cookies").AddOpenIdConnect("oidc", options =>
+    options.DefaultScheme = "Bearer";
+
+}).AddJwtBearer("Bearer", options =>
 {
     options.Authority = "https://localhost:5001";
-    options.ClientId = "swagger_ui";
-    options.ClientSecret = "secret";
-    options.ResponseType = "code";
-    options.Scope.Add("api1");
-    options.GetClaimsFromUserInfoEndpoint = true;
+    options.Audience = "web2Api";
+    options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = true
+    };
 });
 
 builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
@@ -103,7 +124,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers().RequireAuthorization();
+app.MapControllers();
 
 app.CreateDbIfNotExists();
 
