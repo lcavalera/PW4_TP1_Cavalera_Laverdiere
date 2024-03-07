@@ -70,6 +70,15 @@ builder.Services.AddSwaggerGen(options =>
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<EventsContext>(options => options.UseNpgsql(connectionString));
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdmin", policy => policy.RequireAssertion(context => context.User.IsInRole("admin")));
+    options.AddPolicy("RequireManager", policy => policy.RequireRole("manager"));
+    options.AddPolicy("RequireScope", policy => policy.RequireAssertion(co => co.User.HasClaim(cl => cl.Type.Equals("scope") && cl.Value.Equals("web2ApiScope"))));
+
+    options.DefaultPolicy = options.GetPolicy("RequireScope");
+});
+
 //auth
 builder.Services.AddAuthentication(options =>
 {

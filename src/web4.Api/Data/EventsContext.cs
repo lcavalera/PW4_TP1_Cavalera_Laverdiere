@@ -27,7 +27,8 @@ namespace Events.Api.Data
                 Email = "manager@cegeplimoilou.ca",
                 NormalizedUserName = "MANAGER@CEGEPLIMOILOU.CA",
                 NormalizedEmail = "MANAGER@CEGEPLIMOILOU.CA",
-                SecurityStamp = Guid.NewGuid().ToString()
+                SecurityStamp = Guid.NewGuid().ToString(),
+                EmailConfirmed = true,
             };
 
             var admin = new IdentityUser
@@ -37,7 +38,8 @@ namespace Events.Api.Data
                 Email = "admin@cegeplimoilou.ca",
                 NormalizedUserName = "ADMIN@CEGEPLIMOILOU.CA",
                 NormalizedEmail = "ADMIN@CEGEPLIMOILOU.CA",
-                SecurityStamp = Guid.NewGuid().ToString()
+                SecurityStamp = Guid.NewGuid().ToString(),
+                EmailConfirmed = true,
             };
 
             var hasher = new PasswordHasher<IdentityUser>();

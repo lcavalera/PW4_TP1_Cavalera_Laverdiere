@@ -1,6 +1,7 @@
 ﻿using Events.Api.BusinessLogic.Interfaces;
 using Events.Api.Entites;
 using Events.Api.Entites.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -120,6 +121,7 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // POST api/<EvenementsController>
         [HttpPost]
+        [Authorize(Policy = "RequireManager")]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status200OK)]
@@ -146,6 +148,7 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // PUT api/<EvenementsController>/5
         [HttpPut("{id}")]
+        [Authorize(Policy = "RequireManager")]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status400BadRequest)]
@@ -166,6 +169,7 @@ namespace Events.Api.Controllers
         /// <response code="500">service indisponible pour le moment</response>
         // DELETE api/<EvenementsController>/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = "RequireManager")]
         [ProducesResponseType(typeof(EvenementDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

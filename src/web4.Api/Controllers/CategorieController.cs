@@ -12,8 +12,7 @@ namespace Events.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Produces("application/json")]
-    [Authorize]
+    [Produces("application/json")] 
 
     public class CategorieController(ICategorieBL categorieBL) : ControllerBase
     {

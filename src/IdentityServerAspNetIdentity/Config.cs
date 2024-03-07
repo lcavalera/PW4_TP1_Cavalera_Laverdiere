@@ -25,7 +25,7 @@ namespace IdentityServerAspNetIdentity
             {
                 new ApiScope("scope1"),
                 new ApiScope("scope2"),
-                new ApiScope("web2ApiScope"),
+                new ApiScope("web2ApiScope", userClaims: new []{ JwtClaimTypes.Role}),
             };
 
         public static IEnumerable<Client> Clients =>
