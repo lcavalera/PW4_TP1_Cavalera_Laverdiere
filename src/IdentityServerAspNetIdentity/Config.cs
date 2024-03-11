@@ -22,7 +22,13 @@ namespace IdentityServerAspNetIdentity
         public static IEnumerable<ApiResource> ApiResources =>
             new ApiResource[]
             {
-                new ApiResource("Web2Api", "Events.API", userClaims: new[]{})
+                new ApiResource("Web2Api", "Web2Api")
+                {
+                    Scopes =
+                    {
+                        "web2ApiScope"
+                    }
+                }
             };
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]

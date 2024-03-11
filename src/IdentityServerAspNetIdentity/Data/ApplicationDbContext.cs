@@ -58,5 +58,6 @@ namespace IdentityServerAspNetIdentity.Data
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { UserId = admin.Id, RoleId = adminRole.Id });
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { UserId = manager.Id, RoleId = managerRole.Id });
         }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
