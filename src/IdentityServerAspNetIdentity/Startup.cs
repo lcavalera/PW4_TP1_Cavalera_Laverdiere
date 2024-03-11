@@ -51,7 +51,7 @@ namespace IdentityServerAspNetIdentity
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<ApplicationUser>()
-                .AddInMemoryApiResources(Configuration.GetSection("IdentityServer:ApiResources"));
+                .AddInMemoryApiResources(Config.ApiResources);
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
