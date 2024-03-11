@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,10 +54,6 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fredl\\AppData\\Roaming\\Microsoft\\UserSecrets\\88599dbc-09c1-4ac0-b15b-9026a3333e35\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\controllers\\villescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\controllers\\villescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -73,21 +73,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 35,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\appsettings.json",
-              "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\appsettings.json",
-              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\appsettings.json",
-              "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-11T14:20:18.596Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -187,19 +174,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\appsettings.json",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\appsettings.json",
+              "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-11T14:20:18.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Startup.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Startup.cs",
               "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Startup.cs",
               "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Startup.cs",
               "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\Startup.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAA1wDIAAABHAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAADIAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-11T14:16:31.593Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "20240311132459_removedIdentity.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Migrations\\20240311132459_removedIdentity.cs",
               "RelativeDocumentMoniker": "src\\web4.Api\\Migrations\\20240311132459_removedIdentity.cs",
@@ -212,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "20240311132040_initial.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Migrations\\20240311132040_initial.cs",
               "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Migrations\\20240311132040_initial.cs",
@@ -225,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Data\\ApplicationDbContext.cs",
@@ -238,20 +238,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Config.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Config.cs",
               "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Config.cs",
               "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Config.cs",
               "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\Config.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAADYAAAAAAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABsAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-11T13:15:41.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "20240311125438_Initial.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Migrations\\20240311125438_Initial.cs",
               "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Migrations\\20240311125438_Initial.cs",
@@ -264,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "secrets.json",
               "DocumentMoniker": "C:\\Users\\fredl\\AppData\\Roaming\\Microsoft\\UserSecrets\\88599dbc-09c1-4ac0-b15b-9026a3333e35\\secrets.json",
               "ToolTip": "C:\\Users\\fredl\\AppData\\Roaming\\Microsoft\\UserSecrets\\88599dbc-09c1-4ac0-b15b-9026a3333e35\\secrets.json",
@@ -275,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "EventsContext.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\EventsContext.cs",
               "RelativeDocumentMoniker": "src\\web4.Api\\Data\\EventsContext.cs",
@@ -300,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\appsettings.json",
               "RelativeDocumentMoniker": "src\\web4.Api\\appsettings.json",
@@ -313,13 +313,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Program.cs",
               "RelativeDocumentMoniker": "src\\web4.Api\\Program.cs",
               "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Program.cs",
               "RelativeToolTip": "src\\web4.Api\\Program.cs",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAAAFMAAAABAAAA",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAF8AAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-05T23:35:48.259Z",
               "EditorCaption": ""
@@ -338,7 +338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "src\\web4.Api\\Properties\\launchSettings.json",
@@ -351,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "20240311132824_initial.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Migrations\\20240311132824_initial.cs",
               "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Migrations\\20240311132824_initial.cs",

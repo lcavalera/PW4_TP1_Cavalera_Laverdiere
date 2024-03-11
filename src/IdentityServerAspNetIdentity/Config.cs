@@ -22,7 +22,7 @@ namespace IdentityServerAspNetIdentity
         public static IEnumerable<ApiResource> ApiResources =>
             new ApiResource[]
             {
-                new ApiResource("Web2Api", "Web2Api")
+                new ApiResource("Web2Api", "Events.API")
                 {
                     Scopes =
                     {
@@ -53,7 +53,7 @@ namespace IdentityServerAspNetIdentity
                     RequireClientSecret = false,
                     RequirePkce = false,
 
-                    AllowedScopes = new List<string>
+                    AllowedScopes = 
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,

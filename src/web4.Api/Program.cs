@@ -87,7 +87,7 @@ builder.Services.AddAuthentication(options =>
 }).AddJwtBearer("Bearer", options =>
 {
     options.Authority = "https://localhost:5001";
-    options.Audience = "web2Api";
+    options.Audience = "Web2Api";
     options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
     options.TokenValidationParameters = new TokenValidationParameters
     {
