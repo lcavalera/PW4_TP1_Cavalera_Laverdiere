@@ -53,7 +53,6 @@ namespace IdentityServerAspNetIdentity
                     RequireClientSecret = false,
                     RequirePkce = false,
 
-                    // where to redirect to after logout
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
