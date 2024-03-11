@@ -19,7 +19,17 @@ namespace IdentityServerAspNetIdentity
                 new IdentityResources.Profile(),
  
                    };
-
+        public static IEnumerable<ApiResource> ApiResources =>
+            new ApiResource[]
+            {
+                new ApiResource("Web2Api", "Events.API")
+                {
+                    Scopes =
+                    {
+                        "web2ApiScope"
+                    }
+                }
+            };
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
@@ -43,8 +53,7 @@ namespace IdentityServerAspNetIdentity
                     RequireClientSecret = false,
                     RequirePkce = false,
 
-                    // where to redirect to after logout
-                    AllowedScopes = new List<string>
+                    AllowedScopes = 
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
