@@ -84,6 +84,40 @@ namespace IdentityServerAspNetIdentity.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3bd2f030-453b-45a1-89a2-9cade395d7c1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4e8ea96b-4674-4e58-aabd-eb1f009ba98b",
+                            Email = "manager@cegeplimoilou.ca",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MANAGER@CEGEPLIMOILOU.CA",
+                            NormalizedUserName = "MANAGER@CEGEPLIMOILOU.CA",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK/PhDO00E+c/Cdov89jkFn4QtZo5F9sGMXgL7NQjCXJSsD5/XKOlJy48QPgmXMGvQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8bf6bec1-61ef-4754-9a99-204b4a381c3c",
+                            TwoFactorEnabled = false,
+                            UserName = "manager@cegeplimoilou.ca"
+                        },
+                        new
+                        {
+                            Id = "f389e134-488c-4fd5-b56c-9fb9f0b3b7f3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a6aa5bad-1ddc-4d01-beba-709a927147db",
+                            Email = "admin@cegeplimoilou.ca",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@CEGEPLIMOILOU.CA",
+                            NormalizedUserName = "ADMIN@CEGEPLIMOILOU.CA",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFqiEJUY5x6sPxn+oCG1S0JI9TOctizziGz54MQ53QYptuH4d2bHx/cb1IBeWUaCVA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "14040b93-f582-4085-8652-573afdc94738",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@cegeplimoilou.ca"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -149,92 +183,6 @@ namespace IdentityServerAspNetIdentity.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("text");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdentityUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "3bd2f030-453b-45a1-89a2-9cade395d7c1",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b88f1d94-20b3-49d6-8ca2-b44498616675",
-                            Email = "manager@cegeplimoilou.ca",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "MANAGER@CEGEPLIMOILOU.CA",
-                            NormalizedUserName = "MANAGER@CEGEPLIMOILOU.CA",
-                            PasswordHash = "AQAAAAIAAYagAAAAELMd5/kPRUrQRCaL0h8cY4wKl305nVVV28k2Kql5aTFnVIiGGK4P77i11txMeZ/2mw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "f771771e-8a26-4f87-a74b-2743c264a2db",
-                            TwoFactorEnabled = false,
-                            UserName = "manager@cegeplimoilou.ca"
-                        },
-                        new
-                        {
-                            Id = "f389e134-488c-4fd5-b56c-9fb9f0b3b7f3",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "1e5f9a16-c493-403c-a988-d6080f94e6b1",
-                            Email = "admin@cegeplimoilou.ca",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@CEGEPLIMOILOU.CA",
-                            NormalizedUserName = "ADMIN@CEGEPLIMOILOU.CA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPeYd9fU7IYkfkewm5xXSi3VLfbYwEvr0DXm3kfaXkJnsWOW50y2AyJ0x6/EVL0Aeg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "74244de2-8c9b-4177-8416-ba1907559e65",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@cegeplimoilou.ca"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>

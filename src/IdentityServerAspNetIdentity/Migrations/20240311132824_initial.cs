@@ -54,31 +54,6 @@ namespace IdentityServerAspNetIdentity.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "IdentityUser",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "text", nullable: false),
-                    UserName = table.Column<string>(type: "text", nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "text", nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "text", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityUser", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -194,12 +169,21 @@ namespace IdentityServerAspNetIdentity.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "IdentityUser",
+                table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "3bd2f030-453b-45a1-89a2-9cade395d7c1", 0, "af911888-cf7c-4df9-b044-5f1448b34eea", "manager@cegeplimoilou.ca", true, false, null, "MANAGER@CEGEPLIMOILOU.CA", "MANAGER@CEGEPLIMOILOU.CA", "AQAAAAIAAYagAAAAEE2PB9ltL5+FbawsWQD8+JUqEbFGaKcgZ4BLboOxYgCO/BvPog4RiVByElXek6yTHg==", null, false, "a69b59e1-c5a1-442b-9eae-1e7653eacafe", false, "manager@cegeplimoilou.ca" },
-                    { "f389e134-488c-4fd5-b56c-9fb9f0b3b7f3", 0, "99523801-951d-45e9-befc-b79939f663e8", "admin@cegeplimoilou.ca", true, false, null, "ADMIN@CEGEPLIMOILOU.CA", "ADMIN@CEGEPLIMOILOU.CA", "AQAAAAIAAYagAAAAEFnChZUA9QKPczQUsnZ6kCaeQfX029l23gtWav546jkKeF+xSw2noNcBMynRQKAHZA==", null, false, "f1961048-69ee-45ab-8ac7-e8f358cb400a", false, "admin@cegeplimoilou.ca" }
+                    { "3bd2f030-453b-45a1-89a2-9cade395d7c1", 0, "4e8ea96b-4674-4e58-aabd-eb1f009ba98b", "manager@cegeplimoilou.ca", true, false, null, "MANAGER@CEGEPLIMOILOU.CA", "MANAGER@CEGEPLIMOILOU.CA", "AQAAAAIAAYagAAAAEK/PhDO00E+c/Cdov89jkFn4QtZo5F9sGMXgL7NQjCXJSsD5/XKOlJy48QPgmXMGvQ==", null, false, "8bf6bec1-61ef-4754-9a99-204b4a381c3c", false, "manager@cegeplimoilou.ca" },
+                    { "f389e134-488c-4fd5-b56c-9fb9f0b3b7f3", 0, "a6aa5bad-1ddc-4d01-beba-709a927147db", "admin@cegeplimoilou.ca", true, false, null, "ADMIN@CEGEPLIMOILOU.CA", "ADMIN@CEGEPLIMOILOU.CA", "AQAAAAIAAYagAAAAEFqiEJUY5x6sPxn+oCG1S0JI9TOctizziGz54MQ53QYptuH4d2bHx/cb1IBeWUaCVA==", null, false, "14040b93-f582-4085-8652-573afdc94738", false, "admin@cegeplimoilou.ca" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "653bb917-ac53-464e-9e41-1be6fa6cf9e1", "3bd2f030-453b-45a1-89a2-9cade395d7c1" },
+                    { "b4a17d23-2b27-4a35-950a-d97382cb90f4", "f389e134-488c-4fd5-b56c-9fb9f0b3b7f3" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -257,9 +241,6 @@ namespace IdentityServerAspNetIdentity.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "IdentityUser");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
