@@ -19,7 +19,11 @@ namespace IdentityServerAspNetIdentity
                 new IdentityResources.Profile(),
  
                    };
-
+        public static IEnumerable<ApiResource> ApiResources =>
+            new ApiResource[]
+            {
+                new ApiResource("Web2Api", "Events.API")
+            };
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {

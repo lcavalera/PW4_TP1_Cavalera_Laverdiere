@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\identityserveraspnetidentity\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{853BD518-4A23-4F2E-8A48-4BC0B8193780}|src\\IdentityServerAspNetIdentity\\IdentityServerAspNetIdentity.csproj|solutionrelative:src\\identityserveraspnetidentity\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\data\\eventscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\data\\eventscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|d:\\h24\\progweb4\\tp\\tp2_final\\src\\web4.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06B4FCC1-CA48-41B7-A819-138CA7CFE9BB}|src\\web4.Api\\Events.Api.csproj|solutionrelative:src\\web4.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,8 +46,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 26,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Config.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Config.cs",
+              "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Config.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Config.cs",
+              "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\Config.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T12:32:13.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "src\\IdentityServerAspNetIdentity\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\IdentityServerAspNetIdentity\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "src\\IdentityServerAspNetIdentity\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAA9wDEAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T12:28:11.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EventsContext.cs",
+              "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\EventsContext.cs",
+              "RelativeDocumentMoniker": "src\\web4.Api\\Data\\EventsContext.cs",
+              "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Data\\EventsContext.cs",
+              "RelativeToolTip": "src\\web4.Api\\Data\\EventsContext.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAUwBIAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T12:27:18.116Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -134,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "VillesController.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Controllers\\VillesController.cs",
               "RelativeDocumentMoniker": "src\\web4.Api\\Controllers\\VillesController.cs",
@@ -142,12 +193,11 @@
               "RelativeToolTip": "src\\web4.Api\\Controllers\\VillesController.cs",
               "ViewState": "AQIAAD4AAAAAAAAAAAAwwGQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T04:07:25.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-06T04:07:25.79Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\appsettings.json",
               "RelativeDocumentMoniker": "src\\web4.Api\\appsettings.json",
@@ -155,25 +205,24 @@
               "RelativeToolTip": "src\\web4.Api\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-05T22:59:31.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-05T22:59:31.967Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Program.cs",
               "RelativeDocumentMoniker": "src\\web4.Api\\Program.cs",
               "ToolTip": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Program.cs",
               "RelativeToolTip": "src\\web4.Api\\Program.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAFMAAAABAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAFMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-05T23:35:48.259Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "EvenementsController.cs",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Controllers\\EvenementsController.cs",
               "RelativeDocumentMoniker": "src\\web4.Api\\Controllers\\EvenementsController.cs",
@@ -181,12 +230,11 @@
               "RelativeToolTip": "src\\web4.Api\\Controllers\\EvenementsController.cs",
               "ViewState": "AQIAAI4AAAAAAAAAAAAcwKoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T04:05:24.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-06T04:05:24.874Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "src\\web4.Api\\Properties\\launchSettings.json",
@@ -194,12 +242,11 @@
               "RelativeToolTip": "src\\web4.Api\\Properties\\launchSettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-05T23:23:19.688Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-05T23:23:19.688Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Events.Api.csproj",
               "DocumentMoniker": "D:\\H24\\ProgWeb4\\TP\\TP2_FINAL\\src\\web4.Api\\Events.Api.csproj",
               "RelativeDocumentMoniker": "src\\web4.Api\\Events.Api.csproj",
@@ -207,8 +254,7 @@
               "RelativeToolTip": "src\\web4.Api\\Events.Api.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-06T19:17:04.029Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-06T19:17:04.029Z"
             }
           ]
         }
